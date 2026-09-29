@@ -745,6 +745,48 @@ body{background:#EAF3FF}
 @media(max-width:460px){.v30-decision-actions{grid-template-columns:1fr}.v30-delete-btn{order:2}}
 </style>
 
+
+<style id="v31-info-left-fix">
+/* V31: info popover opens to the LEFT of the info icon */
+.v29-info-tip .v26-info-bubble{
+  position:fixed!important;
+  left:var(--v31-info-left,12px)!important;
+  top:var(--v31-info-top,12px)!important;
+  right:auto!important;bottom:auto!important;
+  transform:none!important;
+  width:var(--v31-info-width,min(300px,calc(100vw - 24px)))!important;
+  max-width:calc(100vw - 24px)!important;
+  max-height:min(42vh,300px)!important;
+  overflow:auto!important;
+  z-index:20050!important;
+}
+.v29-info-tip .v26-info-bubble:before{
+  display:block!important;
+  left:auto!important;
+  right:-7px!important;
+  top:var(--v31-info-arrow-y,18px)!important;
+  width:13px!important;height:13px!important;
+  background:#fff!important;
+  border:0!important;
+  border-right:1px solid #dbe8f6!important;
+  border-top:1px solid #dbe8f6!important;
+  transform:rotate(45deg)!important;
+  border-radius:0 3px 0 0!important;
+}
+@media(max-width:920px){
+  .v29-info-tip .v26-info-bubble{
+    position:fixed!important;
+    left:var(--v31-info-left,12px)!important;
+    top:var(--v31-info-top,12px)!important;
+    right:auto!important;bottom:auto!important;
+    transform:none!important;
+    width:var(--v31-info-width,min(300px,calc(100vw - 24px)))!important;
+    max-height:40vh!important;
+    border-radius:17px!important;
+  }
+  .v29-info-tip .v26-info-bubble:before{display:block!important}
+}
+</style>
 </head>
 <body>
 <div class="layout">
@@ -1464,7 +1506,45 @@ async function quickLocationPhoto(locationId,input){
 async function printReport(){
   const w=window.open('','_blank');
   if(!w){toast('Browser menyekat paparan laporan. Benarkan pop-up untuk laman ini.');return}
-  w.document.write('<!doctype html><html><body style="font-family:Arial;padding:30px">Menjana laporan...</body></html>');
+  w.document.write('<!doctype html><html><body style="font-family:Arial;padding:30px">Menjana laporan...
+<script id="v31-info-left-position">
+(function(){
+  function positionInfoTip(details){
+    if(!details || !details.open) return;
+    var bubble=details.querySelector('.v26-info-bubble');
+    var summary=details.querySelector('summary');
+    if(!bubble || !summary) return;
+    var r=summary.getBoundingClientRect();
+    var vw=Math.max(document.documentElement.clientWidth||0,window.innerWidth||0);
+    var vh=Math.max(document.documentElement.clientHeight||0,window.innerHeight||0);
+    var margin=12, gap=12;
+    var width=Math.min(300,Math.max(220,vw-(margin*2)));
+    var left=r.left-gap-width;
+    if(left<margin) left=margin;
+    var desiredTop=r.top-10;
+    var estimatedH=Math.min(210,Math.max(110,bubble.scrollHeight||150));
+    var top=Math.max(margin,Math.min(desiredTop,vh-estimatedH-margin));
+    var arrowY=Math.max(14,Math.min((r.top+r.height/2)-top-7,estimatedH-22));
+    bubble.style.setProperty('--v31-info-left',left+'px');
+    bubble.style.setProperty('--v31-info-top',top+'px');
+    bubble.style.setProperty('--v31-info-width',width+'px');
+    bubble.style.setProperty('--v31-info-arrow-y',arrowY+'px');
+  }
+  document.addEventListener('toggle',function(e){
+    var d=e.target;
+    if(d && d.matches && d.matches('.v29-info-tip') && d.open){
+      requestAnimationFrame(function(){positionInfoTip(d)});
+    }
+  },true);
+  window.addEventListener('resize',function(){
+    document.querySelectorAll('.v29-info-tip[open]').forEach(positionInfoTip);
+  },{passive:true});
+  window.addEventListener('scroll',function(){
+    document.querySelectorAll('.v29-info-tip[open]').forEach(positionInfoTip);
+  },true);
+})();
+</script>
+</body></html>');
   try{
     const r=await apiGet('reportData',{});
     if(!r.ok)throw new Error(r.error||'Laporan gagal dijana.');
