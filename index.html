@@ -702,6 +702,49 @@ body{background:#EAF3FF}
 .v29-info-tip .v26-info-bubble{right:0!important}
 @media(max-width:920px){.v29-info-tip{width:28px!important;height:28px!important;min-width:28px!important;max-width:28px!important;min-height:28px!important;max-height:28px!important}.v29-info-tip>summary{width:28px!important;height:28px!important;min-width:28px!important;max-width:28px!important;min-height:28px!important;max-height:28px!important}}
 </style>
+
+<style id="v30-decision-delete-info-polish">
+/* V30: compact premium info popover */
+.v29-info-tip .v26-info-bubble{
+  box-sizing:border-box!important;
+  right:0!important;left:auto!important;top:38px!important;bottom:auto!important;
+  width:min(300px,76vw)!important;
+  padding:13px 14px 14px!important;
+  border-radius:17px!important;
+  background:rgba(255,255,255,.98)!important;
+  color:#38506d!important;
+  border:1px solid #dbe8f6!important;
+  box-shadow:0 18px 46px rgba(16,55,105,.18),0 3px 10px rgba(16,55,105,.06)!important;
+  font-size:10.5px!important;line-height:1.55!important;
+  backdrop-filter:blur(16px)!important;
+  overflow:visible!important;
+}
+.v29-info-tip .v26-info-bubble:before{
+  content:'';position:absolute;right:8px;top:-7px;width:13px;height:13px;
+  background:#fff;border-left:1px solid #dbe8f6;border-top:1px solid #dbe8f6;
+  transform:rotate(45deg);border-radius:3px 0 0 0;
+}
+.v29-info-tip .v28-info-title{display:flex!important;align-items:center!important;gap:8px!important;color:#173f6a!important;font-size:11px!important;font-weight:900!important;margin:0 28px 7px 0!important}
+.v29-info-tip .v28-info-title>span{width:22px!important;height:22px!important;border-radius:8px!important;background:linear-gradient(145deg,#0b78f6,#55adff)!important;color:#fff!important;box-shadow:0 5px 12px rgba(14,116,235,.18)!important;font-size:11px!important}
+.v30-info-close{position:absolute;right:9px;top:8px;width:25px;height:25px;border:0;border-radius:9px;background:#eef4fb;color:#31577f;font:900 15px/1 Arial,sans-serif;display:grid;place-items:center;cursor:pointer}
+.v30-info-copy{position:relative;z-index:1;color:#536b86}
+
+/* V30: delete inside decision view */
+.v30-decision-actions{display:flex;align-items:center;justify-content:flex-end;gap:9px;flex-wrap:wrap;margin-top:13px}
+.v30-delete-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:42px;padding:10px 14px;border-radius:13px;border:1px solid #ffc8c5;background:linear-gradient(180deg,#fff8f7,#fff0ef);color:#b42318;font-size:10.5px;font-weight:900;box-shadow:0 7px 16px rgba(180,35,24,.07);cursor:pointer}
+.v30-delete-btn .ui-svg{width:15px;height:15px;fill:currentColor}
+.v30-delete-btn:hover{background:linear-gradient(180deg,#fff3f2,#ffe8e6);border-color:#fda29b}
+.v30-danger-note{display:flex;align-items:flex-start;gap:8px;margin-top:12px;padding:10px 11px;border:1px solid #fee4e2;border-radius:13px;background:#fffafa;color:#8f3027;font-size:9.5px;line-height:1.45}
+.v30-danger-dot{width:18px;height:18px;flex:0 0 18px;border-radius:7px;display:grid;place-items:center;background:#fee4e2;color:#b42318;font-weight:900}
+@media(max-width:920px){
+  .v29-info-tip .v26-info-bubble{position:fixed!important;left:50%!important;right:auto!important;top:auto!important;bottom:calc(92px + env(safe-area-inset-bottom))!important;transform:translateX(-50%)!important;width:min(330px,calc(100vw - 24px))!important;max-height:38vh!important;overflow:auto!important;border-radius:19px!important;padding:14px 15px 15px!important;z-index:20050!important}
+  .v29-info-tip .v26-info-bubble:before{display:none!important}
+  .v30-decision-actions{display:grid;grid-template-columns:1fr 1fr;width:100%}
+  .v30-decision-actions .btn,.v30-delete-btn{width:100%!important;min-width:0!important}
+}
+@media(max-width:460px){.v30-decision-actions{grid-template-columns:1fr}.v30-delete-btn{order:2}}
+</style>
+
 </head>
 <body>
 <div class="layout">
@@ -1801,6 +1844,41 @@ detailHtml=function(d){const l=d.location,a1=d.aps.find(x=>String(x.APNo)==='1')
 openLocation=async function(id){startProgress('Membuka lokasi...',14,'Mengambil rekod terkini.');try{const r=await apiGet('locationDetail',{locationId:id},2,10000);if(!r.ok)throw new Error(r.error||'Lokasi tidak dapat dibuka.');let detail=r.data;let draft=v26LoadDraft(id);if(!proposalFinished(detail.location)){APP.proposalDraft=draft||v26NewDraft(detail);detail=v26MergeDraft(detail,APP.proposalDraft)}else{APP.proposalDraft=null;v26ClearDraft(id)}APP.current=detail;hydrate();const l=APP.current.location;q('drawerName').textContent=l.NamaLokasi||'Lokasi belum dinamakan';q('drawerId').textContent=l.LocationID;q('drawerStatus').textContent=displayStatus(l.Status);q('drawerStatus').dataset.status=displayStatus(l.Status);q('drawerBack').classList.remove('decision-mode');q('drawerBody').innerHTML=detailHtml(APP.current);refreshTabStates();applyRequiredUI();q('drawerBack').classList.add('open');document.body.style.overflow='hidden';finishProgress('Lokasi dibuka.')}catch(e){stopProgress(false);toast(e.message||String(e))}};
 
 closeDrawer=function(){v26SaveLooseDraft();q('drawerBack').classList.remove('open','decision-mode');document.body.style.overflow='';APP.current=null;APP.proposalDraft=null};
+
+
+
+// ===== V30 DELETE IN DECISION + PREMIUM INFO POPOVER =====
+v26InfoTip=function(text){
+  return `<details class="v26-info-tip v29-info-tip"><summary aria-label="Maklumat lanjut" title="Maklumat lanjut"><span class="v29-info-symbol" aria-hidden="true">i</span></summary><div class="v26-info-bubble"><button type="button" class="v30-info-close" aria-label="Tutup maklumat" onclick="event.preventDefault();event.stopPropagation();this.closest('details').removeAttribute('open')">×</button><div class="v28-info-title"><span>i</span> Maklumat</div><div class="v30-info-copy">${esc(text)}</div></div></details>`;
+};
+
+document.addEventListener('click',function(e){
+  document.querySelectorAll('.v29-info-tip[open]').forEach(function(d){if(!d.contains(e.target))d.removeAttribute('open')});
+});
+
+async function deleteDecisionRecord(){
+  const l=APP.current&&APP.current.location;if(!l)return;
+  const label=l.NamaLokasi||l.LocationID||'rekod ini';
+  if(!confirm('Delete rekod '+label+'?'))return;
+  if(!confirm('Pengesahan akhir: lokasi, AP, foto dan sejarah berkaitan akan dipadam. Tindakan ini tidak boleh dibatalkan.'))return;
+  startProgress('Memadam rekod...',14,'Memadam lokasi dan rekod berkaitan.');
+  try{
+    const id=l.LocationID;
+    const r=await apiMutate('deleteLocation',{locationId:id});
+    if(!r.ok)throw new Error(r.error||'Gagal memadam rekod.');
+    APP.locations=(APP.locations||[]).filter(x=>String(x.LocationID)!==String(id));
+    try{v26ClearDraft(id)}catch(e){}
+    recalcStatsLocal();renderAllViews();saveCurrentCache();
+    closeDrawer();showPage('decision');renderDecision();
+    finishProgress('Rekod berjaya dipadam.');toast('Rekod keputusan/lokasi telah dipadam.');
+  }catch(e){stopProgress(false);toast(e.message||String(e))}
+}
+
+decisionPanel=function(l,locked){
+  const alt=(APP.current?.photos||[]).filter(p=>String(p.Kategori||'').includes('Cadangan Alternatif'));
+  const gallery=alt.length?`<div class="decision-alt-gallery">${alt.map(p=>`<a class="decision-alt-thumb" target="_blank" href="${ea(p.PhotoURL)}"><img src="${ea(p.PhotoURL)}"><span>${esc(p.CreatedAt||'')}</span></a>`).join('')}</div>`:'<div class="decision-alt-empty">Belum ada foto cadangan alternatif.</div>';
+  return `<section class="section">${v26SectionHead('Pengesahan / Keputusan Lokasi','Semua medan keputusan wajib diisi kecuali Catatan Keputusan. Foto cadangan alternatif adalah pilihan jika team mencadangkan titik lain.')}<fieldset ${locked?'disabled':''} style="border:0;padding:0;margin:0"><div class="fields"><div class="field"><label>Status Lokasi</label><select id="decisionStatus">${options(['','Diputuskan','Pemasangan','Siap'],['Diputuskan','Pemasangan','Siap'].includes(l.Status)?l.Status:'')}</select></div><div class="field"><label>Tarikh Keputusan</label><input id="decisionDate" type="date" value="${dateVal(l.TarikhKeputusan)}"></div><div class="field full"><label>Pasukan / Pegawai Penentu</label><input id="decisionTeam" value="${ea(l.PasukanPenentu)}"></div><div class="field"><label>Tarikh Pemasangan</label><input id="installDate" type="date" value="${dateVal(l.TarikhPemasangan)}"></div><div class="field full"><label>Catatan Keputusan <span class="v26-optional">Pilihan</span></label><textarea id="decisionNote">${esc(l.CatatanKeputusan)}</textarea></div></div><div class="decision-alt-photo">${v26SectionHead('Foto Cadangan Alternatif','Pilihan. Gunakan jika ada cadangan titik lain semasa pengesahan.')}<div class="decision-alt-head">${locked?'':`<label class="decision-alt-camera">${svgIcon('camera')}<span>Ambil Foto</span><input type="file" accept="image/*" capture="environment" onchange="quickDecisionPhoto('${ea(l.LocationID)}',this)"></label>`}</div>${gallery}</div></fieldset><div class="v30-decision-actions">${locked?'':`<button type="button" class="btn primary" onclick="saveDecision()">${svgIcon('check')}<span>Simpan Keputusan</span></button>`}<button type="button" class="v30-delete-btn" onclick="deleteDecisionRecord()">${svgIcon('trash')}<span>Delete Rekod</span></button></div><div class="v30-danger-note"><span class="v30-danger-dot">!</span><span>Delete hanya digunakan jika rekod lokasi ini benar-benar perlu dibuang. Sistem akan meminta pengesahan sebelum memadam.</span></div></section>`;
+};
 
 </script>
 </body>
