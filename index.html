@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
-<title>Sistem WiFi Premium Maju Johor</title>
+<title>Sistem WiFi Premium Maju Johor V5</title>
 <style>
 :root{--navy:#0B2C5F;--navy-2:#123E82;--blue:#1A73E8;--blue-2:#4EA1FF;--sky:#EAF4FF;--yellow:#F4C842;--yellow-2:#FFD965;--bg:#F4F8FF;--bg-2:#EDF4FF;--card:#FFFFFF;--line:#D8E4F1;--text:#163254;--muted:#5F6F86;--success:#16935A;--danger:#D93025;--warning:#E59A00;--shadow:0 18px 48px rgba(13,51,105,.10)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Roboto,Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#F6FAFF 0%,#EEF5FF 100%);color:var(--text)}button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}
@@ -20,14 +20,14 @@
 .side-note{font-size:12px;line-height:1.75;padding:14px;margin-top:18px;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.12);opacity:.96}.side-note b{color:#FFD965}
 .main{min-width:0}.top{height:82px;background:rgba(255,255,255,.90);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 22px;position:sticky;top:0;z-index:20;gap:14px}.menu{display:none;width:42px;height:42px;border:0;border-radius:14px;background:#EAF2FF;margin-right:0}.top-brand{display:flex;align-items:center;gap:14px}.top-logo{width:46px;height:46px;border-radius:14px;background:linear-gradient(180deg,#fff,#F5F8FF);display:grid;place-items:center;box-shadow:0 10px 18px rgba(11,44,95,.12);border:1px solid #E5EDF7}.top-logo img{width:28px;height:auto}.top-title{font-size:26px;font-weight:900;letter-spacing:-.02em}.top-title .accent{color:var(--blue)}.top-sub{font-size:12px;color:var(--muted);margin-top:4px}.spacer{flex:1}.api{font-size:12px;text-align:right}.api-box{padding:10px 14px;border-radius:16px;background:#F2F6FC;border:1px solid #DFE8F4;min-width:220px;box-shadow:0 4px 14px rgba(11,44,95,.06)}.api-box[data-state="on"]{background:#EAF8F0;border-color:#C9EAD7;color:#0E6B43}.api-box[data-state="off"]{background:#FFF3F1;border-color:#F5D3CF;color:#A0271D}.api-box[data-state="checking"]{background:#FFF9E8;border-color:#F7E0A3;color:#8A6000}.api-main{display:flex;align-items:center;justify-content:flex-end;gap:6px;font-weight:700}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#98A2B3;box-shadow:0 0 0 4px rgba(152,162,179,.14)}.dot.on{background:var(--success);box-shadow:0 0 0 4px rgba(22,147,90,.14)}.dot.off{background:var(--danger);box-shadow:0 0 0 4px rgba(217,48,37,.12)}.dot.checking{background:var(--warning);box-shadow:0 0 0 4px rgba(229,154,0,.12)}.api small{display:block;margin-top:4px;color:inherit;opacity:.78}
 .content{padding:22px;max-width:1600px;margin:auto}.page{display:none}.page.active{display:block}.hero{background:linear-gradient(135deg,#FFFFFF 0%,#EEF6FF 55%,#F9FCFF 100%);border:1px solid #D9E8F7;border-radius:28px;padding:24px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;right:-40px;top:-40px;width:170px;height:170px;background:radial-gradient(circle,var(--yellow-2),transparent 70%);opacity:.18}.hero h1{margin:0;font-size:34px;letter-spacing:-.03em}.hero p{margin:9px 0 0;color:var(--muted);line-height:1.6;font-size:15px}.progress-label{display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin-top:16px}.progress{height:13px;border-radius:999px;overflow:hidden;background:#DDE8F5;margin-top:8px}.progress>div{height:100%;width:0;background:linear-gradient(90deg,#1A73E8,#58B6FF 65%,#F4C842 100%);transition:.35s}
-.stats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;margin:18px 0}.stat{background:linear-gradient(180deg,#fff,#F9FBFF);border:1px solid var(--line);border-radius:22px;padding:17px;box-shadow:0 10px 26px rgba(11,44,95,.06)}.stat span{display:block;color:var(--muted);font-size:12px;font-weight:500}.stat b{display:block;font-size:34px;margin-top:9px;color:#09356D;letter-spacing:-.03em}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:18px 0}.stat{background:linear-gradient(180deg,#fff,#F9FBFF);border:1px solid var(--line);border-radius:22px;padding:17px;box-shadow:0 10px 26px rgba(11,44,95,.06)}.stat span{display:block;color:var(--muted);font-size:12px;font-weight:500}.stat b{display:block;font-size:34px;margin-top:9px;color:#09356D;letter-spacing:-.03em}
 .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}.search{flex:1;min-width:260px}input,select,textarea{width:100%;border:1px solid #D8E3EF;border-radius:16px;padding:13px 14px;background:#fff;color:var(--text);outline:none;transition:border-color .2s, box-shadow .2s, transform .2s;font-size:14px}input:focus,select:focus,textarea:focus{border-color:#7CB2FF;box-shadow:0 0 0 4px rgba(26,115,232,.10)}textarea{min-height:96px;resize:vertical}.btn{border:0;border-radius:16px;padding:12px 16px;font-weight:700;transition:.2s ease}.btn:hover{transform:translateY(-1px)}.primary{background:linear-gradient(135deg,#1A73E8,#4EA1FF);color:#fff;box-shadow:0 10px 20px rgba(26,115,232,.24)}.soft{background:linear-gradient(135deg,#EAF4FF,#F4F9FF);color:#1558B3;border:1px solid #D6E7FF}.light{background:#F3F6FA;color:#344054;border:1px solid #E0E8F0}.danger{background:#FFF0EF;color:#B42318;border:1px solid #FFD2CD}
 .card{background:linear-gradient(180deg,#fff,#FCFDFF);border:1px solid var(--line);border-radius:22px;box-shadow:0 10px 22px rgba(17,42,75,.05)}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:1080px}th,td{padding:13px 12px;border-bottom:1px solid #E8EDF3;text-align:left;font-size:13px;vertical-align:middle}th{background:#F3F8FF;color:#244163;font-weight:700}.small{font-size:11px;color:var(--muted)}.cell-title{font-weight:700}.badge{display:inline-flex;padding:7px 10px;border-radius:999px;font-size:11px;font-weight:700;background:#EEF1F5;color:#475467;white-space:nowrap}.badge[data-status="Belum Dilawati"]{background:#EEF2F7;color:#667085}.badge[data-status="Cadangan"]{background:#FFF1C9;color:#8B5B00}.badge[data-status="Dalam Semakan"]{background:#E6F1FF;color:#1557B0}.badge[data-status="Diputuskan"]{background:#EEE7FF;color:#6843C5}.badge[data-status="Pemasangan"]{background:#FFE9D2;color:#9B4E06}.badge[data-status="Siap"],.badge[data-status="Dipasang"]{background:#DFF8EA;color:#087653}.badge[data-status="Disahkan"]{background:#E3F3FF;color:#0C5A8A}
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.loc{padding:16px;background:linear-gradient(180deg,#fff,#FAFCFF)}.loc-head{display:flex;gap:10px}.loc-id{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,#EAF4FF,#D8EAFF);color:#1268E8;display:grid;place-items:center;font-weight:900}.loc-name{font-weight:900;font-size:16px}.loc-meta{font-size:12px;color:var(--muted);line-height:1.6;margin-top:10px}.loc-action{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:13px}.empty{padding:48px 22px;text-align:center;color:var(--muted)}.api-error{max-width:780px;margin:auto;padding:18px 20px;background:linear-gradient(180deg,#FFF8F7,#FFF2F0);border:1px solid #F4D2CC;border-radius:20px;color:#8F241A;line-height:1.7}.api-error b{display:block;font-size:16px;color:#8F241A;margin-bottom:6px}
 .drawer-back{position:fixed;inset:0;z-index:70;background:rgba(4,18,35,.55);display:none}.drawer-back.open{display:block}.drawer{position:absolute;right:0;top:0;width:min(900px,100%);height:100%;background:var(--bg);overflow:auto;box-shadow:-18px 0 45px rgba(0,0,0,.18)}.drawer-top{position:sticky;top:0;z-index:6;background:#fff;border-bottom:1px solid var(--line);padding:14px 16px;display:flex;align-items:center;gap:10px}.icon{width:42px;height:42px;border:0;border-radius:14px;background:#F0F4F8}.drawer-title{flex:1}.tabs{display:flex;gap:8px;overflow:auto;padding:14px 14px 0}.tab{border:0;border-radius:999px;background:#EDF2F7;color:#475467;padding:9px 13px;font-weight:700;font-size:12px;white-space:nowrap}.tab.active{background:linear-gradient(135deg,#1A73E8,#4EA1FF);color:#fff}.panel{display:none}.panel.active{display:block}.section{margin:12px 14px;padding:16px;background:#fff;border:1px solid var(--line);border-radius:20px}.section-title{font-size:16px;font-weight:900;margin-bottom:5px}.section-sub{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:12px}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}label{font-size:12px;font-weight:700;color:#475467}.actions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin-top:12px}.ap-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.ap-card{border:1px solid #DDE6F0;background:linear-gradient(180deg,#FBFDFF,#F5FAFF);border-radius:18px;padding:13px}.ap-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.preview{min-height:165px;border:1px dashed #BFD0E2;background:#EFF5FB;border-radius:16px;margin-top:9px;display:grid;place-items:center;overflow:hidden}.preview img{width:100%;height:200px;object-fit:cover}.camera{display:block;text-align:center;background:#EAF4FF;color:#145499;font-weight:700;border:1px solid #D5E8FC;border-radius:14px;padding:11px;margin-top:8px}.camera input{display:none}.gps{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px}.gps-text{font-size:11px;color:var(--muted);word-break:break-all}.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.photo-card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}.photo-open{height:120px;background:#EDF4FB;display:grid;place-items:center;color:#1268E8;font-weight:700}.photo-meta{padding:9px;font-size:11px;color:var(--muted);line-height:1.5}.history{display:flex;flex-direction:column;gap:8px}.hist{border-left:3px solid #B9D6FB;background:#F8FBFF;padding:10px 11px;border-radius:0 12px 12px 0}.hist b{font-size:12px}.hist .small{display:block;margin-top:4px}.locked{padding:10px 12px;border-radius:14px;background:#FFF8E8;border:1px solid #F7DF9C;color:#8A6200;font-size:12px;margin-bottom:12px}.complete-line{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:700;margin-bottom:8px}.complete-bar{height:12px;background:#E2EAF6;border-radius:999px;overflow:hidden}.complete-bar i{display:block;height:100%;background:linear-gradient(90deg,#1A73E8,#58B6FF,#F4C842)}
-.modal-back,.loading{position:fixed;inset:0;background:rgba(5,22,43,.45);display:none;align-items:center;justify-content:center;z-index:80}.modal-back.open,.loading.show{display:flex}.modal{width:min(560px,95vw);background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,.20)}.modal-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line)}.modal-body{padding:14px 16px}.loading-box{background:#fff;padding:20px 26px;border-radius:20px;box-shadow:var(--shadow);display:flex;align-items:center;gap:10px}.spin{width:24px;height:24px;border-radius:50%;border:3px solid #D6E6FF;border-top-color:#1A73E8;animation:sp 1s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}.toast{position:fixed;left:50%;bottom:25px;transform:translateX(-50%) translateY(20px);background:#0E2E61;color:#fff;padding:12px 15px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:90;box-shadow:0 14px 30px rgba(14,46,97,.28)}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.modal-back,.loading{position:fixed;inset:0;background:rgba(5,22,43,.45);display:none;align-items:center;justify-content:center;z-index:80}.modal-back.open,.loading.show{display:flex}.modal{width:min(560px,95vw);background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,.20)}.modal-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line)}.modal-body{padding:14px 16px}.loading-box{width:min(440px,90vw);background:#fff;padding:20px 22px;border-radius:22px;box-shadow:0 24px 70px rgba(11,44,95,.24);display:block;border:1px solid #DDE8F5}.loading-top{display:flex;align-items:center;gap:12px}.loading-copy{flex:1;min-width:0}.loading-title{font-size:15px;font-weight:900;color:#17385F}.loading-sub{font-size:11px;color:#667085;margin-top:4px;line-height:1.4}.loading-pct{font-size:25px;font-weight:900;color:#1A73E8;min-width:64px;text-align:right}.loading-progress{height:12px;background:#E4EDF8;border-radius:999px;overflow:hidden;margin-top:15px}.loading-progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#1A73E8,#55B4FF 70%,#F4C842);border-radius:999px;transition:width .25s ease}.spin{width:24px;height:24px;border-radius:50%;border:3px solid #D6E6FF;border-top-color:#1A73E8;animation:sp 1s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}.toast{position:fixed;left:50%;bottom:25px;transform:translateX(-50%) translateY(20px);background:#0E2E61;color:#fff;padding:12px 15px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:90;box-shadow:0 14px 30px rgba(14,46,97,.28)}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .mobile-bottom{display:none}.mobile-bottom button{flex:1;border:0;background:#fff;padding:8px 0;font-size:11px;color:#5C677A}.mobile-bottom button b{display:block;font-size:16px}.mobile-bottom button.active{color:#1A73E8;font-weight:700}
-@media(max-width:1180px){.stats{grid-template-columns:repeat(3,minmax(0,1fr))}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:1180px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:920px){.layout{grid-template-columns:1fr}.side{position:fixed;left:-310px;top:0;height:100vh;width:280px;z-index:60;transition:.25s}.side.open{left:0}.menu{display:block}.top{padding:0 14px;height:78px}.top-title{font-size:21px}.content{padding:16px}.ap-grid,.fields,.gallery{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.grid{grid-template-columns:1fr}.mobile-bottom{display:flex;position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);z-index:50;padding-bottom:env(safe-area-inset-bottom)}body{padding-bottom:72px}.api-box{min-width:unset;padding:8px 10px}}
 @media(max-width:560px){.hero h1{font-size:28px}.top-brand{gap:10px}.top-logo{width:38px;height:38px}.top-logo img{width:22px}.top-title{font-size:18px}.top-sub{font-size:11px}.api-main{justify-content:flex-start}.api{text-align:left}.stats{grid-template-columns:1fr 1fr}}
 </style>
@@ -65,9 +65,16 @@
       <section id="page-dashboard" class="page active">
         <div class="hero"><h1>Pemantauan 27 Lokasi WiFi Premium</h1><p>Masukkan lokasi secara manual. Kemudian rekod PIC, GPS, foto, AP 1, AP 2 dan keputusan team mengikut kemajuan sebenar.</p><div class="progress-label"><span>Lokasi direkod</span><span id="progressText">0 / 27</span></div><div class="progress"><div id="progressBar"></div></div></div>
         <div class="stats">
-          <div class="stat"><span>Sasaran Lokasi</span><b id="sTarget">27</b></div><div class="stat"><span>Lokasi Direkod</span><b id="sReg">0</b></div><div class="stat"><span>Telah Dilawati</span><b id="sVisit">0</b></div><div class="stat"><span>Diputuskan</span><b id="sDecide">0</b></div><div class="stat"><span>Pemasangan</span><b id="sInstall">0</b></div><div class="stat"><span>Siap</span><b id="sDone">0</b></div>
+          <div class="stat"><span>Sasaran Lokasi</span><b id="sTarget">27</b></div>
+          <div class="stat"><span>Lokasi Direkod</span><b id="sReg">0</b></div>
+          <div class="stat"><span>Telah Dilawati</span><b id="sVisit">0</b></div>
+          <div class="stat"><span>Diputuskan</span><b id="sDecide">0</b></div>
+          <div class="stat"><span>Pemasangan</span><b id="sInstall">0</b></div>
+          <div class="stat"><span>Siap</span><b id="sDone">0</b></div>
+          <div class="stat"><span>100% Lengkap</span><b id="sComplete">0</b></div>
+          <div class="stat"><span>Belum Lengkap</span><b id="sIncomplete">0</b></div>
         </div>
-        <div class="toolbar"><input id="search" class="search" placeholder="Cari lokasi, daerah, PIC..." oninput="renderDashboard()"><select id="filter" onchange="renderDashboard()"><option value="">Semua Status</option><option>Belum Dilawati</option><option>Cadangan</option><option>Dalam Semakan</option><option>Diputuskan</option><option>Pemasangan</option><option>Siap</option></select><select id="completeFilter" onchange="renderDashboard()"><option value="">Semua Kelengkapan</option><option value="lt50">Bawah 50%</option><option value="50to79">50% - 79%</option><option value="80to99">80% - 99%</option><option value="100">100% Lengkap</option></select><button class="btn soft" onclick="printReport()">🖨 Cetak Laporan</button><button class="btn primary" onclick="openAdd()">+ Tambah Lokasi</button></div>
+        <div class="toolbar"><input id="search" class="search" placeholder="Cari lokasi, daerah, PIC..." oninput="renderDashboard()"><select id="filter" onchange="renderDashboard()"><option value="">Semua Status</option><option>Belum Dilawati</option><option>Cadangan</option><option>Dalam Semakan</option><option>Diputuskan</option><option>Pemasangan</option><option>Siap</option></select><select id="completeFilter" onchange="renderDashboard()"><option value="">Semua Kelengkapan</option><option value="lt50">Bawah 50%</option><option value="50to79">50% - 79%</option><option value="80to99">80% - 99%</option><option value="100">100% Lengkap</option></select><button class="btn light" onclick="refresh(true)">↻ Segar Semula</button><button class="btn soft" onclick="printReport()">🖨 Cetak Laporan</button><button class="btn primary" onclick="openAdd()">+ Tambah Lokasi</button></div>
         <div class="card table-wrap"><table><thead><tr><th>Bil</th><th>Lokasi</th><th>Daerah</th><th>PIC</th><th>No. Telefon</th><th>Status</th><th>AP 1</th><th>AP 2</th><th>Foto</th><th>Kelengkapan</th><th>Tindakan</th></tr></thead><tbody id="tbody"></tbody></table><div id="empty" class="empty" style="display:none"></div></div>
       </section>
 
@@ -84,22 +91,154 @@
 
 <div id="addModal" class="modal-back" onclick="if(event.target===this)closeAdd()"><div class="modal"><div class="modal-head"><b>Tambah Lokasi</b><button class="icon" onclick="closeAdd()">×</button></div><div class="modal-body"><div class="section-sub">Semua medan boleh dibiarkan kosong dan dilengkapkan kemudian.</div><div class="fields"><div class="field full"><label>Nama Lokasi / PPR</label><input id="newName"></div><div class="field"><label>Daerah</label><input id="newDistrict"></div><div class="field"><label>Nama PIC</label><input id="newPic"></div><div class="field"><label>No. Telefon PIC</label><input id="newPhone" type="tel"></div><div class="field full"><label>Alamat</label><textarea id="newAddress"></textarea></div></div><div class="actions"><button class="btn light" onclick="closeAdd()">Batal</button><button class="btn primary" onclick="addLocation()">Simpan Lokasi</button></div></div></div></div>
 
-<div id="loading" class="loading"><div class="loading-box"><div class="spin"></div><div id="loadingText">Memproses...</div></div></div><div id="toast" class="toast"></div>
+<div id="loading" class="loading"><div class="loading-box"><div class="loading-top"><div class="spin"></div><div class="loading-copy"><div id="loadingText" class="loading-title">Memproses...</div><div id="loadingSub" class="loading-sub">Sila tunggu sebentar.</div></div><div id="loadingPct" class="loading-pct">0%</div></div><div class="loading-progress"><i id="loadingBar"></i></div></div></div><div id="toast" class="toast"></div>
 
 <script>
 const CONFIG={API_URL:'https://script.google.com/macros/s/AKfycbywoCrehGGXyZW9n9fOxXiNz0c1wFaiTJ19CfxiIV_U2pGnkLrEiXgeQGNOhF5ogNMIhA/exec',API_KEY:'',TARGET_LOCATIONS:27};
 const APP={locations:[],stats:{},current:null,locationGps:{lat:'',lng:''},existingGps:{lat:'',lng:''},apGps:{1:{lat:'',lng:''},2:{lat:'',lng:''}},apFiles:{1:null,2:null},generalFile:null,generalGps:{lat:'',lng:''}};
 document.addEventListener('DOMContentLoaded',init);
 
-async function init(){try{setApi('checking','Menyemak sambungan backend...');const p=await apiGet('ping',{},3);if(!p.ok)throw new Error(p.error||'API tidak memberi respons.');setApi('on','Backend Online');await refresh()}catch(e){setApi('off','Backend Offline');showBackendError(e.message||String(e));toast('Sambungan backend gagal.')}}
-function showBackendError(message){q('tbody').innerHTML='';q('empty').style.display='block';q('empty').innerHTML='<div class="api-error"><b>Backend Apps Script tidak dapat disambungkan.</b><br>'+esc(message||'Semak deployment Apps Script dan kebenaran akses Web App.')+'<br><small>Jika status masih offline, buka Apps Script &gt; Deploy &gt; Manage deployments &gt; Web app &gt; pastikan akses ditetapkan kepada <b>Anyone</b> atau <b>Anyone with the link</b>, kemudian deploy versi baharu.</small><br><small>URL /exec telah ditanam terus dalam sistem; anda tidak perlu memasukkannya semula pada device lain.</small></div>'}
+async function init(){
+  loadDashboardCache();
+  startProgress('Memuatkan sistem...',10,'Menyambung terus ke backend Apps Script.');
+  try{
+    setApi('checking','Menyegerakkan data...');
+    updateProgress(28,'Menyambung backend...','Meminta data lokasi terkini.');
+    const r=await apiGet('bootstrap',{},2,12000);
+    if(!r.ok)throw new Error(r.error||'Gagal memuatkan data.');
+    updateProgress(82,'Menyediakan dashboard...','Data diterima. Menyusun paparan.');
+    applyDashboardData(r.data);
+    setApi('on','Backend Online');
+    finishProgress('Sistem sedia digunakan.');
+  }catch(e){
+    setApi('off','Backend Offline');
+    stopProgress(false);
+    showBackendError(e.message||String(e));
+    toast('Sambungan backend gagal.');
+  }
+}
 
-function apiGetOnce(action,payload={}){return new Promise((resolve,reject)=>{const cb='__cb_'+Date.now()+'_'+Math.floor(Math.random()*1e5);const s=document.createElement('script');const timer=setTimeout(()=>{cleanup();reject(new Error('API mengambil masa terlalu lama.'))},30000);function cleanup(){clearTimeout(timer);try{delete window[cb]}catch(e){}if(s.parentNode)s.remove()}window[cb]=r=>{cleanup();resolve(r)};const p=new URLSearchParams({action,callback:cb,apiKey:CONFIG.API_KEY||'',payload:JSON.stringify(payload),_:Date.now()});s.src=CONFIG.API_URL+'?'+p.toString();s.onerror=()=>{cleanup();reject(new Error('Tidak dapat menyambung ke Apps Script /exec. Sila semak deployment Web App.'))};document.head.appendChild(s)})}
-async function apiGet(action,payload={},attempts=3){let last;for(let i=1;i<=attempts;i++){try{return await apiGetOnce(action,payload)}catch(e){last=e;if(i<attempts){setApi('checking','Cuba semula '+i+'/'+(attempts-1));await new Promise(r=>setTimeout(r,700*i))}}}throw last||new Error('API tidak dapat disambungkan.')} 
-function apiPost(action,payload={}){return new Promise((resolve,reject)=>{const id='REQ-'+Date.now()+'-'+Math.floor(Math.random()*1e5);const name='f_'+id.replace(/\W/g,'_');const frame=document.createElement('iframe');frame.name=name;frame.style.display='none';const form=document.createElement('form');form.method='POST';form.action=CONFIG.API_URL;form.target=name;form.style.display='none';const fields={action,requestId:id,apiKey:CONFIG.API_KEY||'',payload:JSON.stringify(payload)};Object.entries(fields).forEach(([n,v])=>{const i=document.createElement('input');i.type='hidden';i.name=n;i.value=v;form.appendChild(i)});function cleanup(){window.removeEventListener('message',onMsg);form.remove();frame.remove()}function onMsg(e){const d=e.data;if(!d||d.source!=='WIFI_PREMIUM_MAJU_JOHOR_API'||d.requestId!==id)return;clearTimeout(timer);cleanup();resolve(d)}window.addEventListener('message',onMsg);document.body.append(frame,form);const timer=setTimeout(()=>{cleanup();reject(new Error('Proses simpan mengambil masa terlalu lama.'))},90000);form.submit()})}
+function showBackendError(message){
+  q('tbody').innerHTML='';q('empty').style.display='block';
+  q('empty').innerHTML='<div class="api-error"><b>Backend Apps Script tidak dapat disambungkan.</b><br>'+esc(message||'Semak deployment Apps Script dan kebenaran akses Web App.')+'<br><small>URL /exec memang sudah ditanam dalam sistem. Jika masih offline: Apps Script &gt; Deploy &gt; Manage deployments &gt; Web app &gt; pastikan deployment aktif dan pengguna yang membuka sistem mempunyai akses.</small></div>'
+}
 
-async function refresh(){setLoading(true,'Memuatkan lokasi...');try{const r=await apiGet('bootstrap',{},3);if(!r.ok)throw new Error(r.error||'Gagal memuatkan data.');APP.locations=r.data.locations||[];APP.stats=r.data.stats||{};q('lastUpdate').textContent=r.data.generatedAt||'';renderStats();renderDashboard();renderCards();renderField();renderMap();setApi('on','Backend Online');setLoading(false)}catch(e){setApi('off','Backend Offline');setLoading(false);throw e}}
-function renderStats(){const s=APP.stats;q('sTarget').textContent=s.target||27;q('sReg').textContent=s.registered||0;q('sVisit').textContent=s.visited||0;q('sDecide').textContent=s.decided||0;q('sInstall').textContent=s.installing||0;q('sDone').textContent=s.completed||0;q('sComplete').textContent=s.complete100||0;q('sIncomplete').textContent=s.incomplete||0;q('progressText').textContent=(s.registered||0)+' / '+(s.target||27);q('progressBar').style.width=Math.min(s.registerProgress||0,100)+'%'}
+function apiGetOnce(action,payload={},timeoutMs=12000){
+  return new Promise((resolve,reject)=>{
+    const cb='__cb_'+Date.now()+'_'+Math.floor(Math.random()*1e5);
+    const s=document.createElement('script');
+    const timer=setTimeout(()=>{cleanup();reject(new Error('Backend tidak memberi respons dalam masa yang ditetapkan.'))},timeoutMs);
+    function cleanup(){clearTimeout(timer);try{delete window[cb]}catch(e){}if(s.parentNode)s.remove()}
+    window[cb]=r=>{cleanup();resolve(r)};
+    const p=new URLSearchParams({action,callback:cb,apiKey:CONFIG.API_KEY||'',payload:JSON.stringify(payload||{}),_:Date.now()});
+    s.src=CONFIG.API_URL+'?'+p.toString();
+    s.onerror=()=>{cleanup();reject(new Error('Tidak dapat menyambung ke Apps Script /exec.'))};
+    document.head.appendChild(s)
+  })
+}
+
+async function apiGet(action,payload={},attempts=2,timeoutMs=12000){
+  let last;
+  for(let i=1;i<=attempts;i++){
+    try{return await apiGetOnce(action,payload,timeoutMs)}catch(e){
+      last=e;
+      if(i<attempts){setApi('checking','Cuba sambung semula...');await sleep(500*i)}
+    }
+  }
+  throw last||new Error('Backend tidak dapat disambungkan.')
+}
+
+function submitPostForm(action,payload,requestId,onMessage){
+  const name='f_'+requestId.replace(/\W/g,'_');
+  const frame=document.createElement('iframe');frame.name=name;frame.style.display='none';
+  const form=document.createElement('form');form.method='POST';form.action=CONFIG.API_URL;form.target=name;form.style.display='none';
+  const fields={action,requestId,apiKey:CONFIG.API_KEY||'',payload:JSON.stringify(payload||{})};
+  Object.entries(fields).forEach(([n,v])=>{const i=document.createElement('input');i.type='hidden';i.name=n;i.value=v;form.appendChild(i)});
+  function handler(e){const d=e.data;if(!d||d.source!=='WIFI_PREMIUM_MAJU_JOHOR_API'||d.requestId!==requestId)return;onMessage(d)}
+  window.addEventListener('message',handler);
+  document.body.append(frame,form);
+  form.submit();
+  return ()=>{window.removeEventListener('message',handler);try{form.remove()}catch(e){}try{frame.remove()}catch(e){}}
+}
+
+async function apiPostTracked(action,payload={}){
+  const requestId='REQ-'+Date.now()+'-'+Math.floor(Math.random()*1e5);
+  let messageResult=null;
+  const cleanup=submitPostForm(action,payload,requestId,d=>{messageResult=d});
+  const started=Date.now();
+  try{
+    while(Date.now()-started<75000){
+      if(messageResult){
+        if(!messageResult.ok)throw new Error(messageResult.error||'Simpanan gagal.');
+        return messageResult;
+      }
+      const elapsed=Date.now()-started;
+      const pct=Math.min(88,45+Math.floor(elapsed/1400)*3);
+      updateProgress(pct,'Menyimpan ke Google Sheet / Drive...','Sistem sedang menunggu pengesahan simpanan.');
+      await sleep(800);
+      try{
+        const st=await apiGet('writeStatus',{requestId},1,7000);
+        if(st.ok&&st.data&&st.data.state==='done'){
+          if(!st.data.ok)throw new Error(st.data.error||'Simpanan gagal.');
+          if(st.data.locationId){
+            updateProgress(91,'Simpanan disahkan.','Menyegerakkan rekod lokasi.');
+            const d=await apiGet('locationDetail',{locationId:st.data.locationId},2,10000);
+            if(!d.ok)throw new Error(d.error||'Rekod telah disimpan tetapi paparan gagal disegerakkan.');
+            return {ok:true,data:d.data};
+          }
+          return {ok:true,data:st.data.data||{}};
+        }
+      }catch(pollErr){
+        // Ignore temporary polling errors; form submission may still complete.
+      }
+    }
+    throw new Error('Simpanan mengambil masa terlalu lama. Cuba semula selepas semak sambungan internet.');
+  }finally{cleanup()}
+}
+
+async function apiMutate(action,payload={}){
+  const json=JSON.stringify(payload||{});
+  const hasImage=Boolean(payload&&payload.photoDataUrl);
+  if(!hasImage&&encodeURIComponent(json).length<3500){
+    updateProgress(42,'Menghantar perubahan...','Simpanan pantas tanpa refresh penuh.');
+    const r=await apiGet(action,payload,2,12000);
+    updateProgress(88,'Data diterima backend...','Menyediakan paparan terbaru.');
+    return r;
+  }
+  updateProgress(38,'Menghantar data...','Fail besar / foto dihantar melalui saluran muat naik.');
+  return apiPostTracked(action,payload)
+}
+
+async function refresh(showOverlay=false){
+  if(showOverlay)startProgress('Menyegerakkan data...',12,'Mengambil rekod terkini daripada Google Sheet.');
+  try{
+    if(showOverlay)updateProgress(35,'Mengambil data lokasi...','Sila tunggu sebentar.');
+    const r=await apiGet('bootstrap',{},2,12000);
+    if(!r.ok)throw new Error(r.error||'Gagal memuatkan data.');
+    applyDashboardData(r.data);
+    setApi('on','Backend Online');
+    if(showOverlay)finishProgress('Data telah dikemas kini.');
+    return r.data
+  }catch(e){
+    setApi('off','Backend Offline');
+    if(showOverlay)stopProgress(false);
+    throw e
+  }
+}
+
+function applyDashboardData(data){
+  APP.locations=data.locations||[];
+  APP.stats=data.stats||{};
+  q('lastUpdate').textContent=data.generatedAt||'';
+  renderStats();renderDashboard();renderCards();renderField();renderMap();
+  saveDashboardCache(data)
+}
+
+function saveDashboardCache(data){try{localStorage.setItem('wifiPremiumDashboardV5',JSON.stringify({savedAt:Date.now(),data}))}catch(e){}}
+function loadDashboardCache(){try{const raw=localStorage.getItem('wifiPremiumDashboardV5');if(!raw)return;const c=JSON.parse(raw);if(!c||!c.data||Date.now()-Number(c.savedAt||0)>43200000)return;applyDashboardData(c.data);setApi('checking','Menyegerakkan data...')}catch(e){}}
+function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
+
+function renderStats(){const s=APP.stats||{};setText('sTarget',s.target||27);setText('sReg',s.registered||0);setText('sVisit',s.visited||0);setText('sDecide',s.decided||0);setText('sInstall',s.installing||0);setText('sDone',s.completed||0);setText('sComplete',s.complete100||0);setText('sIncomplete',s.incomplete||0);setText('progressText',(s.registered||0)+' / '+(s.target||27));if(q('progressBar'))q('progressBar').style.width=Math.min(s.registerProgress||0,100)+'%'}
 function filtered(searchId,statusId){const t=q(searchId)?.value.trim().toLowerCase()||'';const st=statusId?q(statusId).value:'';const cf=(searchId==='search'&&q('completeFilter'))?q('completeFilter').value:'';return APP.locations.filter(x=>{const h=[x.LocationID,x.NamaLokasi,x.Daerah,x.PICNama,x.PICTelefon,x.Alamat].join(' ').toLowerCase();const pct=Number(x.CompletionPct||0);const okc=!cf||(cf==='lt50'&&pct<50)||(cf==='50to79'&&pct>=50&&pct<=79)||(cf==='80to99'&&pct>=80&&pct<=99)||(cf==='100'&&pct===100);return(!t||h.includes(t))&&(!st||x.Status===st)&&okc})}
 function renderDashboard(){const rows=filtered('search','filter');if(!rows.length){q('tbody').innerHTML='';q('empty').style.display='block';q('empty').textContent=APP.locations.length?'Tiada lokasi sepadan.':'Belum ada lokasi. Tekan Tambah Lokasi.';return}q('empty').style.display='none';q('tbody').innerHTML=rows.map((x,i)=>`<tr><td>${i+1}</td><td><div class="cell-title">${esc(x.NamaLokasi||'Lokasi belum dinamakan')} ${x.IsLocked?'<span class="lock-badge">DIKUNCI</span>':''}</div><div class="small">${esc(x.LocationID)}</div></td><td>${esc(x.Daerah||'-')}</td><td>${esc(x.PICNama||'-')}</td><td>${esc(x.PICTelefon||'-')}</td><td>${badge(x.Status||'Belum Dilawati')}</td><td>${badge(x.AP1Status||'Belum Ditentukan')}</td><td>${badge(x.AP2Status||'Belum Ditentukan')}</td><td>${Number(x.PhotoCount||0)}</td><td>${completionHtml(x)}</td><td><button class="btn primary" onclick="openLocation('${ea(x.LocationID)}')">Buka</button></td></tr>`).join('')}
 function renderCards(){const rows=filtered('searchCards',null);q('locationGrid').innerHTML=rows.length?rows.map(x=>card(x)).join(''):emptyCard()}
@@ -110,9 +249,33 @@ function emptyCard(){return '<div class="card empty" style="grid-column:1/-1">Be
 
 function openAdd(){if(APP.locations.length>=27){toast('Sasaran 27 lokasi telah dicapai.');return}['newName','newDistrict','newPic','newPhone','newAddress'].forEach(id=>q(id).value='');q('addModal').classList.add('open')}
 function closeAdd(){q('addModal').classList.remove('open')}
-async function addLocation(){setLoading(true,'Menambah lokasi...');try{const r=await apiPost('addLocation',{NamaLokasi:q('newName').value,Daerah:q('newDistrict').value,PICNama:q('newPic').value,PICTelefon:q('newPhone').value,Alamat:q('newAddress').value});if(!r.ok)throw new Error(r.error);closeAdd();await refresh();setLoading(false);toast('Lokasi berjaya ditambah.');openLocation(r.data.location.LocationID)}catch(e){setLoading(false);toast(e.message||String(e))}}
+async function addLocation(){
+  startProgress('Menambah lokasi...',12,'Menyediakan rekod lokasi baharu.');
+  try{
+    const payload={NamaLokasi:q('newName').value,Daerah:q('newDistrict').value,PICNama:q('newPic').value,PICTelefon:q('newPhone').value,Alamat:q('newAddress').value};
+    updateProgress(28,'Menghantar maklumat lokasi...','Tiada refresh penuh diperlukan.');
+    const r=await apiMutate('addLocation',payload);
+    if(!r.ok)throw new Error(r.error||'Gagal menambah lokasi.');
+    closeAdd();
+    applyMutationLocal(r.data,false);
+    finishProgress('Lokasi berjaya ditambah.');
+    toast('Lokasi berjaya ditambah.');
+    setTimeout(()=>openLocation(r.data.location.LocationID),250)
+  }catch(e){stopProgress(false);toast(e.message||String(e))}
+}
 
-async function openLocation(id){setLoading(true,'Membuka lokasi...');try{const r=await apiGet('locationDetail',{locationId:id});if(!r.ok)throw new Error(r.error);APP.current=r.data;hydrate();const l=APP.current.location;q('drawerName').textContent=l.NamaLokasi||'Lokasi belum dinamakan';q('drawerId').textContent=l.LocationID;q('drawerStatus').textContent=l.Status||'Belum Dilawati';q('drawerStatus').dataset.status=l.Status||'';q('drawerBody').innerHTML=detailHtml(APP.current);q('drawerBack').classList.add('open');document.body.style.overflow='hidden';setLoading(false)}catch(e){setLoading(false);toast(e.message||String(e))}}
+async function openLocation(id){
+  startProgress('Membuka lokasi...',15,'Mengambil maklumat AP, foto dan sejarah.');
+  try{
+    updateProgress(38,'Mengambil butiran lokasi...','Menyegerakkan data terkini.');
+    const r=await apiGet('locationDetail',{locationId:id},2,10000);
+    if(!r.ok)throw new Error(r.error||'Lokasi tidak dapat dibuka.');
+    APP.current=r.data;hydrate();
+    const l=APP.current.location;
+    q('drawerName').textContent=l.NamaLokasi||'Lokasi belum dinamakan';q('drawerId').textContent=l.LocationID;q('drawerStatus').textContent=l.Status||'Belum Dilawati';q('drawerStatus').dataset.status=l.Status||'';q('drawerBody').innerHTML=detailHtml(APP.current);q('drawerBack').classList.add('open');document.body.style.overflow='hidden';
+    finishProgress('Lokasi dibuka.');
+  }catch(e){stopProgress(false);toast(e.message||String(e))}
+}
 function hydrate(){const l=APP.current.location;APP.locationGps={lat:l.Latitude||'',lng:l.Longitude||''};APP.existingGps={lat:l.SediaAdaLatitude||'',lng:l.SediaAdaLongitude||''};[1,2].forEach(n=>{const a=APP.current.aps.find(x=>String(x.APNo)===String(n))||{};APP.apGps[n]={lat:a.Latitude||'',lng:a.Longitude||''};APP.apFiles[n]=null});APP.generalFile=null;APP.generalGps={lat:'',lng:''}}
 function detailHtml(d){const l=d.location,a1=d.aps.find(x=>String(x.APNo)==='1')||{},a2=d.aps.find(x=>String(x.APNo)==='2')||{},locked=!!l.IsLocked;return `<div id="panel-info" class="panel active">${controlPanel(l)}${infoPanel(l,locked)}</div><div id="panel-ap" class="panel">${controlPanel(l)}${apPanel(a1,a2,locked)}</div><div id="panel-photo" class="panel">${controlPanel(l)}${photoPanel(d.photos||[],locked)}</div><div id="panel-decision" class="panel">${controlPanel(l)}${decisionPanel(l,locked)}</div><div id="panel-history" class="panel">${historyPanel(d.history||[])}</div>`}
 function controlPanel(l){const locked=!!l.IsLocked,missing=Array.isArray(l.CompletionMissing)?l.CompletionMissing:[];return `<section class="section"><div class="section-title">Status Rekod & Kelengkapan</div><div class="complete-line"><span>Kelengkapan maklumat</span><b>${Number(l.CompletionPct||0)}%</b></div><div class="complete-bar"><i style="width:${Math.min(Number(l.CompletionPct||0),100)}%"></i></div>${missing.length?`<div class="section-sub" style="margin-top:9px">Belum lengkap: ${esc(missing.join(', '))}</div>`:'<div class="section-sub" style="margin-top:9px">Semua item semakan maklumat telah lengkap.</div>'}<div class="locked-box">${locked?`🔒 <b>Lokasi telah disahkan dan dikunci.</b><br>Tarikh kunci: ${esc(l.LockedAt||'-')}. Buka semula jika perlu membuat perubahan.`:'🔓 Rekod masih boleh dikemaskini. Selepas team bersetuju, gunakan butang Sahkan & Kunci untuk elak perubahan tidak sengaja.'}</div><div class="actions"><button class="btn ${locked?'soft':'primary'}" onclick="toggleLocationLock(${locked?'false':'true'})">${locked?'Buka Semula Untuk Edit':'Sahkan & Kunci Lokasi'}</button></div></section>`}
@@ -125,16 +288,103 @@ function decisionPanel(l,locked){return `<section class="section"><div class="se
 function historyPanel(h){return `<section class="section"><div class="section-title">Sejarah Aktiviti</div>${h.length?`<div class="history">${h.map(x=>`<div class="hist"><b>${esc(x.Aktiviti||'-')}</b><p>${esc(x.Butiran||'')}<br>${esc(x.CreatedAt||'')}</p></div>`).join('')}</div>`:'<div class="empty">Belum ada sejarah tindakan.</div>'}</section>`}
 
 function completionHtml(x){const pct=Math.max(0,Math.min(100,Number(x.CompletionPct||0)));return `<div class="complete-wrap"><div class="complete-line"><span>Maklumat</span><b>${pct}%</b></div><div class="complete-bar"><i style="width:${pct}%"></i></div></div>`}
-async function toggleLocationLock(locked){if(!APP.current)return;const msg=locked?'Sahkan dan kunci lokasi ini? Rekod tidak boleh diedit sehingga dibuka semula.':'Buka semula lokasi ini untuk kemaskini?';if(!confirm(msg))return;await mutate('setLocationLock',{locationId:APP.current.location.LocationID,locked:!!locked},locked?'Mengesahkan lokasi...':'Membuka semula lokasi...')}
+async function toggleLocationLock(locked){
+  if(!APP.current)return;
+  const msg=locked?'Sahkan dan kunci lokasi ini? Rekod tidak boleh diedit sehingga dibuka semula.':'Buka semula lokasi ini untuk kemaskini?';
+  if(!confirm(msg))return;
+  await mutateFast('setLocationLock',{locationId:APP.current.location.LocationID,locked:!!locked},locked?'Mengesahkan lokasi...':'Membuka semula lokasi...')
+}
 
-async function saveLocation(){const l=APP.current.location;await mutate('saveLocation',{LocationID:l.LocationID,NamaLokasi:q('locName').value,Daerah:q('locDistrict').value,Alamat:q('locAddress').value,PICNama:q('locPic').value,PICTelefon:q('locPhone').value,Latitude:APP.locationGps.lat,Longitude:APP.locationGps.lng,Status:q('locStatus').value,TarikhLawatan:q('visitDate').value,PasukanLawatan:q('visitTeam').value,PerkhidmatanSediaAda:q('existingService').value,BilHotspotSediaAda:q('existingCount').value,SediaAdaLatitude:APP.existingGps.lat,SediaAdaLongitude:APP.existingGps.lng,SediaAdaBlokAras:q('existingBlock').value,SediaAdaJenis:q('existingType').value,BilHotspotDimohon:q('requestedCount').value,CatatanLokasi:q('locNote').value},'Menyimpan lokasi...')}
-async function saveAP(n){setLoading(true,'Menyimpan AP '+n+'...');try{const dataUrl=APP.apFiles[n]?await compress(APP.apFiles[n]):'';const r=await apiPost('saveAP',{LocationID:APP.current.location.LocationID,APNo:n,KawasanCadangan:q('apArea'+n).value,BlokAras:q('apBlock'+n).value,JenisAP:q('apType'+n).value,CadanganTeknikal:q('apTech'+n).value,Latitude:APP.apGps[n].lat,Longitude:APP.apGps[n].lng,StatusAP:q('apStatus'+n).value,photoDataUrl:dataUrl});if(!r.ok)throw new Error(r.error);APP.apFiles[n]=null;await applyMutation(r.data)}catch(e){setLoading(false);toast(e.message||String(e))}}
-async function uploadPhoto(){if(!APP.generalFile){toast('Sila pilih foto.');return}setLoading(true,'Memuat naik foto...');try{const r=await apiPost('addPhoto',{LocationID:APP.current.location.LocationID,APNo:q('photoAP').value,Kategori:q('photoCat').value,Catatan:q('photoNote').value,Latitude:APP.generalGps.lat,Longitude:APP.generalGps.lng,photoDataUrl:await compress(APP.generalFile)});if(!r.ok)throw new Error(r.error);APP.generalFile=null;await applyMutation(r.data)}catch(e){setLoading(false);toast(e.message||String(e))}}
-async function deletePhoto(id){if(!confirm('Padam foto ini?'))return;await mutate('deletePhoto',{photoId:id,locationId:APP.current.location.LocationID},'Memadam foto...')}
-async function saveDecision(){await mutate('saveDecision',{LocationID:APP.current.location.LocationID,Status:q('decisionStatus').value,TarikhKeputusan:q('decisionDate').value,PasukanPenentu:q('decisionTeam').value,TarikhPemasangan:q('installDate').value,CatatanKeputusan:q('decisionNote').value},'Menyimpan keputusan...')}
-async function deleteLocation(){if(!confirm('Padam lokasi ini bersama AP, foto dan sejarah?'))return;setLoading(true,'Memadam lokasi...');try{const r=await apiPost('deleteLocation',{locationId:APP.current.location.LocationID});if(!r.ok)throw new Error(r.error);closeDrawer();APP.locations=r.data.locations||[];APP.stats=r.data.stats||{};renderStats();renderDashboard();renderCards();renderField();renderMap();setLoading(false);toast('Lokasi dipadam.')}catch(e){setLoading(false);toast(e.message||String(e))}}
-async function mutate(action,payload,msg){setLoading(true,msg);try{const r=await apiPost(action,payload);if(!r.ok)throw new Error(r.error);await applyMutation(r.data)}catch(e){setLoading(false);toast(e.message||String(e))}}
-async function applyMutation(detail){APP.current=detail;hydrate();const l=detail.location;q('drawerName').textContent=l.NamaLokasi||'Lokasi belum dinamakan';q('drawerStatus').textContent=l.Status||'Belum Dilawati';q('drawerStatus').dataset.status=l.Status||'';q('drawerBody').innerHTML=detailHtml(detail);await refresh();setLoading(false);toast('Berjaya disimpan.')}
+async function saveLocation(){
+  const l=APP.current.location;
+  await mutateFast('saveLocation',{LocationID:l.LocationID,NamaLokasi:q('locName').value,Daerah:q('locDistrict').value,Alamat:q('locAddress').value,PICNama:q('locPic').value,PICTelefon:q('locPhone').value,Latitude:APP.locationGps.lat,Longitude:APP.locationGps.lng,Status:q('locStatus').value,TarikhLawatan:q('visitDate').value,PasukanLawatan:q('visitTeam').value,PerkhidmatanSediaAda:q('existingService').value,BilHotspotSediaAda:q('existingCount').value,SediaAdaLatitude:APP.existingGps.lat,SediaAdaLongitude:APP.existingGps.lng,SediaAdaBlokAras:q('existingBlock').value,SediaAdaJenis:q('existingType').value,BilHotspotDimohon:q('requestedCount').value,CatatanLokasi:q('locNote').value},'Menyimpan maklumat lokasi...')
+}
+
+async function saveAP(n){
+  startProgress('Menyimpan AP '+n+'...',10,'Menyediakan maklumat AP.');
+  try{
+    let dataUrl='';
+    if(APP.apFiles[n]){
+      updateProgress(20,'Memampatkan foto AP '+n+'...','Saiz gambar dikecilkan supaya upload lebih laju.');
+      dataUrl=await compress(APP.apFiles[n],1100,.70)
+    }
+    updateProgress(35,'Menghantar AP '+n+'...','Menyimpan GPS, lokasi dan status AP.');
+    const r=await apiMutate('saveAP',{LocationID:APP.current.location.LocationID,APNo:n,KawasanCadangan:q('apArea'+n).value,BlokAras:q('apBlock'+n).value,JenisAP:q('apType'+n).value,CadanganTeknikal:q('apTech'+n).value,Latitude:APP.apGps[n].lat,Longitude:APP.apGps[n].lng,StatusAP:q('apStatus'+n).value,photoDataUrl:dataUrl});
+    if(!r.ok)throw new Error(r.error||'Gagal menyimpan AP.');
+    APP.apFiles[n]=null;
+    applyMutationLocal(r.data,true);
+    finishProgress('AP '+n+' berjaya disimpan.');
+    toast('AP '+n+' berjaya disimpan.')
+  }catch(e){stopProgress(false);toast(e.message||String(e))}
+}
+
+async function uploadPhoto(){
+  if(!APP.generalFile){toast('Sila pilih foto.');return}
+  startProgress('Menyimpan foto...',8,'Menyediakan gambar daripada telefon.');
+  try{
+    updateProgress(18,'Memampatkan foto...','Mengurangkan saiz fail untuk mempercepat upload.');
+    const photoDataUrl=await compress(APP.generalFile,1100,.68);
+    updateProgress(32,'Menghantar foto ke Drive...','Sila kekalkan halaman ini terbuka.');
+    const r=await apiMutate('addPhoto',{LocationID:APP.current.location.LocationID,APNo:q('photoAP').value,Kategori:q('photoCat').value,Catatan:q('photoNote').value,Latitude:APP.generalGps.lat,Longitude:APP.generalGps.lng,photoDataUrl});
+    if(!r.ok)throw new Error(r.error||'Gagal menyimpan foto.');
+    APP.generalFile=null;
+    applyMutationLocal(r.data,true);
+    finishProgress('Foto berjaya disimpan.');
+    toast('Foto berjaya disimpan.')
+  }catch(e){stopProgress(false);toast(e.message||String(e))}
+}
+
+async function deletePhoto(id){if(!confirm('Padam foto ini?'))return;await mutateFast('deletePhoto',{photoId:id,locationId:APP.current.location.LocationID},'Memadam foto...')}
+async function saveDecision(){await mutateFast('saveDecision',{LocationID:APP.current.location.LocationID,Status:q('decisionStatus').value,TarikhKeputusan:q('decisionDate').value,PasukanPenentu:q('decisionTeam').value,TarikhPemasangan:q('installDate').value,CatatanKeputusan:q('decisionNote').value},'Menyimpan keputusan...')}
+
+async function deleteLocation(){
+  if(!confirm('Padam lokasi ini bersama AP, foto dan sejarah?'))return;
+  startProgress('Memadam lokasi...',12,'Memadam rekod berkaitan.');
+  try{
+    const id=APP.current.location.LocationID;
+    const r=await apiMutate('deleteLocation',{locationId:id});
+    if(!r.ok)throw new Error(r.error||'Gagal memadam lokasi.');
+    APP.locations=APP.locations.filter(x=>x.LocationID!==id);
+    recalcStatsLocal();renderAllViews();saveCurrentCache();
+    closeDrawer();finishProgress('Lokasi berjaya dipadam.');toast('Lokasi dipadam.')
+  }catch(e){stopProgress(false);toast(e.message||String(e))}
+}
+
+async function mutateFast(action,payload,msg){
+  startProgress(msg,12,'Menyediakan perubahan.');
+  try{
+    updateProgress(30,'Menghantar perubahan...','Simpanan tanpa refresh penuh dashboard.');
+    const r=await apiMutate(action,payload);
+    if(!r.ok)throw new Error(r.error||'Simpanan gagal.');
+    applyMutationLocal(r.data,true);
+    finishProgress('Berjaya disimpan.');
+    toast('Berjaya disimpan.')
+  }catch(e){stopProgress(false);toast(e.message||String(e))}
+}
+
+function applyMutationLocal(detail,keepDrawer=true){
+  if(!detail||!detail.location)return;
+  APP.current=detail;hydrate();
+  const l=detail.location;
+  const a1=(detail.aps||[]).find(x=>String(x.APNo)==='1')||{};
+  const a2=(detail.aps||[]).find(x=>String(x.APNo)==='2')||{};
+  const summary=Object.assign({},l,{AP1Status:a1.StatusAP||'Belum Ditentukan',AP2Status:a2.StatusAP||'Belum Ditentukan',PhotoCount:(detail.photos||[]).length});
+  const idx=APP.locations.findIndex(x=>x.LocationID===l.LocationID);
+  if(idx>=0)APP.locations[idx]=summary;else APP.locations.push(summary);
+  APP.locations.sort((a,b)=>String(a.LocationID).localeCompare(String(b.LocationID),undefined,{numeric:true}));
+  recalcStatsLocal();renderAllViews();saveCurrentCache();
+  if(keepDrawer&&q('drawerBack').classList.contains('open')){
+    q('drawerName').textContent=l.NamaLokasi||'Lokasi belum dinamakan';q('drawerStatus').textContent=l.Status||'Belum Dilawati';q('drawerStatus').dataset.status=l.Status||'';q('drawerBody').innerHTML=detailHtml(detail)
+  }
+}
+
+function recalcStatsLocal(){
+  const ls=APP.locations||[];const target=CONFIG.TARGET_LOCATIONS||27;
+  const registered=ls.length;
+  APP.stats={target,registered,remaining:Math.max(target-registered,0),visited:ls.filter(l=>l.TarikhLawatan||l.Latitude||l.Longitude||!['','Belum Dilawati'].includes(l.Status||'')).length,decided:ls.filter(l=>['Diputuskan','Pemasangan','Siap'].includes(l.Status)).length,installing:ls.filter(l=>l.Status==='Pemasangan').length,completed:ls.filter(l=>l.Status==='Siap').length,complete100:ls.filter(l=>Number(l.CompletionPct||0)===100).length,incomplete:ls.filter(l=>Number(l.CompletionPct||0)<100).length,registerProgress:target?Math.round(registered/target*100):0}
+}
+function renderAllViews(){renderStats();renderDashboard();renderCards();renderField();renderMap()}
+function saveCurrentCache(){saveDashboardCache({locations:APP.locations,stats:APP.stats,generatedAt:new Date().toLocaleString('ms-MY'),targetLocations:CONFIG.TARGET_LOCATIONS})}
 
 function captureLocGps(){getGps(p=>{APP.locationGps={lat:p.coords.latitude.toFixed(6),lng:p.coords.longitude.toFixed(6)};q('locGps').textContent=APP.locationGps.lat+', '+APP.locationGps.lng;toast('GPS lokasi direkod.')})}
 function captureExistingGps(){getGps(p=>{APP.existingGps={lat:p.coords.latitude.toFixed(6),lng:p.coords.longitude.toFixed(6)};q('existingGps').textContent=APP.existingGps.lat+', '+APP.existingGps.lng;toast('GPS hotspot sedia ada direkod.')})}
@@ -142,7 +392,7 @@ function captureAPGps(n){getGps(p=>{APP.apGps[n]={lat:p.coords.latitude.toFixed(
 function captureGeneralGps(){getGps(p=>{APP.generalGps={lat:p.coords.latitude.toFixed(6),lng:p.coords.longitude.toFixed(6)};q('generalGps').textContent=APP.generalGps.lat+', '+APP.generalGps.lng;toast('GPS foto direkod.')})}
 function getGps(ok){if(!navigator.geolocation){toast('GPS tidak disokong.');return}navigator.geolocation.getCurrentPosition(ok,()=>toast('GPS gagal. Benarkan akses Location.'),{enableHighAccuracy:true,timeout:15000,maximumAge:0})}
 function previewAP(n,input){const f=input.files?.[0];if(!f)return;APP.apFiles[n]=f;preview(f,q('preview'+n))}function previewGeneral(input){const f=input.files?.[0];if(!f)return;APP.generalFile=f;q('generalPreview').style.display='grid';preview(f,q('generalPreview'))}function preview(f,box){const u=URL.createObjectURL(f);box.innerHTML=`<img src="${u}">`}
-function compress(file,maxW=1400,quality=.78){return new Promise((resolve,reject)=>{const img=new Image(),u=URL.createObjectURL(file);img.onload=()=>{let w=img.width,h=img.height;if(w>maxW){h=Math.round(h*(maxW/w));w=maxW}const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);URL.revokeObjectURL(u);resolve(c.toDataURL('image/jpeg',quality))};img.onerror=()=>reject(new Error('Gambar tidak dapat dibaca.'));img.src=u})}
+function compress(file,maxW=1100,quality=.70){return new Promise((resolve,reject)=>{const img=new Image(),u=URL.createObjectURL(file);img.onload=()=>{let w=img.width,h=img.height;if(w>maxW){h=Math.round(h*(maxW/w));w=maxW}const c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);URL.revokeObjectURL(u);resolve(c.toDataURL('image/jpeg',quality))};img.onerror=()=>{URL.revokeObjectURL(u);reject(new Error('Gambar tidak dapat dibaca.'))};img.src=u})}
 
 
 async function printReport(){
@@ -179,14 +429,14 @@ function renderPrintWindow(w,data,locationId,autoPrint){
 .side-note{font-size:12px;line-height:1.75;padding:14px;margin-top:18px;border-radius:18px;background:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.12);opacity:.96}.side-note b{color:#FFD965}
 .main{min-width:0}.top{height:82px;background:rgba(255,255,255,.90);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 22px;position:sticky;top:0;z-index:20;gap:14px}.menu{display:none;width:42px;height:42px;border:0;border-radius:14px;background:#EAF2FF;margin-right:0}.top-brand{display:flex;align-items:center;gap:14px}.top-logo{width:46px;height:46px;border-radius:14px;background:linear-gradient(180deg,#fff,#F5F8FF);display:grid;place-items:center;box-shadow:0 10px 18px rgba(11,44,95,.12);border:1px solid #E5EDF7}.top-logo img{width:28px;height:auto}.top-title{font-size:26px;font-weight:900;letter-spacing:-.02em}.top-title .accent{color:var(--blue)}.top-sub{font-size:12px;color:var(--muted);margin-top:4px}.spacer{flex:1}.api{font-size:12px;text-align:right}.api-box{padding:10px 14px;border-radius:16px;background:#F2F6FC;border:1px solid #DFE8F4;min-width:220px;box-shadow:0 4px 14px rgba(11,44,95,.06)}.api-box[data-state="on"]{background:#EAF8F0;border-color:#C9EAD7;color:#0E6B43}.api-box[data-state="off"]{background:#FFF3F1;border-color:#F5D3CF;color:#A0271D}.api-box[data-state="checking"]{background:#FFF9E8;border-color:#F7E0A3;color:#8A6000}.api-main{display:flex;align-items:center;justify-content:flex-end;gap:6px;font-weight:700}.dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:#98A2B3;box-shadow:0 0 0 4px rgba(152,162,179,.14)}.dot.on{background:var(--success);box-shadow:0 0 0 4px rgba(22,147,90,.14)}.dot.off{background:var(--danger);box-shadow:0 0 0 4px rgba(217,48,37,.12)}.dot.checking{background:var(--warning);box-shadow:0 0 0 4px rgba(229,154,0,.12)}.api small{display:block;margin-top:4px;color:inherit;opacity:.78}
 .content{padding:22px;max-width:1600px;margin:auto}.page{display:none}.page.active{display:block}.hero{background:linear-gradient(135deg,#FFFFFF 0%,#EEF6FF 55%,#F9FCFF 100%);border:1px solid #D9E8F7;border-radius:28px;padding:24px;box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;right:-40px;top:-40px;width:170px;height:170px;background:radial-gradient(circle,var(--yellow-2),transparent 70%);opacity:.18}.hero h1{margin:0;font-size:34px;letter-spacing:-.03em}.hero p{margin:9px 0 0;color:var(--muted);line-height:1.6;font-size:15px}.progress-label{display:flex;justify-content:space-between;font-size:12px;font-weight:700;margin-top:16px}.progress{height:13px;border-radius:999px;overflow:hidden;background:#DDE8F5;margin-top:8px}.progress>div{height:100%;width:0;background:linear-gradient(90deg,#1A73E8,#58B6FF 65%,#F4C842 100%);transition:.35s}
-.stats{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;margin:18px 0}.stat{background:linear-gradient(180deg,#fff,#F9FBFF);border:1px solid var(--line);border-radius:22px;padding:17px;box-shadow:0 10px 26px rgba(11,44,95,.06)}.stat span{display:block;color:var(--muted);font-size:12px;font-weight:500}.stat b{display:block;font-size:34px;margin-top:9px;color:#09356D;letter-spacing:-.03em}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:18px 0}.stat{background:linear-gradient(180deg,#fff,#F9FBFF);border:1px solid var(--line);border-radius:22px;padding:17px;box-shadow:0 10px 26px rgba(11,44,95,.06)}.stat span{display:block;color:var(--muted);font-size:12px;font-weight:500}.stat b{display:block;font-size:34px;margin-top:9px;color:#09356D;letter-spacing:-.03em}
 .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}.search{flex:1;min-width:260px}input,select,textarea{width:100%;border:1px solid #D8E3EF;border-radius:16px;padding:13px 14px;background:#fff;color:var(--text);outline:none;transition:border-color .2s, box-shadow .2s, transform .2s;font-size:14px}input:focus,select:focus,textarea:focus{border-color:#7CB2FF;box-shadow:0 0 0 4px rgba(26,115,232,.10)}textarea{min-height:96px;resize:vertical}.btn{border:0;border-radius:16px;padding:12px 16px;font-weight:700;transition:.2s ease}.btn:hover{transform:translateY(-1px)}.primary{background:linear-gradient(135deg,#1A73E8,#4EA1FF);color:#fff;box-shadow:0 10px 20px rgba(26,115,232,.24)}.soft{background:linear-gradient(135deg,#EAF4FF,#F4F9FF);color:#1558B3;border:1px solid #D6E7FF}.light{background:#F3F6FA;color:#344054;border:1px solid #E0E8F0}.danger{background:#FFF0EF;color:#B42318;border:1px solid #FFD2CD}
 .card{background:linear-gradient(180deg,#fff,#FCFDFF);border:1px solid var(--line);border-radius:22px;box-shadow:0 10px 22px rgba(17,42,75,.05)}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:1080px}th,td{padding:13px 12px;border-bottom:1px solid #E8EDF3;text-align:left;font-size:13px;vertical-align:middle}th{background:#F3F8FF;color:#244163;font-weight:700}.small{font-size:11px;color:var(--muted)}.cell-title{font-weight:700}.badge{display:inline-flex;padding:7px 10px;border-radius:999px;font-size:11px;font-weight:700;background:#EEF1F5;color:#475467;white-space:nowrap}.badge[data-status="Belum Dilawati"]{background:#EEF2F7;color:#667085}.badge[data-status="Cadangan"]{background:#FFF1C9;color:#8B5B00}.badge[data-status="Dalam Semakan"]{background:#E6F1FF;color:#1557B0}.badge[data-status="Diputuskan"]{background:#EEE7FF;color:#6843C5}.badge[data-status="Pemasangan"]{background:#FFE9D2;color:#9B4E06}.badge[data-status="Siap"],.badge[data-status="Dipasang"]{background:#DFF8EA;color:#087653}.badge[data-status="Disahkan"]{background:#E3F3FF;color:#0C5A8A}
 .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.loc{padding:16px;background:linear-gradient(180deg,#fff,#FAFCFF)}.loc-head{display:flex;gap:10px}.loc-id{width:48px;height:48px;border-radius:16px;background:linear-gradient(135deg,#EAF4FF,#D8EAFF);color:#1268E8;display:grid;place-items:center;font-weight:900}.loc-name{font-weight:900;font-size:16px}.loc-meta{font-size:12px;color:var(--muted);line-height:1.6;margin-top:10px}.loc-action{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:13px}.empty{padding:48px 22px;text-align:center;color:var(--muted)}.api-error{max-width:780px;margin:auto;padding:18px 20px;background:linear-gradient(180deg,#FFF8F7,#FFF2F0);border:1px solid #F4D2CC;border-radius:20px;color:#8F241A;line-height:1.7}.api-error b{display:block;font-size:16px;color:#8F241A;margin-bottom:6px}
 .drawer-back{position:fixed;inset:0;z-index:70;background:rgba(4,18,35,.55);display:none}.drawer-back.open{display:block}.drawer{position:absolute;right:0;top:0;width:min(900px,100%);height:100%;background:var(--bg);overflow:auto;box-shadow:-18px 0 45px rgba(0,0,0,.18)}.drawer-top{position:sticky;top:0;z-index:6;background:#fff;border-bottom:1px solid var(--line);padding:14px 16px;display:flex;align-items:center;gap:10px}.icon{width:42px;height:42px;border:0;border-radius:14px;background:#F0F4F8}.drawer-title{flex:1}.tabs{display:flex;gap:8px;overflow:auto;padding:14px 14px 0}.tab{border:0;border-radius:999px;background:#EDF2F7;color:#475467;padding:9px 13px;font-weight:700;font-size:12px;white-space:nowrap}.tab.active{background:linear-gradient(135deg,#1A73E8,#4EA1FF);color:#fff}.panel{display:none}.panel.active{display:block}.section{margin:12px 14px;padding:16px;background:#fff;border:1px solid var(--line);border-radius:20px}.section-title{font-size:16px;font-weight:900;margin-bottom:5px}.section-sub{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:12px}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}label{font-size:12px;font-weight:700;color:#475467}.actions{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:8px;margin-top:12px}.ap-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.ap-card{border:1px solid #DDE6F0;background:linear-gradient(180deg,#FBFDFF,#F5FAFF);border-radius:18px;padding:13px}.ap-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.preview{min-height:165px;border:1px dashed #BFD0E2;background:#EFF5FB;border-radius:16px;margin-top:9px;display:grid;place-items:center;overflow:hidden}.preview img{width:100%;height:200px;object-fit:cover}.camera{display:block;text-align:center;background:#EAF4FF;color:#145499;font-weight:700;border:1px solid #D5E8FC;border-radius:14px;padding:11px;margin-top:8px}.camera input{display:none}.gps{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:8px}.gps-text{font-size:11px;color:var(--muted);word-break:break-all}.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.photo-card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}.photo-open{height:120px;background:#EDF4FB;display:grid;place-items:center;color:#1268E8;font-weight:700}.photo-meta{padding:9px;font-size:11px;color:var(--muted);line-height:1.5}.history{display:flex;flex-direction:column;gap:8px}.hist{border-left:3px solid #B9D6FB;background:#F8FBFF;padding:10px 11px;border-radius:0 12px 12px 0}.hist b{font-size:12px}.hist .small{display:block;margin-top:4px}.locked{padding:10px 12px;border-radius:14px;background:#FFF8E8;border:1px solid #F7DF9C;color:#8A6200;font-size:12px;margin-bottom:12px}.complete-line{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:700;margin-bottom:8px}.complete-bar{height:12px;background:#E2EAF6;border-radius:999px;overflow:hidden}.complete-bar i{display:block;height:100%;background:linear-gradient(90deg,#1A73E8,#58B6FF,#F4C842)}
-.modal-back,.loading{position:fixed;inset:0;background:rgba(5,22,43,.45);display:none;align-items:center;justify-content:center;z-index:80}.modal-back.open,.loading.show{display:flex}.modal{width:min(560px,95vw);background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,.20)}.modal-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line)}.modal-body{padding:14px 16px}.loading-box{background:#fff;padding:20px 26px;border-radius:20px;box-shadow:var(--shadow);display:flex;align-items:center;gap:10px}.spin{width:24px;height:24px;border-radius:50%;border:3px solid #D6E6FF;border-top-color:#1A73E8;animation:sp 1s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}.toast{position:fixed;left:50%;bottom:25px;transform:translateX(-50%) translateY(20px);background:#0E2E61;color:#fff;padding:12px 15px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:90;box-shadow:0 14px 30px rgba(14,46,97,.28)}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.modal-back,.loading{position:fixed;inset:0;background:rgba(5,22,43,.45);display:none;align-items:center;justify-content:center;z-index:80}.modal-back.open,.loading.show{display:flex}.modal{width:min(560px,95vw);background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,.20)}.modal-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--line)}.modal-body{padding:14px 16px}.loading-box{width:min(440px,90vw);background:#fff;padding:20px 22px;border-radius:22px;box-shadow:0 24px 70px rgba(11,44,95,.24);display:block;border:1px solid #DDE8F5}.loading-top{display:flex;align-items:center;gap:12px}.loading-copy{flex:1;min-width:0}.loading-title{font-size:15px;font-weight:900;color:#17385F}.loading-sub{font-size:11px;color:#667085;margin-top:4px;line-height:1.4}.loading-pct{font-size:25px;font-weight:900;color:#1A73E8;min-width:64px;text-align:right}.loading-progress{height:12px;background:#E4EDF8;border-radius:999px;overflow:hidden;margin-top:15px}.loading-progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,#1A73E8,#55B4FF 70%,#F4C842);border-radius:999px;transition:width .25s ease}.spin{width:24px;height:24px;border-radius:50%;border:3px solid #D6E6FF;border-top-color:#1A73E8;animation:sp 1s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}.toast{position:fixed;left:50%;bottom:25px;transform:translateX(-50%) translateY(20px);background:#0E2E61;color:#fff;padding:12px 15px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:90;box-shadow:0 14px 30px rgba(14,46,97,.28)}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .mobile-bottom{display:none}.mobile-bottom button{flex:1;border:0;background:#fff;padding:8px 0;font-size:11px;color:#5C677A}.mobile-bottom button b{display:block;font-size:16px}.mobile-bottom button.active{color:#1A73E8;font-weight:700}
-@media(max-width:1180px){.stats{grid-template-columns:repeat(3,minmax(0,1fr))}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:1180px){.stats{grid-template-columns:repeat(4,minmax(0,1fr))}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:920px){.layout{grid-template-columns:1fr}.side{position:fixed;left:-310px;top:0;height:100vh;width:280px;z-index:60;transition:.25s}.side.open{left:0}.menu{display:block}.top{padding:0 14px;height:78px}.top-title{font-size:21px}.content{padding:16px}.ap-grid,.fields,.gallery{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.grid{grid-template-columns:1fr}.mobile-bottom{display:flex;position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);z-index:50;padding-bottom:env(safe-area-inset-bottom)}body{padding-bottom:72px}.api-box{min-width:unset;padding:8px 10px}}
 @media(max-width:560px){.hero h1{font-size:28px}.top-brand{gap:10px}.top-logo{width:38px;height:38px}.top-logo img{width:22px}.top-title{font-size:18px}.top-sub{font-size:11px}.api-main{justify-content:flex-start}.api{text-align:left}.stats{grid-template-columns:1fr 1fr}}
 </style></head><body><div class="toolbar"><button class="close" onclick="window.close()">Tutup</button><button class="print" onclick="window.print()">Cetak / Simpan PDF</button></div><div class="head"><h1>${title}</h1><h2>PERBADANAN KEMAJUAN PERUMAHAN JOHOR</h2></div><div class="meta"><span>Maklumat Hotspot (Wireless AP) bagi penyediaan proposal</span><span>Dijana: ${esc(data.generatedAt||'')}</span></div><table class="report"><thead><tr><th class="bil">BIL</th><th class="facility">FASILITI</th><th class="service">PERKHIDMATAN SEDIA ADA DI BAWAH PROJEK WIFI PREMIUM MAJU JOHOR</th><th class="count">BILANGAN HOTSPOT PERKHIDMATAN SEDIA ADA</th><th class="coord">COORDINATE LOCATION</th><th class="block">BLOCK AND LEVEL?<br>CONTOH: BLOCK A, LEVEL G</th><th class="type">INDOOR ATAU OUTDOOR?</th><th class="count">BILANGAN HOTSPOT YANG DIMOHON (AP)</th><th class="coord">COORDINATE LOCATION</th><th class="block">BLOCK AND LEVEL?<br>CONTOH: BLOCK A, LEVEL G</th><th class="type">INDOOR ATAU OUTDOOR?</th></tr></thead><tbody>${rows||'<tr><td colspan="11" style="text-align:center;padding:20px">Tiada rekod lokasi.</td></tr>'}</tbody></table><div class="foot"><span>Jumlah lokasi direkod: ${locations.length}${locationId?'':' / '+esc(data.targetLocations||27)}</span><span>Sistem WiFi Premium Maju Johor</span></div></body></html>`;
@@ -212,13 +462,19 @@ function showPage(n){document.querySelectorAll('.page').forEach(x=>x.classList.r
 function showTab(n,b){document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));q('panel-'+n).classList.add('active');b.classList.add('active')}
 function closeDrawer(){q('drawerBack').classList.remove('open');document.body.style.overflow='';APP.current=null}
 function setApi(state,t){const s=(state===true||state==='on')?'on':(state===false||state==='off')?'off':'checking';q('apiText').textContent=t||'';q('apiDot').className='dot '+s;q('apiBox').setAttribute('data-state',s)}
-function setLoading(on,t='Memproses...'){q('loadingText').textContent=t;q('loading').classList.toggle('show',!!on)}
+let __progressTimer=null,__progressValue=0;
+function startProgress(title='Memproses...',pct=8,sub='Sila tunggu sebentar.'){clearInterval(__progressTimer);__progressValue=Math.max(0,Math.min(100,pct));q('loading').classList.add('show');updateProgress(__progressValue,title,sub);__progressTimer=setInterval(()=>{if(__progressValue<86){__progressValue+=__progressValue<45?2:1;paintProgress()}},850)}
+function updateProgress(pct,title,sub){__progressValue=Math.max(__progressValue,Math.min(100,Number(pct)||0));if(title)q('loadingText').textContent=title;if(sub!==undefined)q('loadingSub').textContent=sub;paintProgress()}
+function paintProgress(){q('loadingPct').textContent=Math.round(__progressValue)+'%';q('loadingBar').style.width=Math.round(__progressValue)+'%'}
+function finishProgress(message='Selesai.'){clearInterval(__progressTimer);__progressValue=100;updateProgress(100,message,'Simpanan telah selesai.');setTimeout(()=>q('loading').classList.remove('show'),320)}
+function stopProgress(hide=true){clearInterval(__progressTimer);if(hide!==false)q('loading').classList.remove('show');else q('loading').classList.remove('show')}
+function setLoading(on,t='Memproses...'){if(on)startProgress(t,10,'Sila tunggu sebentar.');else stopProgress(true)}
 function toast(m){const el=q('toast');el.textContent=m;el.classList.add('show');clearTimeout(window.__t);window.__t=setTimeout(()=>el.classList.remove('show'),3000)}
 function statusOptions(s){return options(['Belum Dilawati','Cadangan','Dalam Semakan','Diputuskan','Pemasangan','Siap'],s||'Belum Dilawati')}
 function options(arr,s){return arr.map(v=>`<option value="${ea(v)}" ${String(v)===String(s)?'selected':''}>${esc(v||'-- Pilih --')}</option>`).join('')}
 function badge(s){return `<span class="badge" data-status="${ea(s)}">${esc(s)}</span>`}
 function dateVal(v){if(!v)return'';if(/^\d{4}-\d{2}-\d{2}$/.test(v))return v;const m=String(v).match(/^(\d{2})\/(\d{2})\/(\d{4})/);return m?m[3]+'-'+m[2]+'-'+m[1]:''}
-function fmtGps(a,b){return a&&b?esc(a)+', '+esc(b):'GPS belum direkod'}function maps(a,b){return'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(a)+','+encodeURIComponent(b)}function q(id){return document.getElementById(id)}function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function ea(v){return esc(v).replace(/`/g,'&#96;')}
+function fmtGps(a,b){return a&&b?esc(a)+', '+esc(b):'GPS belum direkod'}function maps(a,b){return'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(a)+','+encodeURIComponent(b)}function q(id){return document.getElementById(id)}function setText(id,v){const el=q(id);if(el)el.textContent=v}function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function ea(v){return esc(v).replace(/`/g,'&#96;')}
 </script>
 </body>
 </html>
