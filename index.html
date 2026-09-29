@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
-<title>Sistem WiFi Premium Maju Johor V16</title>
+<title>Sistem WiFi Premium Maju Johor V17</title>
 <style>
 :root{--navy:#0B2C5F;--navy-2:#123E82;--blue:#1A73E8;--blue-2:#4EA1FF;--sky:#EAF4FF;--yellow:#F4C842;--yellow-2:#FFD965;--bg:#F4F8FF;--bg-2:#EDF4FF;--card:#FFFFFF;--line:#D8E4F1;--text:#163254;--muted:#5F6F86;--success:#16935A;--danger:#D93025;--warning:#E59A00;--shadow:0 18px 48px rgba(13,51,105,.10)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Roboto,Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#F6FAFF 0%,#EEF5FF 100%);color:var(--text)}button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}
@@ -366,6 +366,251 @@ body{background:#EAF3FF}
   #page-map{background:#fff!important;margin:0!important;padding:0!important}.map-capture{background:#fff!important}.map-wrap{background:#EAF5FF!important}.map-capture-copy b,.map-capture-copy span{color:#0B2C5F!important}.map-chip{background:#F4F8FD!important;color:#35506F!important}.map-chip b{color:#0B2C5F!important}
 }
 
+
+/* ===== V17 PREMIUM JOHOR MAP - closer to approved mockup ===== */
+#page-map{background:linear-gradient(180deg,#F5FAFF 0%,#EDF6FF 100%)}
+.map-capture{position:relative;overflow:hidden;background:linear-gradient(145deg,#073D7F 0%,#0756A2 52%,#07366F 100%);border:1px solid rgba(71,174,255,.50);box-shadow:0 22px 54px rgba(3,40,91,.22),inset 0 1px 0 rgba(255,255,255,.08)}
+.map-capture:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 72% 6%,rgba(108,202,255,.18),transparent 26%),radial-gradient(circle at 8% 85%,rgba(0,160,255,.13),transparent 32%);z-index:0}
+.map-capture-head,.map-summary,.map-wrap{position:relative;z-index:1}
+.map-capture-head{padding:2px 3px 4px}.map-capture-copy b{color:#fff!important;font-size:18px}.map-capture-copy span{color:#BBDCF7!important}
+.map-capture-logo{background:rgba(255,255,255,.98);border-color:rgba(255,255,255,.8);box-shadow:0 10px 28px rgba(0,27,66,.28)}
+.map-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:10px 0 12px}
+.map-chip{position:relative;display:grid;grid-template-columns:38px 1fr;grid-template-rows:auto auto;align-items:center;column-gap:9px;min-height:64px;padding:9px 11px;border-radius:17px;background:linear-gradient(145deg,rgba(25,105,190,.72),rgba(10,66,139,.72));border:1px solid rgba(122,203,255,.34);color:#D8EDFF;box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 10px 24px rgba(0,24,61,.18);backdrop-filter:blur(10px);font-size:10px}
+.map-chip:before{grid-row:1/3;content:"⌖";width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(145deg,#F9FDFF,#D9EEFF);color:#087BEA;font-size:18px;font-weight:900;box-shadow:0 7px 15px rgba(0,24,67,.20)}
+.map-chip:nth-child(2):before{content:"●";color:#8295AC}.map-chip:nth-child(3):before{content:"⌁";color:#7144F3}.map-chip:nth-child(4):before{content:"▦";color:#087BEA}
+.map-chip b{grid-column:2;grid-row:1;font-size:23px!important;line-height:1;color:#fff!important;align-self:end}.map-chip{line-height:1.15}.map-chip:not(:has(b)){display:flex}
+.map-wrap{min-height:610px;border-radius:26px;border:1px solid rgba(100,197,255,.54);background:linear-gradient(155deg,#03346E,#0759A8 62%,#063B7C);box-shadow:inset 0 0 90px rgba(0,18,51,.40),0 16px 38px rgba(0,22,56,.24)}
+.map-wrap:before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(circle at 49% 45%,rgba(46,167,255,.28),transparent 40%),linear-gradient(135deg,rgba(255,255,255,.035),transparent 45%)}
+.johor-map{height:min(74vh,820px);min-height:610px;background:transparent!important}
+.johor-map .leaflet-tile{filter:saturate(.86) contrast(.94) brightness(1.05)}
+.johor-map .leaflet-control-attribution{display:none!important}
+.johor-boundary-glow{filter:drop-shadow(0 0 4px rgba(255,255,255,.96)) drop-shadow(0 0 9px rgba(0,151,255,.95)) drop-shadow(0 0 25px rgba(0,132,255,.78))}
+.johor-state-label{font-size:38px!important;color:#07346F!important;opacity:.96!important;letter-spacing:.20em!important;text-shadow:0 2px 0 rgba(255,255,255,.92),0 4px 14px rgba(4,52,111,.20)!important}
+.district-label{font-size:10px!important;color:#12375F!important;opacity:.94!important;text-shadow:0 1px 1px #fff,0 0 7px #fff,0 0 10px #fff!important}
+.map-legend{right:16px!important;top:16px!important;left:auto!important;bottom:auto!important;min-width:156px!important;padding:13px 14px!important;border-radius:19px!important;background:linear-gradient(150deg,rgba(7,50,108,.92),rgba(3,34,77,.90))!important;border:1px solid rgba(133,209,255,.45)!important;box-shadow:0 18px 40px rgba(0,16,45,.33),inset 0 1px 0 rgba(255,255,255,.10)!important;color:#EAF6FF!important;backdrop-filter:blur(15px)!important}
+.map-legend>b{font-size:12px!important}.legend-row{font-size:9.5px!important;margin:6px 0!important}.legend-dot{width:12px!important;height:12px!important;border-radius:50%!important;border:2px solid rgba(255,255,255,.88)!important}
+.premium-pin{width:31px!important;height:31px!important;border-width:3px!important;box-shadow:0 9px 18px rgba(0,20,54,.36),0 0 0 4px color-mix(in srgb,var(--pin) 25%,transparent),0 0 24px color-mix(in srgb,var(--pin) 68%,transparent)!important}
+.premium-pin i{width:10px!important;height:10px!important;left:7.5px!important;top:7.5px!important}
+.premium-ap{width:25px!important;height:25px!important;border-width:3px!important;box-shadow:0 7px 16px rgba(0,23,58,.30),0 0 18px color-mix(in srgb,var(--pin) 70%,transparent)!important}
+.johor-map .leaflet-control-zoom{margin:18px 0 0 18px!important}.johor-map .leaflet-control-zoom a{width:43px!important;height:43px!important;line-height:41px!important;background:rgba(255,255,255,.98)!important;color:#063D7D!important}
+.map-selected-card{position:absolute;left:20px;right:20px;bottom:18px;z-index:800;display:none;align-items:stretch;gap:12px;max-width:760px;margin:auto;padding:13px;border-radius:23px;background:rgba(255,255,255,.98);border:1px solid rgba(139,203,249,.62);box-shadow:0 24px 60px rgba(0,25,65,.34);backdrop-filter:blur(16px)}
+.map-selected-card.show{display:grid;grid-template-columns:74px minmax(0,1fr) 160px;animation:mapCardIn .22s ease-out}
+@keyframes mapCardIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.map-selected-close{position:absolute;right:9px;top:8px;width:29px;height:29px;border:0;border-radius:50%;background:#EAF3FC;color:#375A7C;font-size:20px;line-height:1;z-index:2}
+.map-selected-thumb{width:74px;height:74px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(145deg,#E8F5FF,#CDE9FF);color:#087CF0;font-size:32px;box-shadow:inset 0 0 0 1px #C7E2F7}
+.map-selected-main{padding:4px 0;min-width:0}.map-selected-name{font-size:17px;font-weight:900;color:#07366F;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.map-selected-status{display:inline-flex;margin-left:6px;padding:4px 8px;border-radius:999px;font-size:9px;font-weight:900;background:#E4F7EC;color:#0A7A4C;vertical-align:2px}.map-selected-meta{display:grid;grid-template-columns:1fr 1fr;gap:5px 12px;margin-top:8px;font-size:10px;color:#5A7089;line-height:1.3}.map-selected-meta span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.map-selected-actions{display:grid;align-content:center;gap:7px;padding:5px 4px 5px 10px;border-left:1px solid #E0EAF4}.map-selected-actions button,.map-selected-actions a{display:flex;align-items:center;justify-content:center;min-height:34px;border-radius:12px;border:1px solid #CFE1F4;text-decoration:none;font-size:10px;font-weight:900}.map-selected-actions button{background:linear-gradient(135deg,#087CF0,#34A1FF);color:#fff;border:0}.map-selected-actions .call{background:linear-gradient(135deg,#12A35E,#26C976);color:#fff;border:0}.map-selected-actions .gmaps{background:#EEF6FF;color:#124F8C}.desktop-hidden{display:none!important}
+.map-reset-control{display:grid!important;place-items:center!important;width:46px!important;height:46px!important;border-radius:50%!important;background:#fff!important;color:#0A4D8F!important;font-size:21px!important;text-decoration:none!important;box-shadow:0 12px 28px rgba(0,22,55,.30)!important;border:1px solid #D9E8F6!important}
+@media(max-width:920px){
+  #page-map{padding:10px 8px 84px!important;background:linear-gradient(180deg,#073E80 0,#07569F 32%,#EDF6FF 32%)!important}
+  .map-capture{padding:11px!important;border-radius:24px!important}
+  .map-capture-head{gap:10px!important;margin-bottom:7px!important}.map-capture-logo{width:46px!important;height:46px!important}.map-capture-copy b{font-size:15px!important}.map-capture-copy span{font-size:8.5px!important}
+  .map-summary{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:5px!important;margin:7px 0 9px!important}
+  .map-chip{display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:center!important;min-height:54px!important;padding:7px 7px!important;border-radius:13px!important;font-size:7.5px!important;gap:3px!important}.map-chip:before{display:none!important}.map-chip b{font-size:18px!important;order:-1}
+  .map-wrap{min-height:590px!important;border-radius:22px!important}.johor-map{height:68vh!important;min-height:590px!important}
+  .map-legend{right:8px!important;top:8px!important;min-width:118px!important;padding:9px 9px!important;border-radius:14px!important}.map-legend>b{font-size:9px!important}.legend-row{font-size:7.5px!important;margin:4px 0!important}.legend-dot{width:9px!important;height:9px!important}
+  .district-label{font-size:7px!important}.johor-state-label{font-size:27px!important}
+  .map-selected-card{left:9px!important;right:9px!important;bottom:9px!important;padding:10px!important;border-radius:18px!important}.map-selected-card.show{grid-template-columns:52px 1fr!important;gap:8px!important}.map-selected-thumb{width:52px!important;height:52px!important;border-radius:13px!important;font-size:24px!important}.map-selected-main{padding-right:24px!important}.map-selected-name{font-size:13px!important}.map-selected-meta{grid-template-columns:1fr!important;gap:3px!important;margin-top:5px!important;font-size:8.5px!important}.map-selected-actions{grid-column:1/-1;grid-template-columns:1fr 1fr 1fr;gap:5px;border-left:0;border-top:1px solid #E2EBF4;padding:8px 0 0!important}.map-selected-actions button,.map-selected-actions a{min-height:34px!important;font-size:8.5px!important}.map-selected-actions .call{display:flex!important}
+  .johor-map .leaflet-control-zoom{margin:9px 0 0 9px!important}.johor-map .leaflet-control-zoom a{width:36px!important;height:36px!important;line-height:34px!important}
+}
+@media(max-width:560px){.map-wrap{min-height:560px!important}.johor-map{height:66vh!important;min-height:560px!important}.map-selected-actions button,.map-selected-actions a{padding:5px!important}.map-selected-meta .gps-meta{display:none!important}}
+
+
+
+/* ===== V18 MOBILE MAP POLISH ===== */
+/* Mini premium statistic icons */
+.map-chip{
+  grid-template-columns:26px minmax(0,1fr)!important;
+  column-gap:7px!important;
+  min-height:52px!important;
+  padding:7px 9px!important;
+  border-radius:15px!important;
+}
+.map-chip:before{
+  display:grid!important;
+  place-items:center!important;
+  width:24px!important;
+  height:24px!important;
+  border-radius:8px!important;
+  font-size:10px!important;
+  font-weight:900!important;
+  border:1px solid rgba(255,255,255,.76)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.86),0 5px 12px rgba(0,25,65,.18)!important;
+}
+.map-chip b{font-size:19px!important;line-height:1!important}
+
+/* Compact premium Leaflet controls */
+.johor-map .leaflet-control-zoom{
+  border:0!important;
+  border-radius:12px!important;
+  overflow:hidden!important;
+  box-shadow:0 10px 24px rgba(0,28,68,.24)!important;
+}
+.johor-map .leaflet-control-zoom a{
+  width:32px!important;
+  height:32px!important;
+  line-height:30px!important;
+  font-size:17px!important;
+  font-weight:500!important;
+  background:rgba(255,255,255,.96)!important;
+  color:#0A4D8F!important;
+  border-color:#DDEAF5!important;
+}
+.johor-map .leaflet-control-zoom a:hover{background:#F4FAFF!important}
+.map-reset-control{
+  width:36px!important;
+  height:36px!important;
+  font-size:15px!important;
+  border-radius:12px!important;
+  box-shadow:0 10px 24px rgba(0,28,68,.24)!important;
+}
+
+/* Selected location card - premium, safe from map overflow */
+.map-selected-card{
+  z-index:1200!important;
+  border:1px solid rgba(168,215,246,.86)!important;
+  background:linear-gradient(155deg,rgba(255,255,255,.99),rgba(244,250,255,.985))!important;
+  box-shadow:0 28px 70px rgba(0,25,67,.32),inset 0 1px 0 rgba(255,255,255,.9)!important;
+}
+.map-selected-thumb{
+  position:relative!important;
+  overflow:visible!important;
+  background:linear-gradient(145deg,#EAF7FF,#D5EEFF)!important;
+  border:1px solid #C7E5FA!important;
+  box-shadow:inset 0 1px 0 #fff,0 8px 18px rgba(8,124,240,.14)!important;
+  font-size:0!important;
+}
+.map-selected-thumb:before{
+  content:"";
+  width:17px;height:17px;
+  border-radius:50% 50% 50% 0;
+  transform:rotate(-45deg);
+  background:linear-gradient(145deg,#087CF0,#38A9FF);
+  box-shadow:0 5px 12px rgba(8,124,240,.28);
+}
+.map-selected-thumb:after{
+  content:"";
+  position:absolute;
+  width:6px;height:6px;border-radius:50%;
+  background:#fff;
+  left:50%;top:50%;
+  transform:translate(-50%,-66%);
+}
+.map-selected-heading{display:flex;align-items:center;gap:7px;min-width:0;padding-right:28px}
+.map-selected-name{min-width:0;flex:0 1 auto}
+.map-selected-status{margin-left:0!important;flex:0 0 auto}
+.map-selected-meta span{position:relative;padding-left:13px!important}
+.map-selected-meta span:before{content:"";position:absolute;left:0;top:.42em;width:6px;height:6px;border-radius:50%;background:#9BB2C8;box-shadow:0 0 0 3px #EEF6FD}
+.map-selected-meta span:nth-child(2):before{background:#7354F5}.map-selected-meta span:nth-child(3):before{background:#087CF0}.map-selected-meta span:nth-child(4):before{background:#16A765}.map-selected-meta span:nth-child(5):before{background:#F4B400}
+.map-selected-close{
+  width:28px!important;height:28px!important;
+  background:#EEF6FD!important;color:#43617F!important;
+  border:1px solid #D9E9F6!important;
+  box-shadow:0 5px 12px rgba(14,66,116,.10)!important;
+}
+.map-selected-actions button,.map-selected-actions a{
+  gap:6px!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22)!important;
+}
+.action-ico{position:relative;width:15px;height:15px;display:inline-block;flex:0 0 15px}
+.record-ico{border:1.7px solid currentColor;border-radius:3px}.record-ico:before{content:"";position:absolute;left:3px;right:3px;top:4px;height:1.5px;background:currentColor;box-shadow:0 4px 0 currentColor}
+.call-ico:before{content:"";position:absolute;inset:2px 4px;border:2px solid currentColor;border-top-color:transparent;border-right-color:transparent;border-radius:3px 0 3px 8px;transform:rotate(-42deg)}
+.map-ico:before{content:"";position:absolute;width:10px;height:10px;left:2px;top:1px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);border:1.7px solid currentColor}.map-ico:after{content:"";position:absolute;width:3px;height:3px;left:5.5px;top:4px;border-radius:50%;background:currentColor}
+
+@media(max-width:920px){
+  /* Keep the icons visible but much smaller on phones */
+  .map-summary{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:5px!important}
+  .map-chip{
+    display:grid!important;
+    grid-template-columns:20px minmax(0,1fr)!important;
+    grid-template-rows:auto auto!important;
+    column-gap:5px!important;
+    align-items:center!important;
+    min-height:46px!important;
+    padding:6px 6px!important;
+    border-radius:12px!important;
+    font-size:6.8px!important;
+    line-height:1.1!important;
+  }
+  .map-chip:before{
+    display:grid!important;
+    grid-row:1/3!important;
+    width:19px!important;height:19px!important;
+    border-radius:6px!important;
+    font-size:8px!important;
+  }
+  .map-chip b{
+    grid-column:2!important;grid-row:1!important;
+    order:initial!important;
+    font-size:16px!important;
+    align-self:end!important;
+  }
+
+  .johor-map .leaflet-control-zoom{margin:10px 0 0 10px!important}
+  .johor-map .leaflet-control-zoom a{width:30px!important;height:30px!important;line-height:28px!important;font-size:16px!important}
+  .map-reset-control{width:34px!important;height:34px!important;font-size:14px!important}
+
+  /* Bottom sheet is fixed to viewport, so it can never be clipped by the map */
+  .map-selected-card{
+    position:fixed!important;
+    left:10px!important;
+    right:10px!important;
+    bottom:calc(72px + env(safe-area-inset-bottom))!important;
+    width:auto!important;
+    max-width:none!important;
+    max-height:46dvh!important;
+    overflow:auto!important;
+    margin:0!important;
+    padding:14px 12px 12px!important;
+    border-radius:22px!important;
+    z-index:2600!important;
+    box-shadow:0 24px 70px rgba(0,24,64,.42),inset 0 1px 0 #fff!important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .map-selected-card:before{
+    content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);
+    width:34px;height:4px;border-radius:999px;background:#D3E1ED;
+  }
+  .map-selected-card.show{
+    display:grid!important;
+    grid-template-columns:40px minmax(0,1fr)!important;
+    gap:9px!important;
+    animation:mapCardInV18 .22s ease-out!important;
+  }
+  @keyframes mapCardInV18{from{opacity:0;transform:translateY(24px) scale(.98)}to{opacity:1;transform:none}}
+  .map-selected-thumb{width:40px!important;height:40px!important;border-radius:12px!important;margin-top:3px!important}
+  .map-selected-thumb:before{width:14px;height:14px}.map-selected-thumb:after{width:5px;height:5px}
+  .map-selected-main{padding:3px 25px 0 0!important;min-width:0!important}
+  .map-selected-heading{padding-right:0!important;gap:5px!important;flex-wrap:wrap!important}
+  .map-selected-name{font-size:13px!important;line-height:1.25!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important}
+  .map-selected-status{font-size:7.5px!important;padding:3px 6px!important}
+  .map-selected-meta{grid-template-columns:1fr 1fr!important;gap:5px 8px!important;margin-top:7px!important;font-size:8.5px!important;line-height:1.3!important}
+  .map-selected-meta span{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;padding-left:12px!important}
+  .map-selected-meta .gps-meta{display:block!important;grid-column:1/-1!important;word-break:break-all!important}
+  .map-selected-actions{
+    grid-column:1/-1!important;
+    display:grid!important;
+    grid-template-columns:1fr 1fr!important;
+    gap:7px!important;
+    border-left:0!important;
+    border-top:1px solid #E2ECF5!important;
+    padding:10px 0 0!important;
+    margin-top:1px!important;
+  }
+  .map-selected-actions button,.map-selected-actions a{
+    min-height:38px!important;
+    border-radius:12px!important;
+    font-size:9px!important;
+    padding:7px 8px!important;
+  }
+  .map-selected-actions .gmaps{grid-column:1/-1!important}
+  .map-selected-actions .call{display:flex!important}
+  .map-selected-close{right:8px!important;top:9px!important;width:27px!important;height:27px!important;font-size:18px!important}
+}
+
+@media(max-width:420px){
+  .map-chip{font-size:6.3px!important;padding:5px!important;column-gap:4px!important}.map-chip:before{width:18px!important;height:18px!important}.map-chip b{font-size:15px!important}
+  .map-selected-card{left:8px!important;right:8px!important;bottom:calc(70px + env(safe-area-inset-bottom))!important}
+}
 </style>
 </head>
 <body>
@@ -445,6 +690,23 @@ body{background:#EAF3FF}
                 <div class="legend-row"><i class="legend-dot" style="background:#E91E63"></i> AP 2</div>
               </div>
             </div>
+            <div id="mapSelectedCard" class="map-selected-card">
+              <button type="button" class="map-selected-close" onclick="closeMapSelected()">&times;</button>
+              <div class="map-selected-thumb" aria-hidden="true"></div>
+              <div class="map-selected-main">
+                <div class="map-selected-heading"><span id="mapSelName" class="map-selected-name">Lokasi</span><span id="mapSelStatus" class="map-selected-status">Status</span></div>
+                <div class="map-selected-meta">
+                  <span id="mapSelDistrict">Daerah: -</span><span id="mapSelAP">AP 1 / AP 2</span>
+                  <span id="mapSelPIC">PIC: -</span><span id="mapSelPhone">Telefon: -</span>
+                  <span id="mapSelGps" class="gps-meta">GPS: -</span>
+                </div>
+              </div>
+              <div class="map-selected-actions">
+                <button id="mapSelOpen" type="button"><span class="action-ico record-ico"></span>Buka Rekod</button>
+                <a id="mapSelCall" class="call" href="#"><span class="action-ico call-ico"></span>Telefon PIC</a>
+                <a id="mapSelMaps" class="gmaps" target="_blank" href="#"><span class="action-ico map-ico"></span>Google Maps</a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -461,7 +723,7 @@ body{background:#EAF3FF}
 <div id="loading" class="loading"><div class="loading-box"><div class="loading-top"><div class="spin"></div><div class="loading-copy"><div id="loadingText" class="loading-title">Memproses...</div><div id="loadingSub" class="loading-sub">Sila tunggu sebentar.</div></div><div id="loadingPct" class="loading-pct">0%</div></div><div class="loading-progress"><i id="loadingBar"></i></div></div></div><div id="toast" class="toast"></div>
 
 <script>
-// V16 - Premium Johor Map + Mobile Field Camera + Fast Save Progress
+// V18 - Premium Mobile Popup + Mini Map Icons + Clipped Johor Basemap
 const CONFIG={API_URL:'https://script.google.com/macros/s/AKfycbywoCrehGGXyZW9n9fOxXiNz0c1wFaiTJ19CfxiIV_U2pGnkLrEiXgeQGNOhF5ogNMIhA/exec',API_KEY:'',TARGET_LOCATIONS:27};
 const APP={locations:[],stats:{},current:null,locationGps:{lat:'',lng:''},existingGps:{lat:'',lng:''},apGps:{1:{lat:'',lng:''},2:{lat:'',lng:''}},apFiles:{1:null,2:null},generalFile:null,generalGps:{lat:'',lng:''}};
 const JOHOR_MAP={map:null,base:null,locations:null,aps:null,districts:null,bounds:null};
@@ -645,19 +907,40 @@ function ensureJohorMap(){
   if(typeof L==='undefined'){if(q('mapEmpty')){q('mapEmpty').style.display='flex';q('mapEmpty').firstElementChild.textContent='Komponen peta belum dapat dimuatkan. Semak sambungan internet.'}return null}
   if(JOHOR_MAP.map)return JOHOR_MAP.map;
   const el=q('johorMap');if(!el)return null;
-  JOHOR_MAP.map=L.map(el,{zoomControl:true,preferCanvas:true,zoomSnap:.25,minZoom:7,maxZoom:13,maxBounds:JOHOR_STATE_BOUNDS,maxBoundsViscosity:1.0,attributionControl:false});
-  JOHOR_MAP.state=L.polygon(JOHOR_OUTLINE,{color:'#35A6FF',weight:4,fillColor:'#F8FBFF',fillOpacity:.97,className:'johor-boundary-glow'}).addTo(JOHOR_MAP.map);
-  JOHOR_MAP.locations=L.layerGroup().addTo(JOHOR_MAP.map);
-  JOHOR_MAP.aps=L.layerGroup().addTo(JOHOR_MAP.map);
-  JOHOR_MAP.districts=L.layerGroup().addTo(JOHOR_MAP.map);
+  const map=L.map(el,{zoomControl:true,preferCanvas:false,zoomSnap:.25,minZoom:7,maxZoom:13,maxBounds:JOHOR_STATE_BOUNDS,maxBoundsViscosity:1.0,attributionControl:false});
+  JOHOR_MAP.map=map;
+  // Light road basemap. A dark mask is drawn above it with Johor as a transparent hole,
+  // so Melaka, Singapore and Indonesia never appear on the main map.
+  JOHOR_MAP.base=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,crossOrigin:true,updateWhenIdle:true,keepBuffer:2}).addTo(map);
+  const outer=[[-8,92],[-8,114],[12,114],[12,92]];
+  JOHOR_MAP.mask=L.polygon([outer,JOHOR_OUTLINE],{stroke:false,fill:true,fillColor:'#063B7C',fillOpacity:.985,interactive:false,fillRule:'evenodd'}).addTo(map);
+  JOHOR_MAP.glow=L.polyline(JOHOR_OUTLINE,{color:'#159CFF',weight:14,opacity:.32,interactive:false,className:'johor-boundary-glow'}).addTo(map);
+  JOHOR_MAP.whiteEdge=L.polyline(JOHOR_OUTLINE,{color:'#FFFFFF',weight:7,opacity:.98,interactive:false}).addTo(map);
+  JOHOR_MAP.state=L.polygon(JOHOR_OUTLINE,{color:'#168AF2',weight:3,opacity:1,fillColor:'#FFFFFF',fillOpacity:.05,interactive:false,className:'johor-boundary-glow'}).addTo(map);
+  JOHOR_MAP.locations=L.layerGroup().addTo(map);
+  JOHOR_MAP.aps=L.layerGroup().addTo(map);
+  JOHOR_MAP.districts=L.layerGroup().addTo(map);
   const stateBounds=JOHOR_MAP.state.getBounds();
-  JOHOR_MAP.map.fitBounds(stateBounds,{padding:[28,28]});
-  const labelIcon=L.divIcon({className:'',html:'<div class="johor-state-label">JOHOR</div>',iconSize:[160,34],iconAnchor:[80,17]});
-  JOHOR_MAP.label=L.marker([2.05,103.35],{icon:labelIcon,interactive:false}).addTo(JOHOR_MAP.map);
+  map.fitBounds(stateBounds,{padding:[34,34]});
+  const labelIcon=L.divIcon({className:'',html:'<div class="johor-state-label">JOHOR</div>',iconSize:[180,42],iconAnchor:[90,21]});
+  JOHOR_MAP.label=L.marker([2.00,103.35],{icon:labelIcon,interactive:false}).addTo(map);
   const districtPoints=[['SEGAMAT',2.51,102.82],['TANGKAK',2.27,102.55],['MUAR',2.06,102.57],['BATU PAHAT',1.86,102.94],['KLUANG',2.03,103.32],['MERSING',2.43,103.82],['KULAI',1.68,103.60],['PONTIAN',1.49,103.39],['KOTA TINGGI',1.74,103.90],['JOHOR BAHRU',1.50,103.73]];
   districtPoints.forEach(d=>{const icon=L.divIcon({className:'district-label-wrap',html:`<span class="district-label">${d[0]}</span>`,iconSize:[86,18],iconAnchor:[43,9]});L.marker([d[1],d[2]],{icon,interactive:false}).addTo(JOHOR_MAP.districts)});
-  setTimeout(()=>JOHOR_MAP.map.invalidateSize(),80);
-  return JOHOR_MAP.map
+  const ResetControl=L.Control.extend({options:{position:'bottomright'},onAdd:function(){const a=L.DomUtil.create('a','map-reset-control');a.href='#';a.title='Fokus Johor';a.innerHTML='⌖';L.DomEvent.disableClickPropagation(a);L.DomEvent.on(a,'click',e=>{L.DomEvent.preventDefault(e);fitJohorMap()});return a}});
+  map.addControl(new ResetControl());
+  setTimeout(()=>map.invalidateSize(),100);
+  return map
+}
+function closeMapSelected(){const c=q('mapSelectedCard');if(c)c.classList.remove('show')}
+function selectMapLocation(id){
+  const x=(APP.locations||[]).find(v=>String(v.LocationID)===String(id));if(!x)return;
+  setText('mapSelName',x.NamaLokasi||'Lokasi belum dinamakan');setText('mapSelStatus',x.Status||'Belum Dilawati');
+  setText('mapSelDistrict','Daerah: '+(x.Daerah||'-'));setText('mapSelAP','AP 1: '+(x.AP1Status||'Belum Ditentukan')+' · AP 2: '+(x.AP2Status||'Belum Ditentukan'));
+  setText('mapSelPIC','PIC: '+(x.PICNama||'Belum diisi'));setText('mapSelPhone','Telefon: '+(x.PICTelefon||'-'));setText('mapSelGps','GPS: '+(x.Latitude||'-')+', '+(x.Longitude||'-'));
+  const open=q('mapSelOpen');if(open)open.onclick=()=>openLocation(x.LocationID);
+  const call=q('mapSelCall');if(call){if(x.PICTelefon){call.href='tel:'+telValue(x.PICTelefon);call.style.display='flex'}else{call.href='#';call.style.display='none'}}
+  const gm=q('mapSelMaps');if(gm)gm.href=maps(x.Latitude,x.Longitude);
+  const c=q('mapSelectedCard');if(c)c.classList.add('show')
 }
 function renderMap(){
   const map=ensureJohorMap();if(!map)return;
@@ -672,18 +955,18 @@ function renderMap(){
   const bounds=[];let apCount=0;
   visible.forEach(x=>{
     const lat=Number(x.Latitude),lng=Number(x.Longitude),color=statusMapColor(x.Status||'Belum Dilawati');
-    const pinIcon=L.divIcon({className:'premium-pin-wrap',html:`<span class="premium-pin" style="--pin:${color}"><i></i></span>`,iconSize:[34,42],iconAnchor:[17,37],popupAnchor:[0,-34],tooltipAnchor:[0,-34]});
-    const marker=L.marker([lat,lng],{icon:pinIcon}).addTo(JOHOR_MAP.locations);
-    marker.bindTooltip(esc(x.NamaLokasi||x.LocationID),{direction:'top',offset:[0,-8]});
-    marker.bindPopup(`<div class="map-popup-card"><div class="map-popup-top"><div><div class="map-popup-title">${esc(x.NamaLokasi||'Lokasi belum dinamakan')}</div><div class="map-popup-location">⌖ ${esc(x.Daerah||'-')}</div></div><span class="map-popup-status" style="--status:${color}">${esc(x.Status||'Belum Dilawati')}</span></div><div class="map-popup-grid"><span>◉ ${esc(facilityType(x.NamaLokasi))}</span><span>⌁ AP 1: ${esc(x.AP1Status||'Belum Ditentukan')}</span><span>⌁ AP 2: ${esc(x.AP2Status||'Belum Ditentukan')}</span><span>● ${esc(x.PICNama||'PIC belum diisi')}</span>${x.PICTelefon?`<span>☎ ${esc(x.PICTelefon)}</span>`:''}<span>GPS ${esc(x.Latitude)}, ${esc(x.Longitude)}</span></div><div class="map-popup-actions"><button onclick="openLocation('${ea(x.LocationID)}')">▣ Buka Rekod</button>${x.PICTelefon?`<a class="map-popup-call" href="tel:${ea(telValue(x.PICTelefon))}">☎ Telefon PIC</a>`:''}<a target="_blank" href="${ea(maps(x.Latitude,x.Longitude))}">➤ Google Maps</a></div></div>`,{maxWidth:330,className:'premium-map-popup'});
+    const pinIcon=L.divIcon({className:'premium-pin-wrap',html:`<span class="premium-pin" style="--pin:${color}"><i></i></span>`,iconSize:[36,44],iconAnchor:[18,39],tooltipAnchor:[0,-36]});
+    const marker=L.marker([lat,lng],{icon:pinIcon,riseOnHover:true}).addTo(JOHOR_MAP.locations);
+    marker.bindTooltip(esc(x.NamaLokasi||x.LocationID),{direction:'top',offset:[0,-9],opacity:.96});
+    marker.on('click',()=>selectMapLocation(x.LocationID));
     bounds.push([lat,lng]);
     if(showAP){
       [[1,x.AP1Latitude,x.AP1Longitude,'#00A6FF',x.AP1Status],[2,x.AP2Latitude,x.AP2Longitude,'#E91E63',x.AP2Status]].forEach(a=>{
         if(!withinJohor(a[1],a[2]))return;apCount++;
-        const apIcon=L.divIcon({className:'premium-ap-wrap',html:`<span class="premium-ap" style="--pin:${a[3]}">${a[0]}</span>`,iconSize:[24,24],iconAnchor:[12,12],popupAnchor:[0,-13]});
+        const apIcon=L.divIcon({className:'premium-ap-wrap',html:`<span class="premium-ap" style="--pin:${a[3]}">${a[0]}</span>`,iconSize:[26,26],iconAnchor:[13,13],popupAnchor:[0,-14]});
         const ap=L.marker([Number(a[1]),Number(a[2])],{icon:apIcon}).addTo(JOHOR_MAP.aps);
-        ap.bindTooltip('AP '+a[0],{permanent:false,direction:'top'});
-        ap.bindPopup(`<div class="map-popup-title">${esc(x.NamaLokasi||x.LocationID)} · AP ${a[0]}</div><div class="map-popup-meta">Status: ${esc(a[4]||'Belum Ditentukan')}<br>Latitude: ${esc(a[1])}<br>Longitude: ${esc(a[2])}</div><div class="map-popup-actions"><button onclick="openLocation('${ea(x.LocationID)}')">Buka AP</button><a target="_blank" href="${ea(maps(a[1],a[2]))}">Google Maps</a></div>`);
+        ap.bindTooltip(`${esc(x.NamaLokasi||x.LocationID)} · AP ${a[0]}`,{direction:'top'});
+        ap.on('click',()=>selectMapLocation(x.LocationID));
         bounds.push([Number(a[1]),Number(a[2])])
       })
     }
@@ -691,8 +974,9 @@ function renderMap(){
   JOHOR_MAP.bounds=bounds;
   setText('mapGpsCount',gpsAll.length);setText('mapNoGpsCount',Math.max(all.length-gpsAll.length,0));setText('mapVisibleCount',visible.length);setText('mapApCount',apCount);
   if(q('mapEmpty'))q('mapEmpty').style.display=visible.length?'none':'flex';
+  if(!visible.length)closeMapSelected();
   requestAnimationFrame(()=>map.invalidateSize());
-  map.fitBounds(JOHOR_MAP.state.getBounds(),{padding:[28,28]})
+  map.fitBounds(JOHOR_MAP.state.getBounds(),{padding:[36,36]})
 }
 function fitJohorMap(){const map=ensureJohorMap();if(!map)return;map.fitBounds(JOHOR_MAP.state.getBounds(),{padding:[28,28]})}
 async function exportJohorMap(){
