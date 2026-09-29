@@ -745,6 +745,17 @@ body{background:#EAF3FF}
 @media(max-width:460px){.v30-decision-actions{grid-template-columns:1fr}.v30-delete-btn{order:2}}
 </style>
 
+
+<style id="v32-proposal-reference">
+/* V32 - read-only proposal reference inside Confirmation / Decision */
+.v32-ref-strip{margin:12px 14px 0;padding:13px;border:1px solid #CFE0F5;border-radius:18px;background:linear-gradient(135deg,#F7FBFF,#EEF6FF);box-shadow:0 10px 24px rgba(27,91,161,.06)}
+.v32-ref-strip-head{display:flex;align-items:flex-start;gap:10px}.v32-ref-strip-ico{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;background:linear-gradient(135deg,#DCEBFF,#EDF6FF);color:#1768D5;flex:0 0 34px}.v32-ref-strip-ico .ui-svg{width:17px;height:17px}.v32-ref-strip-copy{flex:1;min-width:0}.v32-ref-strip-copy b{display:block;font-size:12px;color:#153E70}.v32-ref-strip-copy span{display:block;margin-top:3px;font-size:10px;line-height:1.45;color:#6D8097}.v32-ref-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.v32-ref-actions .btn{display:inline-flex;align-items:center;justify-content:center;gap:7px}.v32-ref-actions .ui-svg{width:14px;height:14px}
+.v32-ref-view{padding:0 0 22px}.v32-ref-hero{margin:12px 14px;padding:15px;border-radius:20px;background:linear-gradient(135deg,#0D4F93,#1287DA);color:#fff;box-shadow:0 14px 30px rgba(13,79,147,.22)}.v32-ref-hero-top{display:flex;gap:10px;align-items:flex-start}.v32-ref-hero-icon{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.22)}.v32-ref-hero-icon .ui-svg{width:20px;height:20px}.v32-ref-hero h3{margin:0;font-size:16px}.v32-ref-hero p{margin:4px 0 0;font-size:10px;line-height:1.55;opacity:.88}.v32-ref-hero-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.v32-ref-hero-actions .btn{display:inline-flex;align-items:center;gap:7px}.v32-ref-hero-actions .light{background:#fff;color:#194B7F;border:0}.v32-ref-hero-actions .soft{background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.24)}
+.v32-readonly-section{margin:12px 14px;padding:15px;background:#fff;border:1px solid #DCE6F1;border-radius:20px;box-shadow:0 8px 22px rgba(17,42,75,.04)}.v32-readonly-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:11px}.v32-readonly-title b{font-size:13px;color:#173F6A}.v32-readonly-title span{font-size:9px;color:#718096;background:#F2F6FB;padding:5px 8px;border-radius:999px}.v32-readonly-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.v32-data{padding:10px 11px;border-radius:13px;background:#F8FBFF;border:1px solid #E4ECF5;min-width:0}.v32-data.wide{grid-column:1/-1}.v32-data span{display:block;font-size:8.5px;text-transform:uppercase;letter-spacing:.04em;color:#8090A4;font-weight:800}.v32-data b{display:block;margin-top:4px;font-size:11px;line-height:1.45;color:#203E61;word-break:break-word}.v32-ap-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.v32-ap-card{border:1px solid #D8E5F4;border-radius:17px;background:linear-gradient(180deg,#FBFDFF,#F5FAFF);overflow:hidden}.v32-ap-head{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:11px 12px;border-bottom:1px solid #E4EDF6}.v32-ap-head b{font-size:12px;color:#173F6A}.v32-ap-body{padding:11px}.v32-ap-photo{display:block;margin-top:10px;border-radius:13px;overflow:hidden;border:1px solid #DDE7F2;background:#EFF5FB;min-height:120px}.v32-ap-photo img{width:100%;height:170px;object-fit:cover;display:block}.v32-ap-photo-empty{height:120px;display:grid;place-items:center;font-size:10px;color:#7B8FA6}.v32-photo-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.v32-photo-item{display:block;border:1px solid #DDE7F2;border-radius:13px;overflow:hidden;background:#fff;text-decoration:none}.v32-photo-item img{display:block;width:100%;height:105px;object-fit:cover;background:#EDF4FB}.v32-photo-item .meta{padding:7px}.v32-photo-item .meta b{display:block;font-size:9px;color:#274B75;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.v32-photo-item .meta span{display:block;margin-top:2px;font-size:8px;color:#8191A4;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.v32-photo-empty{padding:18px;border:1px dashed #C9D8E8;border-radius:14px;text-align:center;color:#7D8EA3;font-size:10px;background:#FAFCFF}.v32-card-ref-btn{background:linear-gradient(135deg,#E7F2FF,#DCEBFF);color:#1559AD;border:1px solid #C9DEFA}.v32-card-ref-btn .ui-svg{width:14px;height:14px}
+@media(max-width:700px){.v32-readonly-grid,.v32-ap-grid{grid-template-columns:1fr}.v32-data.wide{grid-column:auto}.v32-photo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.v32-ref-actions{display:grid;grid-template-columns:1fr 1fr}.v32-ref-actions .btn{width:100%}.decision-card-actions{grid-template-columns:1fr 1fr!important}.decision-card-actions .v32-card-ref-btn{grid-column:1/-1}.v32-ref-hero-actions{display:grid;grid-template-columns:1fr 1fr}.v32-ref-hero-actions .btn{width:100%;justify-content:center}}
+@media(max-width:420px){.v32-photo-grid{grid-template-columns:1fr 1fr}.v32-ref-hero-actions{grid-template-columns:1fr}.v32-ref-actions{grid-template-columns:1fr}}
+</style>
+
 </head>
 <body>
 <div class="layout">
@@ -1880,6 +1891,79 @@ decisionPanel=function(l,locked){
   return `<section class="section">${v26SectionHead('Pengesahan / Keputusan Lokasi','Semua medan keputusan wajib diisi kecuali Catatan Keputusan. Foto cadangan alternatif adalah pilihan jika team mencadangkan titik lain.')}<fieldset ${locked?'disabled':''} style="border:0;padding:0;margin:0"><div class="fields"><div class="field"><label>Status Lokasi</label><select id="decisionStatus">${options(['','Diputuskan','Pemasangan','Siap'],['Diputuskan','Pemasangan','Siap'].includes(l.Status)?l.Status:'')}</select></div><div class="field"><label>Tarikh Keputusan</label><input id="decisionDate" type="date" value="${dateVal(l.TarikhKeputusan)}"></div><div class="field full"><label>Pasukan / Pegawai Penentu</label><input id="decisionTeam" value="${ea(l.PasukanPenentu)}"></div><div class="field"><label>Tarikh Pemasangan</label><input id="installDate" type="date" value="${dateVal(l.TarikhPemasangan)}"></div><div class="field full"><label>Catatan Keputusan <span class="v26-optional">Pilihan</span></label><textarea id="decisionNote">${esc(l.CatatanKeputusan)}</textarea></div></div><div class="decision-alt-photo">${v26SectionHead('Foto Cadangan Alternatif','Pilihan. Gunakan jika ada cadangan titik lain semasa pengesahan.')}<div class="decision-alt-head">${locked?'':`<label class="decision-alt-camera">${svgIcon('camera')}<span>Ambil Foto</span><input type="file" accept="image/*" capture="environment" onchange="quickDecisionPhoto('${ea(l.LocationID)}',this)"></label>`}</div>${gallery}</div></fieldset><div class="v30-decision-actions">${locked?'':`<button type="button" class="btn primary" onclick="saveDecision()">${svgIcon('check')}<span>Simpan Keputusan</span></button>`}<button type="button" class="v30-delete-btn" onclick="deleteDecisionRecord()">${svgIcon('trash')}<span>Delete Rekod</span></button></div><div class="v30-danger-note"><span class="v30-danger-dot">!</span><span>Delete hanya digunakan jika rekod lokasi ini benar-benar perlu dibuang. Sistem akan meminta pengesahan sebelum memadam.</span></div></section>`;
 };
 
+
+
+// ===== V32 PROPOSAL REFERENCE / REPORT / PHOTO VIEWER (BASE: V30) =====
+function v32Val(label,value,wide){
+  const v=(value===0||value)?String(value):'-';
+  return `<div class="v32-data${wide?' wide':''}"><span>${esc(label)}</span><b>${esc(v)}</b></div>`;
+}
+function v32Coord(lat,lng){
+  if(!lat&&!lng)return '-';
+  return [lat||'-',lng||'-'].join(', ');
+}
+function v32ApCard(n,a){
+  a=a||{};
+  const photo=a.PhotoURL?`<a class="v32-ap-photo" href="${ea(a.PhotoURL)}" target="_blank" rel="noopener"><img src="${ea(a.PhotoURL)}" alt="Foto AP ${n}"></a>`:`<div class="v32-ap-photo"><div class="v32-ap-photo-empty">Tiada foto AP ${n}</div></div>`;
+  return `<div class="v32-ap-card"><div class="v32-ap-head"><b>Access Point ${n}</b>${badge(a.StatusAP||'Belum Ditentukan')}</div><div class="v32-ap-body"><div class="v32-readonly-grid">${v32Val('Kawasan / Lokasi Cadangan',a.KawasanCadangan,true)}${v32Val('Block / Level',a.BlokAras)}${v32Val('Indoor / Outdoor',a.JenisAP)}${v32Val('Coordinate',v32Coord(a.Latitude,a.Longitude),true)}${v32Val('Catatan Teknikal',a.CadanganTeknikal||'-',true)}</div>${photo}</div></div>`;
+}
+function v32PhotoGallery(d){
+  const list=[];
+  const aps=d.aps||[];
+  [1,2].forEach(n=>{const a=aps.find(x=>String(x.APNo)===String(n))||{};if(a.PhotoURL)list.push({url:a.PhotoURL,label:'Foto AP '+n,date:a.UpdatedAt||''})});
+  (d.photos||[]).forEach(p=>{if(p.PhotoURL)list.push({url:p.PhotoURL,label:p.Kategori||'Foto Lokasi',date:p.CreatedAt||'',note:p.Catatan||''})});
+  if(!list.length)return '<div class="v32-photo-empty">Belum ada foto dalam rekod cadangan ini.</div>';
+  return `<div class="v32-photo-grid">${list.map(p=>`<a class="v32-photo-item" href="${ea(p.url)}" target="_blank" rel="noopener"><img src="${ea(p.url)}" alt="${ea(p.label)}"><div class="meta"><b>${esc(p.label)}</b><span>${esc(p.note||p.date||'Tekan untuk buka')}</span></div></a>`).join('')}</div>`;
+}
+function proposalReferenceHtml(d){
+  const l=d.location||{},aps=d.aps||[],a1=aps.find(x=>String(x.APNo)==='1')||{},a2=aps.find(x=>String(x.APNo)==='2')||{};
+  return `<div class="v32-ref-view"><div class="v32-ref-hero"><div class="v32-ref-hero-top"><div class="v32-ref-hero-icon">${svgIcon('record')}</div><div><h3>Laporan Cadangan Asal</h3><p>Rujukan read-only Maklumat, AP 1, AP 2 dan semua foto yang telah disimpan sebelum lokasi masuk ke peringkat pengesahan.</p></div></div><div class="v32-ref-hero-actions"><button class="btn light" type="button" onclick="v32ShowDecisionFromLoaded()">${svgIcon('check')}<span>Kembali ke Keputusan</span></button><button class="btn soft" type="button" onclick="printCurrentLocation()">${svgIcon('print')}<span>Cetak / PDF</span></button><button class="btn soft" type="button" onclick="document.getElementById('v32Photos')?.scrollIntoView({behavior:'smooth',block:'start'})">${svgIcon('camera')}<span>Lihat Foto</span></button></div></div>
+  <section class="v32-readonly-section"><div class="v32-readonly-title"><b>Maklumat Lokasi</b><span>Read-only</span></div><div class="v32-readonly-grid">${v32Val('Nama Lokasi',l.NamaLokasi,true)}${v32Val('Daerah',l.Daerah)}${v32Val('Status',displayStatus(l.Status))}${v32Val('PIC',l.PICNama)}${v32Val('Telefon',displayPhone(l.PICTelefon))}${v32Val('Alamat',l.Alamat,true)}${v32Val('Tarikh Lawatan',dateVal(l.TarikhLawatan))}${v32Val('Pasukan / Pegawai Lawatan',l.PasukanLawatan)}${v32Val('Catatan Lokasi',l.CatatanLokasi||'-',true)}</div></section>
+  <section class="v32-readonly-section"><div class="v32-readonly-title"><b>Maklumat Hotspot Sedia Ada</b><span>TM One</span></div><div class="v32-readonly-grid">${v32Val('Perkhidmatan Sedia Ada',l.NamaLokasi||l.PerkhidmatanSediaAda,true)}${v32Val('Bilangan Hotspot Sedia Ada',l.BilHotspotSediaAda||1)}${v32Val('Bilangan Hotspot Dimohon',l.BilHotspotDimohon||2)}${v32Val('Block / Level',l.SediaAdaBlokAras)}${v32Val('Indoor / Outdoor',l.SediaAdaJenis)}${v32Val('Coordinate',v32Coord(l.SediaAdaLatitude,l.SediaAdaLongitude),true)}</div></section>
+  <section class="v32-readonly-section"><div class="v32-readonly-title"><b>Cadangan Access Point</b><span>AP 1 & AP 2</span></div><div class="v32-ap-grid">${v32ApCard(1,a1)}${v32ApCard(2,a2)}</div></section>
+  <section id="v32Photos" class="v32-readonly-section"><div class="v32-readonly-title"><b>Semua Foto Cadangan</b><span>${Number((d.photos||[]).length)+(a1.PhotoURL?1:0)+(a2.PhotoURL?1:0)} foto</span></div>${v32PhotoGallery(d)}</section></div>`;
+}
+function v32ShowProposalFromLoaded(focusPhotos){
+  if(!APP.current||!APP.current.location){toast('Rekod cadangan belum dimuatkan.');return}
+  const l=APP.current.location;
+  q('drawerName').textContent=l.NamaLokasi||'Lokasi';q('drawerId').textContent=l.LocationID;q('drawerStatus').textContent=displayStatus(l.Status);q('drawerStatus').dataset.status=displayStatus(l.Status);
+  q('drawerBack').classList.add('decision-mode');q('drawerBody').innerHTML=proposalReferenceHtml(APP.current);q('drawerBack').classList.add('open');document.body.style.overflow='hidden';
+  q('drawer')?.scrollTo({top:0,behavior:'auto'});
+  if(focusPhotos)setTimeout(()=>document.getElementById('v32Photos')?.scrollIntoView({behavior:'smooth',block:'start'}),80);
+}
+async function openProposalReference(id,focusPhotos){
+  startProgress('Membuka cadangan...',16,'Mengambil Maklumat, AP dan foto cadangan.');
+  try{
+    const r=await apiGet('locationDetail',{locationId:id},2,10000);if(!r.ok)throw new Error(r.error||'Rekod cadangan tidak dapat dibuka.');
+    APP.current=r.data;hydrate();APP.proposalDraft=null;v32ShowProposalFromLoaded(!!focusPhotos);finishProgress('Cadangan dibuka.');
+  }catch(e){stopProgress(false);toast(e.message||String(e))}
+}
+function v32ShowDecisionFromLoaded(){
+  if(!APP.current||!APP.current.location){toast('Rekod keputusan belum dimuatkan.');return}
+  const l=APP.current.location;q('drawerName').textContent=l.NamaLokasi||'Lokasi';q('drawerId').textContent=l.LocationID;q('drawerStatus').textContent=displayStatus(l.Status);q('drawerStatus').dataset.status=displayStatus(l.Status);q('drawerBack').classList.add('decision-mode');q('drawerBody').innerHTML=decisionOverview(APP.current)+decisionPanel(l,!!l.IsLocked);applyRequiredUI();q('drawer')?.scrollTo({top:0,behavior:'smooth'});
+}
+async function printProposalById(id){
+  const w=window.open('','_blank');if(!w){toast('Browser menyekat laporan. Benarkan pop-up untuk laman ini.');return}
+  w.document.write('<!doctype html><html><body style="font-family:Arial;padding:30px">Menjana laporan cadangan...</body></html>');
+  try{
+    const r=await apiGet('locationDetail',{locationId:id},2,10000);if(!r.ok)throw new Error(r.error||'Laporan gagal dijana.');
+    const d=r.data||{},l=d.location||{};const data={facility:'Perbadanan Kemajuan Perumahan Johor',targetLocations:(APP.locations||[]).length,locations:[l],aps:d.aps||[],generatedAt:new Date().toLocaleString('ms-MY')};renderPrintWindow(w,data,l.LocationID,true);
+  }catch(e){try{w.document.body.innerHTML='<p>Ralat: '+esc(e.message||String(e))+'</p>'}catch(_){}toast(e.message||String(e))}
+}
+
+renderDecision=function(){
+  const el=q('decisionGrid');if(!el)return;const rows=(APP.locations||[]).filter(x=>proposalFinished(x));
+  el.innerHTML=rows.length?rows.map(x=>`<article class="card loc decision-ready"><div class="loc-head"><div class="loc-id">${esc(String(x.LocationID||'').replace('PPR-','')||'--')}</div><div style="flex:1;min-width:0"><div class="loc-name">${esc(x.NamaLokasi||'Lokasi belum dinamakan')}</div><div class="small">${esc(x.Daerah||'-')}</div><div style="margin-top:6px">${badge(x.Status)}</div></div></div><div class="loc-meta">PIC: ${esc(x.PICNama||'-')}<br>AP1: ${esc(x.AP1Status||'-')} · AP2: ${esc(x.AP2Status||'-')}<br>Foto: ${Number(x.PhotoCount||0)}</div><div class="actions decision-card-actions"><button class="btn v32-card-ref-btn" type="button" onclick="openProposalReference('${ea(x.LocationID)}',false)">${svgIcon('record')}<span>Lihat Cadangan & Foto</span></button><label class="btn decision-photo-btn">${svgIcon('camera')}<span>Foto Baru</span><input type="file" accept="image/*" capture="environment" onchange="quickDecisionPhoto('${ea(x.LocationID)}',this)"></label><button class="btn primary" type="button" onclick="openDecisionLocation('${ea(x.LocationID)}')">${svgIcon('check')}<span>Buka Keputusan</span></button></div></article>`).join(''):'<div class="card empty" style="grid-column:1/-1">Belum ada lokasi yang selesai cadangan AP 1 dan AP 2.</div>';
+};
+
+decisionPanel=function(l,locked){
+  const alt=(APP.current?.photos||[]).filter(p=>String(p.Kategori||'').includes('Cadangan Alternatif'));
+  const gallery=alt.length?`<div class="decision-alt-gallery">${alt.map(p=>`<a class="decision-alt-thumb" target="_blank" rel="noopener" href="${ea(p.PhotoURL)}"><img src="${ea(p.PhotoURL)}"><span>${esc(p.CreatedAt||'')}</span></a>`).join('')}</div>`:'<div class="decision-alt-empty">Belum ada foto cadangan alternatif.</div>';
+  const ref=`<div class="v32-ref-strip"><div class="v32-ref-strip-head"><div class="v32-ref-strip-ico">${svgIcon('record')}</div><div class="v32-ref-strip-copy"><b>Rujukan Cadangan Asal</b><span>Semak semula Maklumat, AP 1, AP 2 dan semua foto sebelum membuat keputusan.</span></div></div><div class="v32-ref-actions"><button type="button" class="btn v32-card-ref-btn" onclick="v32ShowProposalFromLoaded(false)">${svgIcon('record')}<span>Lihat Cadangan & Foto</span></button><button type="button" class="btn light" onclick="printCurrentLocation()">${svgIcon('print')}<span>Cetak / PDF</span></button></div></div>`;
+  return `${ref}<section class="section">${v26SectionHead('Pengesahan / Keputusan Lokasi','Semua medan keputusan wajib diisi kecuali Catatan Keputusan. Foto cadangan alternatif adalah pilihan jika team mencadangkan titik lain.')}<fieldset ${locked?'disabled':''} style="border:0;padding:0;margin:0"><div class="fields"><div class="field"><label>Status Lokasi</label><select id="decisionStatus">${options(['','Diputuskan','Pemasangan','Siap'],['Diputuskan','Pemasangan','Siap'].includes(l.Status)?l.Status:'')}</select></div><div class="field"><label>Tarikh Keputusan</label><input id="decisionDate" type="date" value="${dateVal(l.TarikhKeputusan)}"></div><div class="field full"><label>Pasukan / Pegawai Penentu</label><input id="decisionTeam" value="${ea(l.PasukanPenentu)}"></div><div class="field"><label>Tarikh Pemasangan</label><input id="installDate" type="date" value="${dateVal(l.TarikhPemasangan)}"></div><div class="field full"><label>Catatan Keputusan <span class="v26-optional">Pilihan</span></label><textarea id="decisionNote">${esc(l.CatatanKeputusan)}</textarea></div></div><div class="decision-alt-photo">${v26SectionHead('Foto Cadangan Alternatif','Pilihan. Gunakan jika ada cadangan titik lain semasa pengesahan.')}<div class="decision-alt-head">${locked?'':`<label class="decision-alt-camera">${svgIcon('camera')}<span>Ambil Foto</span><input type="file" accept="image/*" capture="environment" onchange="quickDecisionPhoto('${ea(l.LocationID)}',this)"></label>`}</div>${gallery}</div></fieldset><div class="v30-decision-actions">${locked?'':`<button type="button" class="btn primary" onclick="saveDecision()">${svgIcon('check')}<span>Simpan Keputusan</span></button>`}<button type="button" class="v30-delete-btn" onclick="deleteDecisionRecord()">${svgIcon('trash')}<span>Delete Rekod</span></button></div><div class="v30-danger-note"><span class="v30-danger-dot">!</span><span>Delete hanya digunakan jika rekod lokasi ini benar-benar perlu dibuang. Sistem akan meminta pengesahan sebelum memadam.</span></div></section>`;
+};
+
 </script>
 </body>
 </html>
+
