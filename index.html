@@ -689,7 +689,20 @@ body{background:#EAF3FF}
 <style id="v25-decision-photo">
 .decision-card-actions{align-items:center}.decision-photo-btn{background:linear-gradient(135deg,#FFF1C9,#FFD965);color:#704C00;border:1px solid #F4CF68;box-shadow:0 7px 18px rgba(244,200,66,.18);cursor:pointer}.decision-photo-btn input{display:none}.decision-photo-btn .ui-svg{width:15px;height:15px}.decision-alt-photo{margin-top:14px;padding:13px;border:1px solid #D7E6F6;border-radius:17px;background:linear-gradient(135deg,#F8FBFF,#EEF6FF)}.decision-alt-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.decision-alt-head b{display:block;font-size:12px;color:#173F6A}.decision-alt-head span{display:block;font-size:9.5px;color:#6C8098;margin-top:3px}.decision-alt-camera{display:inline-flex;align-items:center;gap:7px;padding:9px 12px;border-radius:12px;background:linear-gradient(135deg,#FFC928,#FFD965);color:#173F6A;font-size:10px;font-weight:900;cursor:pointer;box-shadow:0 8px 18px rgba(244,200,66,.20);white-space:nowrap}.decision-alt-camera input{display:none}.decision-alt-camera .ui-svg{width:15px;height:15px}.decision-alt-gallery{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-top:10px}.decision-alt-thumb{display:block;border-radius:12px;overflow:hidden;background:#fff;border:1px solid #DDE7F2;text-decoration:none}.decision-alt-thumb img{width:100%;height:90px;object-fit:cover;display:block}.decision-alt-thumb span{display:block;padding:5px 6px;font-size:8px;color:#718096;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.decision-alt-empty{margin-top:10px;padding:11px;border-radius:12px;background:#fff;border:1px dashed #C7D8EA;text-align:center;color:#7B8FA6;font-size:9.5px}.decision-alt-note{margin-top:7px;font-size:8.5px;color:#8294A9}.mobile-bottom{grid-template-columns:repeat(4,1fr)!important}
 @media(max-width:560px){.decision-alt-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}.decision-alt-thumb img{height:78px}.decision-alt-head{align-items:flex-start}.decision-alt-camera{padding:9px 10px}.decision-card-actions{display:grid;grid-template-columns:1fr 1fr}.decision-card-actions .btn{width:100%;justify-content:center}}
-</style></head>
+</style>
+<style id="v29-info-icon-fix">
+/* V29: hard-limit info icon size for Android/mobile browsers */
+.v29-info-tip{position:relative!important;margin-left:auto!important;display:block!important;flex:0 0 auto!important;width:29px!important;height:29px!important;min-width:29px!important;max-width:29px!important;min-height:29px!important;max-height:29px!important;overflow:visible!important}
+.v29-info-tip>summary{box-sizing:border-box!important;display:grid!important;place-items:center!important;width:29px!important;height:29px!important;min-width:29px!important;max-width:29px!important;min-height:29px!important;max-height:29px!important;margin:0!important;padding:0!important;overflow:hidden!important;list-style:none!important;border-radius:10px!important;background:linear-gradient(145deg,#0877F9,#48A5FF)!important;border:1px solid rgba(255,255,255,.8)!important;color:#fff!important;box-shadow:0 7px 16px rgba(17,105,220,.24),inset 0 1px 0 rgba(255,255,255,.42)!important;font-size:0!important;line-height:1!important;cursor:pointer!important}
+.v29-info-tip>summary::marker{content:''!important;font-size:0!important}
+.v29-info-tip>summary::-webkit-details-marker{display:none!important}
+.v29-info-tip>summary svg,.v29-info-tip>summary circle,.v29-info-tip>summary path{display:none!important;width:0!important;height:0!important}
+.v29-info-symbol{display:grid!important;place-items:center!important;width:17px!important;height:17px!important;min-width:17px!important;max-width:17px!important;min-height:17px!important;max-height:17px!important;border-radius:6px!important;background:rgba(255,255,255,.18)!important;color:#fff!important;font:900 12px/17px Arial,sans-serif!important;text-align:center!important;text-transform:none!important;letter-spacing:0!important}
+.v29-info-tip[open]>summary{background:linear-gradient(145deg,#075CCA,#278FF5)!important;box-shadow:0 0 0 4px rgba(26,115,232,.11),0 8px 18px rgba(17,105,220,.25)!important}
+.v29-info-tip .v26-info-bubble{right:0!important}
+@media(max-width:920px){.v29-info-tip{width:28px!important;height:28px!important;min-width:28px!important;max-width:28px!important;min-height:28px!important;max-height:28px!important}.v29-info-tip>summary{width:28px!important;height:28px!important;min-width:28px!important;max-width:28px!important;min-height:28px!important;max-height:28px!important}}
+</style>
+</head>
 <body>
 <div class="layout">
   <aside id="side" class="side">
@@ -1671,7 +1684,7 @@ const V26_DRAFT_PREFIX='wifiProposalDraftV26:';
 APP.proposalDraft=null;
 
 function v26InfoTip(text){
-  return `<details class="v26-info-tip"><summary aria-label="Maklumat lanjut" title="Maklumat lanjut"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.2"></circle><path d="M11.1 10.2h1.8v6.4h-1.8zM12 6.7a1.15 1.15 0 1 1 0 2.3 1.15 1.15 0 0 1 0-2.3z"></path></svg></summary><div class="v26-info-bubble"><div class="v28-info-title"><span>i</span> Maklumat</div><div>${esc(text)}</div></div></details>`;
+  return `<details class="v26-info-tip v29-info-tip"><summary aria-label="Maklumat lanjut" title="Maklumat lanjut"><span class="v29-info-symbol" aria-hidden="true">i</span></summary><div class="v26-info-bubble"><div class="v28-info-title"><span>i</span> Maklumat</div><div>${esc(text)}</div></div></details>`;
 }
 function v26SectionHead(title,help){
   return `<div class="v26-section-head"><div class="section-title">${esc(title)}</div>${help?v26InfoTip(help):''}</div>`;
