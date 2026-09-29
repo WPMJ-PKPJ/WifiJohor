@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
-<title>Sistem WiFi Premium Maju Johor V9</title>
+<title>Sistem WiFi Premium Maju Johor V16</title>
 <style>
 :root{--navy:#0B2C5F;--navy-2:#123E82;--blue:#1A73E8;--blue-2:#4EA1FF;--sky:#EAF4FF;--yellow:#F4C842;--yellow-2:#FFD965;--bg:#F4F8FF;--bg-2:#EDF4FF;--card:#FFFFFF;--line:#D8E4F1;--text:#163254;--muted:#5F6F86;--success:#16935A;--danger:#D93025;--warning:#E59A00;--shadow:0 18px 48px rgba(13,51,105,.10)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Roboto,Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#F6FAFF 0%,#EEF5FF 100%);color:var(--text)}button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}
@@ -200,6 +200,172 @@ label{font-size:10.5px}
   .side .brand{margin-top:0}
   .side-close{margin-right:0}
 }
+
+
+/* ============================================================
+   V16 PREMIUM MAP UI - PKPJ / WIFI PREMIUM MAJU JOHOR
+   ============================================================ */
+:root{
+  --v16-navy:#052653;
+  --v16-navy2:#073b7a;
+  --v16-blue:#087CF0;
+  --v16-cyan:#36B9FF;
+  --v16-glass:rgba(6,47,101,.82);
+  --v16-line:rgba(112,195,255,.30);
+}
+body{background:#EAF3FF}
+.top{
+  background:linear-gradient(120deg,#052653 0%,#07498E 62%,#0C6BC7 100%);
+  border-bottom:1px solid rgba(118,200,255,.28);
+  box-shadow:0 10px 32px rgba(3,38,83,.20);
+}
+.top:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 78% -80%,rgba(87,188,255,.38),transparent 42%),linear-gradient(90deg,transparent,rgba(255,255,255,.035),transparent)}
+.top-brand,.menu,.api-box{position:relative;z-index:1}
+.top-title{color:#fff}.top-title .accent{color:#69C9FF}.top-sub{color:rgba(255,255,255,.72)}
+.top-logo{background:rgba(255,255,255,.98);border-color:rgba(255,255,255,.6);box-shadow:0 8px 22px rgba(0,0,0,.18)}
+.menu{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.16);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.10)}
+.api-box{background:rgba(255,255,255,.10)!important;border-color:rgba(255,255,255,.18)!important;color:#fff!important;box-shadow:none!important;backdrop-filter:blur(12px)}
+.api-box[data-state="on"],.api-box[data-state="off"],.api-box[data-state="checking"]{color:#fff!important;background:rgba(255,255,255,.10)!important;border-color:rgba(255,255,255,.18)!important}
+
+#page-map{
+  position:relative;
+  margin:-22px;
+  padding:22px;
+  min-height:calc(100vh - 72px);
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 18% 12%,rgba(46,160,255,.34),transparent 32%),
+    radial-gradient(circle at 88% 35%,rgba(29,126,221,.28),transparent 34%),
+    linear-gradient(150deg,#031F45 0%,#063A77 42%,#0857A5 100%);
+}
+#page-map:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.34;background-image:radial-gradient(circle at 1px 1px,rgba(154,218,255,.24) 1px,transparent 0);background-size:22px 22px;mask-image:linear-gradient(to bottom,transparent,#000 18%,#000 76%,transparent)}
+#page-map>.map-home{position:relative;z-index:1}
+.map-capture{
+  padding:18px;
+  border-radius:28px;
+  background:linear-gradient(160deg,rgba(7,57,120,.94),rgba(4,39,84,.88));
+  border:1px solid rgba(106,197,255,.35);
+  box-shadow:0 28px 70px rgba(0,13,39,.34),inset 0 1px 0 rgba(255,255,255,.10);
+  backdrop-filter:blur(16px);
+}
+.map-capture-head{margin-bottom:15px;padding:2px 2px 0}
+.map-capture-logo{width:54px;height:54px;border-radius:17px;background:#fff;border:1px solid rgba(255,255,255,.70);box-shadow:0 12px 26px rgba(0,0,0,.24)}
+.map-capture-logo img{width:34px}
+.map-capture-copy b{font-size:20px;color:#fff;letter-spacing:-.02em}
+.map-capture-copy span{display:block;margin-top:4px;font-size:11px;color:rgba(225,241,255,.72)}
+.map-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0 0 14px}
+.map-chip{
+  min-height:64px;
+  display:grid;
+  grid-template-columns:38px 1fr;
+  grid-template-rows:auto auto;
+  align-items:center;
+  column-gap:9px;
+  padding:10px 12px;
+  border-radius:17px;
+  background:linear-gradient(145deg,rgba(15,92,176,.78),rgba(11,68,137,.72));
+  border:1px solid rgba(117,198,255,.30);
+  color:#DCEEFF;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 8px 20px rgba(0,21,55,.14);
+  font-size:10px;
+}
+.map-chip:before{grid-row:1/3;display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:linear-gradient(145deg,#F9FCFF,#DCEEFF);color:#087CF0;font-size:18px;box-shadow:0 7px 17px rgba(0,0,0,.18)}
+.map-chip:nth-child(1):before{content:"⌖";color:#12A866;background:linear-gradient(145deg,#DFFFF0,#BFF6D9)}
+.map-chip:nth-child(2):before{content:"●";color:#7B8BA3}
+.map-chip:nth-child(3):before{content:"⌁";color:#7A45F6;background:linear-gradient(145deg,#F0E9FF,#D8C9FF)}
+.map-chip:nth-child(4):before{content:"▦";color:#087CF0}
+.map-chip b{grid-column:2;grid-row:1;font-size:22px!important;line-height:1;color:#fff!important;margin:0}
+.map-chip{line-height:1.25}
+
+.map-wrap{
+  min-height:560px;
+  border-radius:25px;
+  overflow:hidden;
+  border:1px solid rgba(106,198,255,.34);
+  background:
+    radial-gradient(circle at 50% 42%,rgba(18,119,216,.35),transparent 48%),
+    linear-gradient(150deg,#062D61,#04478E 54%,#075DAE);
+  box-shadow:inset 0 0 70px rgba(1,22,55,.38),0 14px 32px rgba(0,20,55,.18);
+}
+.map-wrap:before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(circle at 50% 45%,rgba(91,191,255,.17),transparent 43%),repeating-radial-gradient(circle at 50% 50%,rgba(98,192,255,.05) 0 1px,transparent 1px 18px)}
+.johor-map{height:min(70vh,760px);min-height:560px;background:transparent!important;z-index:1}
+.johor-map .leaflet-container{background:transparent}
+.johor-boundary-glow{filter:drop-shadow(0 0 5px rgba(53,166,255,.95)) drop-shadow(0 0 18px rgba(18,126,234,.75)) drop-shadow(0 24px 22px rgba(0,0,0,.24))}
+.johor-state-label{font-size:34px;font-weight:900;letter-spacing:.22em;color:#0B2C5F;opacity:.84;text-shadow:0 2px 0 #fff,0 5px 18px rgba(15,73,133,.16)}
+.district-label-wrap{background:transparent!important;border:0!important}
+.district-label{display:block;width:86px;text-align:center;font-size:9px;font-weight:900;letter-spacing:.035em;color:#173B68;text-shadow:0 1px 1px #fff,0 0 5px rgba(255,255,255,.85);opacity:.82;white-space:nowrap}
+
+.premium-pin-wrap,.premium-ap-wrap{background:transparent!important;border:0!important}
+.premium-pin{--pin:#1A73E8;position:relative;display:block;width:29px;height:29px;border-radius:50% 50% 50% 0;background:var(--pin);transform:rotate(-45deg);border:3px solid #fff;box-shadow:0 8px 13px rgba(0,21,55,.33),0 0 0 3px color-mix(in srgb,var(--pin) 24%,transparent),0 0 20px color-mix(in srgb,var(--pin) 52%,transparent)}
+.premium-pin:before{content:"";position:absolute;inset:-9px;border:2px solid color-mix(in srgb,var(--pin) 60%,transparent);border-radius:50%;animation:v16Pulse 2s ease-out infinite;transform:rotate(45deg)}
+.premium-pin i{position:absolute;width:9px;height:9px;border-radius:50%;background:#fff;left:7px;top:7px;box-shadow:0 2px 6px rgba(0,0,0,.16)}
+@keyframes v16Pulse{0%{transform:rotate(45deg) scale(.55);opacity:.8}70%,100%{transform:rotate(45deg) scale(1.25);opacity:0}}
+.premium-ap{--pin:#00A6FF;display:grid;place-items:center;width:23px;height:23px;border-radius:50%;background:var(--pin);color:#fff;border:2px solid #fff;font-size:9px;font-weight:900;box-shadow:0 6px 12px rgba(0,22,55,.28),0 0 14px color-mix(in srgb,var(--pin) 55%,transparent)}
+
+.map-legend{
+  left:auto;right:15px;bottom:auto;top:15px;
+  min-width:145px;
+  padding:12px 13px;
+  border-radius:18px;
+  background:linear-gradient(155deg,rgba(5,46,100,.91),rgba(3,34,76,.88));
+  color:#EAF5FF;
+  border:1px solid rgba(113,200,255,.34);
+  box-shadow:0 15px 34px rgba(0,18,48,.30),inset 0 1px 0 rgba(255,255,255,.08);
+  backdrop-filter:blur(14px);
+  font-size:9px;
+}
+.map-legend>b{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;font-size:11px;color:#fff}.map-legend>b:after{content:"⌃";opacity:.78}
+.legend-row{margin:5px 0;gap:7px}.legend-dot{width:10px;height:10px;border:2px solid rgba(255,255,255,.75);box-shadow:0 2px 7px rgba(0,0,0,.22)}
+
+.johor-map .leaflet-control-zoom{border:0!important;margin:16px 0 0 16px!important;box-shadow:0 12px 24px rgba(0,20,55,.28)!important}
+.johor-map .leaflet-control-zoom a{width:40px;height:40px;line-height:38px;background:rgba(255,255,255,.96);color:#0A3D78;border-color:#D9E8F6;font-size:21px;font-weight:500}
+.johor-map .leaflet-control-zoom-in{border-radius:12px 12px 0 0!important}.johor-map .leaflet-control-zoom-out{border-radius:0 0 12px 12px!important}
+
+.premium-map-popup .leaflet-popup-content-wrapper{padding:0;overflow:hidden;border-radius:20px;background:rgba(255,255,255,.98);box-shadow:0 18px 48px rgba(0,24,63,.30);border:1px solid rgba(111,181,241,.34)}
+.premium-map-popup .leaflet-popup-content{margin:0;min-width:255px;max-width:310px}
+.premium-map-popup .leaflet-popup-tip{background:#fff}
+.map-popup-card{padding:14px}
+.map-popup-top{display:flex;gap:8px;align-items:flex-start;justify-content:space-between}
+.map-popup-title{font-size:15px;font-weight:900;color:#0A376F;margin:0;line-height:1.2}.map-popup-location{font-size:10px;color:#607792;margin-top:4px}
+.map-popup-status{--status:#98A2B3;display:inline-flex;align-items:center;gap:5px;padding:5px 8px;border-radius:999px;background:color-mix(in srgb,var(--status) 13%,#fff);color:color-mix(in srgb,var(--status) 82%,#102B4B);font-size:9px;font-weight:900;white-space:nowrap}.map-popup-status:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--status)}
+.map-popup-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 9px;margin:11px 0;padding:10px;border-radius:13px;background:#F4F8FD;color:#536B86;font-size:9.5px;line-height:1.35}.map-popup-grid span:last-child{grid-column:1/-1;font-variant-numeric:tabular-nums;color:#7B8EA3}
+.map-popup-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:0}
+.map-popup-actions button,.map-popup-actions a{display:flex;align-items:center;justify-content:center;min-height:34px;padding:8px 9px;border-radius:11px;font-size:9.5px;font-weight:900;border:1px solid #D6E6F7}
+.map-popup-actions button{grid-column:1/-1;background:linear-gradient(135deg,#087CF0,#3BA6FF);color:#fff;border:0;box-shadow:0 8px 17px rgba(8,124,240,.22)}
+.map-popup-actions a{background:#EDF5FF;color:#14548F}.map-popup-actions .map-popup-call{display:none;background:linear-gradient(135deg,#16A565,#28C77B);color:#fff;border:0}
+
+.map-empty>div{background:rgba(4,39,84,.86);border-color:rgba(105,193,255,.32);color:#E8F5FF;backdrop-filter:blur(10px)}
+.mobile-bottom{background:rgba(255,255,255,.97);box-shadow:0 -10px 30px rgba(3,38,83,.14);border-top:1px solid #DDE9F6}
+.mobile-bottom button.active{color:#087CF0}.mobile-bottom button.active b{background:#EAF4FF;border-radius:12px}
+
+@media(max-width:920px){
+  .content{padding:14px}
+  #page-map{margin:-14px;padding:14px 12px 86px;min-height:calc(100dvh - 68px)}
+  .top{height:70px;padding:0 12px;gap:9px}.top-logo{width:42px;height:42px}.top-logo img{width:25px}.top-title{font-size:16px}.top-sub{font-size:9.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:230px}.api-box{display:none}
+  .menu{display:block;width:46px;height:46px;border-radius:15px;font-size:0}.menu:before{content:"☰";font-size:23px}
+  .map-capture{padding:12px;border-radius:22px}
+  .map-capture-head{margin-bottom:11px}.map-capture-logo{width:48px;height:48px;border-radius:15px}.map-capture-logo img{width:30px}.map-capture-copy b{font-size:16px}.map-capture-copy span{font-size:9.5px}
+  .map-summary{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-bottom:10px}.map-chip{min-height:54px;padding:8px 9px;grid-template-columns:31px 1fr;column-gap:7px;border-radius:14px}.map-chip:before{width:31px;height:31px;border-radius:10px;font-size:15px}.map-chip b{font-size:18px!important}.map-chip{font-size:9px}
+  .map-wrap{min-height:calc(100dvh - 280px);border-radius:20px}.johor-map{height:calc(100dvh - 280px);min-height:470px}
+  .map-legend{right:9px;top:9px;min-width:126px;padding:9px 10px;border-radius:14px;font-size:8px}.map-legend>b{font-size:9px;margin-bottom:6px}.legend-row{margin:4px 0}.legend-dot{width:9px;height:9px}
+  .johor-state-label{font-size:27px}.district-label{font-size:7px}
+  .johor-map .leaflet-control-zoom{margin:10px 0 0 10px!important}.johor-map .leaflet-control-zoom a{width:36px;height:36px;line-height:34px}
+  .premium-map-popup .leaflet-popup-content{min-width:245px}.map-popup-actions .map-popup-call{display:flex}.map-popup-actions button{grid-column:auto}.map-popup-grid{grid-template-columns:1fr}
+  .map-popup-grid span:last-child{grid-column:auto}
+}
+@media(max-width:560px){
+  #page-map{padding-left:9px;padding-right:9px}
+  .map-capture{padding:10px;border-radius:20px}
+  .map-capture-head{gap:9px}.map-capture-logo{width:44px;height:44px}.map-capture-copy b{font-size:15px}.map-capture-copy span{font-size:9px}
+  .map-summary{grid-template-columns:1fr 1fr}.map-chip{min-height:50px}
+  .map-wrap{min-height:520px}.johor-map{height:64vh;min-height:520px}
+  .map-legend{transform:scale(.92);transform-origin:top right;max-height:235px}
+  .johor-state-label{font-size:24px}
+}
+@media print{
+  #page-map{background:#fff!important;margin:0!important;padding:0!important}.map-capture{background:#fff!important}.map-wrap{background:#EAF5FF!important}.map-capture-copy b,.map-capture-copy span{color:#0B2C5F!important}.map-chip{background:#F4F8FD!important;color:#35506F!important}.map-chip b{color:#0B2C5F!important}
+}
+
 </style>
 </head>
 <body>
@@ -268,7 +434,7 @@ label{font-size:10.5px}
               <div id="johorMap" class="johor-map"></div>
               <div id="mapEmpty" class="map-empty"><div>Belum ada lokasi WiFi dengan GPS dalam Negeri Johor.</div></div>
               <div class="map-legend">
-                <b>Petunjuk</b>
+                <b>Petunjuk Status</b>
                 <div class="legend-row"><i class="legend-dot" style="background:#98A2B3"></i> Belum Dilawati</div>
                 <div class="legend-row"><i class="legend-dot" style="background:#F4B400"></i> Cadangan</div>
                 <div class="legend-row"><i class="legend-dot" style="background:#1A73E8"></i> Dalam Semakan</div>
@@ -295,10 +461,10 @@ label{font-size:10.5px}
 <div id="loading" class="loading"><div class="loading-box"><div class="loading-top"><div class="spin"></div><div class="loading-copy"><div id="loadingText" class="loading-title">Memproses...</div><div id="loadingSub" class="loading-sub">Sila tunggu sebentar.</div></div><div id="loadingPct" class="loading-pct">0%</div></div><div class="loading-progress"><i id="loadingBar"></i></div></div></div><div id="toast" class="toast"></div>
 
 <script>
-// V9 - Johor Map Home + Mobile Field Camera + Fast Save Progress
+// V16 - Premium Johor Map + Mobile Field Camera + Fast Save Progress
 const CONFIG={API_URL:'https://script.google.com/macros/s/AKfycbywoCrehGGXyZW9n9fOxXiNz0c1wFaiTJ19CfxiIV_U2pGnkLrEiXgeQGNOhF5ogNMIhA/exec',API_KEY:'',TARGET_LOCATIONS:27};
 const APP={locations:[],stats:{},current:null,locationGps:{lat:'',lng:''},existingGps:{lat:'',lng:''},apGps:{1:{lat:'',lng:''},2:{lat:'',lng:''}},apFiles:{1:null,2:null},generalFile:null,generalGps:{lat:'',lng:''}};
-const JOHOR_MAP={map:null,base:null,locations:null,aps:null,bounds:null};
+const JOHOR_MAP={map:null,base:null,locations:null,aps:null,districts:null,bounds:null};
 document.addEventListener('DOMContentLoaded',init);
 
 async function init(){
@@ -480,13 +646,16 @@ function ensureJohorMap(){
   if(JOHOR_MAP.map)return JOHOR_MAP.map;
   const el=q('johorMap');if(!el)return null;
   JOHOR_MAP.map=L.map(el,{zoomControl:true,preferCanvas:true,zoomSnap:.25,minZoom:7,maxZoom:13,maxBounds:JOHOR_STATE_BOUNDS,maxBoundsViscosity:1.0,attributionControl:false});
-  JOHOR_MAP.state=L.polygon(JOHOR_OUTLINE,{color:'#1769C2',weight:3,fillColor:'#FFFFFF',fillOpacity:.98,className:'johor-boundary-glow'}).addTo(JOHOR_MAP.map);
+  JOHOR_MAP.state=L.polygon(JOHOR_OUTLINE,{color:'#35A6FF',weight:4,fillColor:'#F8FBFF',fillOpacity:.97,className:'johor-boundary-glow'}).addTo(JOHOR_MAP.map);
   JOHOR_MAP.locations=L.layerGroup().addTo(JOHOR_MAP.map);
   JOHOR_MAP.aps=L.layerGroup().addTo(JOHOR_MAP.map);
+  JOHOR_MAP.districts=L.layerGroup().addTo(JOHOR_MAP.map);
   const stateBounds=JOHOR_MAP.state.getBounds();
   JOHOR_MAP.map.fitBounds(stateBounds,{padding:[28,28]});
   const labelIcon=L.divIcon({className:'',html:'<div class="johor-state-label">JOHOR</div>',iconSize:[160,34],iconAnchor:[80,17]});
   JOHOR_MAP.label=L.marker([2.05,103.35],{icon:labelIcon,interactive:false}).addTo(JOHOR_MAP.map);
+  const districtPoints=[['SEGAMAT',2.51,102.82],['TANGKAK',2.27,102.55],['MUAR',2.06,102.57],['BATU PAHAT',1.86,102.94],['KLUANG',2.03,103.32],['MERSING',2.43,103.82],['KULAI',1.68,103.60],['PONTIAN',1.49,103.39],['KOTA TINGGI',1.74,103.90],['JOHOR BAHRU',1.50,103.73]];
+  districtPoints.forEach(d=>{const icon=L.divIcon({className:'district-label-wrap',html:`<span class="district-label">${d[0]}</span>`,iconSize:[86,18],iconAnchor:[43,9]});L.marker([d[1],d[2]],{icon,interactive:false}).addTo(JOHOR_MAP.districts)});
   setTimeout(()=>JOHOR_MAP.map.invalidateSize(),80);
   return JOHOR_MAP.map
 }
@@ -503,14 +672,16 @@ function renderMap(){
   const bounds=[];let apCount=0;
   visible.forEach(x=>{
     const lat=Number(x.Latitude),lng=Number(x.Longitude),color=statusMapColor(x.Status||'Belum Dilawati');
-    const marker=L.circleMarker([lat,lng],{radius:9,color:'#fff',weight:2,fillColor:color,fillOpacity:.95}).addTo(JOHOR_MAP.locations);
+    const pinIcon=L.divIcon({className:'premium-pin-wrap',html:`<span class="premium-pin" style="--pin:${color}"><i></i></span>`,iconSize:[34,42],iconAnchor:[17,37],popupAnchor:[0,-34],tooltipAnchor:[0,-34]});
+    const marker=L.marker([lat,lng],{icon:pinIcon}).addTo(JOHOR_MAP.locations);
     marker.bindTooltip(esc(x.NamaLokasi||x.LocationID),{direction:'top',offset:[0,-8]});
-    marker.bindPopup(`<div class="map-popup-title">${esc(x.NamaLokasi||'Lokasi belum dinamakan')}</div><div class="map-popup-meta">${esc(facilityType(x.NamaLokasi))} · ${esc(x.Daerah||'-')}<br>Status: ${esc(x.Status||'Belum Dilawati')}<br>Latitude: ${esc(x.Latitude)}<br>Longitude: ${esc(x.Longitude)}<br>AP 1: ${esc(x.AP1Status||'Belum Ditentukan')} · AP 2: ${esc(x.AP2Status||'Belum Ditentukan')}</div><div class="map-popup-actions"><button onclick="openLocation('${ea(x.LocationID)}')">Buka Rekod</button><a target="_blank" href="${ea(maps(x.Latitude,x.Longitude))}">Google Maps</a></div>`);
+    marker.bindPopup(`<div class="map-popup-card"><div class="map-popup-top"><div><div class="map-popup-title">${esc(x.NamaLokasi||'Lokasi belum dinamakan')}</div><div class="map-popup-location">⌖ ${esc(x.Daerah||'-')}</div></div><span class="map-popup-status" style="--status:${color}">${esc(x.Status||'Belum Dilawati')}</span></div><div class="map-popup-grid"><span>◉ ${esc(facilityType(x.NamaLokasi))}</span><span>⌁ AP 1: ${esc(x.AP1Status||'Belum Ditentukan')}</span><span>⌁ AP 2: ${esc(x.AP2Status||'Belum Ditentukan')}</span><span>● ${esc(x.PICNama||'PIC belum diisi')}</span>${x.PICTelefon?`<span>☎ ${esc(x.PICTelefon)}</span>`:''}<span>GPS ${esc(x.Latitude)}, ${esc(x.Longitude)}</span></div><div class="map-popup-actions"><button onclick="openLocation('${ea(x.LocationID)}')">▣ Buka Rekod</button>${x.PICTelefon?`<a class="map-popup-call" href="tel:${ea(telValue(x.PICTelefon))}">☎ Telefon PIC</a>`:''}<a target="_blank" href="${ea(maps(x.Latitude,x.Longitude))}">➤ Google Maps</a></div></div>`,{maxWidth:330,className:'premium-map-popup'});
     bounds.push([lat,lng]);
     if(showAP){
       [[1,x.AP1Latitude,x.AP1Longitude,'#00A6FF',x.AP1Status],[2,x.AP2Latitude,x.AP2Longitude,'#E91E63',x.AP2Status]].forEach(a=>{
         if(!withinJohor(a[1],a[2]))return;apCount++;
-        const ap=L.circleMarker([Number(a[1]),Number(a[2])],{radius:6,color:'#fff',weight:2,fillColor:a[3],fillOpacity:.98}).addTo(JOHOR_MAP.aps);
+        const apIcon=L.divIcon({className:'premium-ap-wrap',html:`<span class="premium-ap" style="--pin:${a[3]}">${a[0]}</span>`,iconSize:[24,24],iconAnchor:[12,12],popupAnchor:[0,-13]});
+        const ap=L.marker([Number(a[1]),Number(a[2])],{icon:apIcon}).addTo(JOHOR_MAP.aps);
         ap.bindTooltip('AP '+a[0],{permanent:false,direction:'top'});
         ap.bindPopup(`<div class="map-popup-title">${esc(x.NamaLokasi||x.LocationID)} · AP ${a[0]}</div><div class="map-popup-meta">Status: ${esc(a[4]||'Belum Ditentukan')}<br>Latitude: ${esc(a[1])}<br>Longitude: ${esc(a[2])}</div><div class="map-popup-actions"><button onclick="openLocation('${ea(x.LocationID)}')">Buka AP</button><a target="_blank" href="${ea(maps(a[1],a[2]))}">Google Maps</a></div>`);
         bounds.push([Number(a[1]),Number(a[2])])
