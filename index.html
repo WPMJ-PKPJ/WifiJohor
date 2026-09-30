@@ -756,6 +756,28 @@ body{background:#EAF3FF}
 @media(max-width:420px){.v32-photo-grid{grid-template-columns:1fr 1fr}.v32-ref-hero-actions{grid-template-columns:1fr}.v32-ref-actions{grid-template-columns:1fr}}
 </style>
 
+
+<style id="v33-photo-fix">
+.v33-photo-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:9px}
+.v33-photo-actions .camera{margin-top:0;display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;cursor:pointer}
+.v33-photo-actions .camera .ui-svg{width:18px;height:18px}
+.v33-upload{background:linear-gradient(135deg,#F3ECFF,#E9DDFF)!important;color:#6B3CC4!important;border-color:#D8C8F5!important}
+.v33-upload-ico{width:18px;height:18px;display:inline-block;vertical-align:middle}
+.v33-preview-ready{position:relative;background:#EAF4FF!important;border-style:solid!important;border-color:#8ABCF5!important}
+.v33-preview-ready img{width:100%;height:220px;object-fit:cover;display:block}
+.v33-preview-tag{position:absolute;left:10px;bottom:10px;padding:6px 9px;border-radius:999px;background:rgba(8,89,174,.90);color:#fff;font-size:10px;font-weight:900;box-shadow:0 6px 16px rgba(8,89,174,.2)}
+.v33-photo-failed{position:relative;min-height:105px;display:grid;place-items:center;background:#F4F7FB!important}
+.v33-photo-failed:after{content:'Foto tidak dapat dipaparkan terus. Tekan untuk buka.';padding:12px;text-align:center;font-size:10px;color:#70839A;line-height:1.45}
+.v33-optional-photo-actions{display:flex;align-items:center;gap:8px}
+.v33-optional-photo-actions .photo-icon-action{flex:0 0 50px}
+.v33-optional-photo-actions .v33-upload-small{background:linear-gradient(135deg,#EFE8FF,#DED1FF);color:#6B3CC4}
+.decision-alt-head .v33-alt-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.v33-alt-upload{background:linear-gradient(135deg,#EFE8FF,#E2D6FF)!important;color:#6B3CC4!important}
+.v33-alt-upload input{display:none}
+.v32-photo-item img,.v32-ap-photo img,.decision-alt-thumb img,.photo-open img{background:#EDF4FB}
+.v33-img-loading{opacity:.5}
+@media(max-width:560px){.v33-photo-actions{grid-template-columns:1fr 1fr}.v33-photo-actions .camera{font-size:11px;padding:11px 8px}.v33-preview-ready img{height:200px}.decision-alt-head{display:block}.decision-alt-head .v33-alt-actions{margin-top:9px;justify-content:stretch}.decision-alt-head .v33-alt-actions label{flex:1;justify-content:center}.v33-optional-photo-actions{gap:7px}}
+</style>
 </head>
 <body>
 <div class="layout">
@@ -1963,7 +1985,109 @@ decisionPanel=function(l,locked){
   return `${ref}<section class="section">${v26SectionHead('Pengesahan / Keputusan Lokasi','Semua medan keputusan wajib diisi kecuali Catatan Keputusan. Foto cadangan alternatif adalah pilihan jika team mencadangkan titik lain.')}<fieldset ${locked?'disabled':''} style="border:0;padding:0;margin:0"><div class="fields"><div class="field"><label>Status Lokasi</label><select id="decisionStatus">${options(['','Diputuskan','Pemasangan','Siap'],['Diputuskan','Pemasangan','Siap'].includes(l.Status)?l.Status:'')}</select></div><div class="field"><label>Tarikh Keputusan</label><input id="decisionDate" type="date" value="${dateVal(l.TarikhKeputusan)}"></div><div class="field full"><label>Pasukan / Pegawai Penentu</label><input id="decisionTeam" value="${ea(l.PasukanPenentu)}"></div><div class="field"><label>Tarikh Pemasangan</label><input id="installDate" type="date" value="${dateVal(l.TarikhPemasangan)}"></div><div class="field full"><label>Catatan Keputusan <span class="v26-optional">Pilihan</span></label><textarea id="decisionNote">${esc(l.CatatanKeputusan)}</textarea></div></div><div class="decision-alt-photo">${v26SectionHead('Foto Cadangan Alternatif','Pilihan. Gunakan jika ada cadangan titik lain semasa pengesahan.')}<div class="decision-alt-head">${locked?'':`<label class="decision-alt-camera">${svgIcon('camera')}<span>Ambil Foto</span><input type="file" accept="image/*" capture="environment" onchange="quickDecisionPhoto('${ea(l.LocationID)}',this)"></label>`}</div>${gallery}</div></fieldset><div class="v30-decision-actions">${locked?'':`<button type="button" class="btn primary" onclick="saveDecision()">${svgIcon('check')}<span>Simpan Keputusan</span></button>`}<button type="button" class="v30-delete-btn" onclick="deleteDecisionRecord()">${svgIcon('trash')}<span>Delete Rekod</span></button></div><div class="v30-danger-note"><span class="v30-danger-dot">!</span><span>Delete hanya digunakan jika rekod lokasi ini benar-benar perlu dibuang. Sistem akan meminta pengesahan sebelum memadam.</span></div></section>`;
 };
 
+
+
+// ===== V33 PHOTO PREVIEW + DRIVE THUMBNAIL + UPLOAD OPTION (BASE: V32/V30) =====
+function v33UploadIcon(){
+  return '<svg class="v33-upload-ico" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 16V7.83L8.41 10.4 7 9l5-5 5 5-1.41 1.4L13 7.83V16h-2zm-5 4a2 2 0 0 1-2-2v-3h2v3h12v-3h2v3a2 2 0 0 1-2 2H6z"/></svg>';
+}
+function v33DriveFileId(fileId,url){
+  if(fileId)return String(fileId).trim();
+  const s=String(url||'');
+  let m=s.match(/[?&]id=([^&#]+)/i);if(m)return decodeURIComponent(m[1]);
+  m=s.match(/\/d\/([^/?#]+)/i);if(m)return m[1];
+  m=s.match(/\/thumbnail\?id=([^&#]+)/i);if(m)return decodeURIComponent(m[1]);
+  return '';
+}
+function v33PhotoSrc(obj){
+  obj=obj||{};
+  if(obj.DraftPhotoDataUrl)return obj.DraftPhotoDataUrl;
+  const id=v33DriveFileId(obj.PhotoFileID,obj.PhotoURL);
+  if(id)return 'https://drive.google.com/thumbnail?id='+encodeURIComponent(id)+'&sz=w1600';
+  return obj.PhotoURL||'';
+}
+function v33PhotoOpen(obj){
+  obj=obj||{};
+  const id=v33DriveFileId(obj.PhotoFileID,obj.PhotoURL);
+  if(id)return 'https://drive.google.com/file/d/'+encodeURIComponent(id)+'/view';
+  return obj.PhotoURL||'#';
+}
+function v33PhotoImg(obj,label){
+  obj=obj||{};
+  const id=v33DriveFileId(obj.PhotoFileID,obj.PhotoURL),src=v33PhotoSrc(obj);
+  if(!src)return '';
+  return `<img src="${ea(src)}" alt="${ea(label||'Foto')}" data-file-id="${ea(id)}" data-photo-stage="0" onerror="v33PhotoError(this)">`;
+}
+function v33PhotoError(img){
+  if(!img)return;
+  const id=img.dataset.fileId||'';
+  let stage=Number(img.dataset.photoStage||0);
+  if(id&&stage===0){img.dataset.photoStage='1';img.src='https://lh3.googleusercontent.com/d/'+encodeURIComponent(id)+'=w1600';return}
+  if(id&&stage===1){img.dataset.photoStage='2';img.src='https://drive.google.com/uc?export=view&id='+encodeURIComponent(id);return}
+  img.onerror=null;img.style.display='none';const p=img.parentElement;if(p)p.classList.add('v33-photo-failed');
+}
+function v33PreviewFile(file,box,label){
+  if(!file||!box)return;
+  box.style.display='grid';box.classList.remove('v33-photo-failed');
+  box.innerHTML='<span class="small">Memuatkan gambar...</span>';
+  const reader=new FileReader();
+  reader.onload=function(e){
+    box.classList.add('v33-preview-ready');
+    box.innerHTML=`<img src="${ea(e.target.result)}" alt="${ea(label||'Foto dipilih')}"><div class="v33-preview-tag">✓ Gambar dipilih</div>`;
+  };
+  reader.onerror=function(){box.classList.remove('v33-preview-ready');box.innerHTML='<span class="small">Gambar tidak dapat dipaparkan. Cuba pilih semula.</span>'};
+  reader.readAsDataURL(file);
+}
+previewAP=function(n,input){
+  const f=input&&input.files&&input.files[0];if(!f)return;
+  if(!String(f.type||'').startsWith('image/')){toast('Sila pilih fail gambar.');input.value='';return}
+  APP.apFiles[n]=f;v33PreviewFile(f,q('preview'+n),'Foto AP '+n);
+};
+previewGeneral=function(input){
+  const f=input&&input.files&&input.files[0];if(!f)return;
+  if(!String(f.type||'').startsWith('image/')){toast('Sila pilih fail gambar.');input.value='';return}
+  APP.generalFile=f;v33PreviewFile(f,q('generalPreview'),'Foto Lokasi');
+};
+previewOptionalPhoto=function(input){previewGeneral(input);if(APP.generalFile&&q('optionalPhotoSave'))q('optionalPhotoSave').style.display='grid'};
+
+apSinglePanel=function(n,a,locked){
+  a=a||{};const draftPhoto=a.DraftPhotoDataUrl||'';const isLast=n===2;
+  let previewHtml='';
+  if(draftPhoto)previewHtml=`<img src="${ea(draftPhoto)}" alt="Foto AP ${n}"><div class="v33-preview-tag">✓ Gambar sementara</div>`;
+  else if(a.PhotoURL||a.PhotoFileID)previewHtml=v33PhotoImg(a,'Foto AP '+n);
+  else previewHtml=`<span class="small">Foto AP ${n} wajib</span>`;
+  return `<section class="section ap-single">${v26SectionHead('AP '+n+' · Maklumat Laporan TM One','Semua medan AP '+n+' wajib diisi. Catatan teknikal sahaja pilihan. Foto AP wajib sebagai bukti titik cadangan.')}<fieldset ${locked?'disabled':''} style="border:0;padding:0;margin:0"><div class="ap-card"><div class="ap-head"><b>Access Point ${n}</b>${badge(a.StatusAP||'Belum Ditentukan')}</div><div class="fields"><div class="field full"><label>Kawasan / Lokasi Cadangan</label><input id="apArea${n}" value="${ea(a.KawasanCadangan)}"></div><div class="field"><label>Block / Level</label><input id="apBlock${n}" value="${ea(a.BlokAras)}"></div><div class="field"><label>Indoor / Outdoor</label><select id="apType${n}">${options(['','Indoor','Outdoor'],normalizeApType(a.JenisAP))}</select></div><div class="field full"><label>Status AP</label><select id="apStatus${n}">${options(['','Cadangan','Dalam Semakan','Disahkan','Dipasang'],(a.StatusAP&&a.StatusAP!=='Belum Ditentukan')?a.StatusAP:'')}</select></div></div>${coordSection('Coordinate Location · AP '+n,'ap'+n,a.Latitude,a.Longitude,`captureAPGps(${n})`)}<div id="preview${n}" class="preview${draftPhoto?' v33-preview-ready':''}">${previewHtml}</div><div class="v33-photo-actions"><label class="camera">${svgIcon('camera')}<span>Ambil Foto AP ${n}</span><input type="file" accept="image/*" capture="environment" onchange="previewAP(${n},this)"></label><label class="camera v33-upload">${v33UploadIcon()}<span>Upload Gambar</span><input type="file" accept="image/*" onchange="previewAP(${n},this)"></label></div><div class="field" style="margin-top:10px"><label>Catatan Teknikal <span class="v26-optional">Pilihan</span></label><textarea id="apTech${n}">${esc(a.CadanganTeknikal||'')}</textarea></div><div class="actions v26-next-actions">${locked?'':isLast?`<button type="button" class="btn v28-step-back" onclick="v28WizardBack('ap1')"><svg class="ui-svg" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg><span>Kembali</span></button><button type="button" class="btn v26-save-final" onclick="saveProposalFinal()">${svgIcon('check')}<span>Simpan Cadangan</span></button>`:`<button type="button" class="btn v28-step-back" onclick="v28WizardBack('info')"><svg class="ui-svg" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg><span>Kembali</span></button><button type="button" class="btn primary v26-next" onclick="nextFromAP1()"><span>Seterusnya</span><svg class="ui-svg" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>`}</div></div></fieldset></section>`;
+};
+
+photoPanel=function(photos,locked){
+  return `<section class="section"><div class="optional-photo-panel"><div class="optional-photo-copy"><b>Foto Lokasi</b><span>Pilihan sahaja · tidak dikira sebagai medan wajib.</span></div>${locked?'':`<div class="v33-optional-photo-actions"><label class="photo-icon-action" title="Ambil Foto Lokasi">${svgIcon('camera')}<input type="file" accept="image/*" capture="environment" onchange="previewOptionalPhoto(this)"></label><label class="photo-icon-action v33-upload-small" title="Upload Gambar">${v33UploadIcon()}<input type="file" accept="image/*" onchange="previewOptionalPhoto(this)"></label></div>`}</div><div id="generalPreview" class="preview" style="display:none;margin-top:12px"></div><input type="hidden" id="photoCat" value="Foto Lokasi / Lawatan"><input type="hidden" id="photoAP" value=""><input type="hidden" id="photoNote" value=""><div id="optionalPhotoSave" class="actions" style="display:none"><button type="button" class="btn primary" onclick="uploadPhoto()">${svgIcon('camera')}<span>Simpan Foto</span></button></div></section><section class="section"><div class="section-title">Galeri Foto</div>${gallery(photos,locked)}</section>`;
+};
+
+gallery=function(photos,locked){
+  if(!photos||!photos.length)return '<div class="empty">Belum ada foto.</div>';
+  return `<div class="gallery">${photos.map(p=>{const open=v33PhotoOpen(p),img=v33PhotoImg(p,p.Kategori||'Foto');return `<div class="photo-card"><a class="photo-open" target="_blank" rel="noopener" href="${ea(open)}">${img||'<span>Buka Foto</span>'}</a><div class="photo-meta"><b>${esc(p.Kategori||'Foto')}</b><br>${p.APNo?'AP '+esc(p.APNo)+'<br>':''}${esc(p.Catatan||'')}<br>${locked?'':`<button class="btn danger" style="margin-top:6px;padding:6px 8px" onclick="deletePhoto('${ea(p.PhotoID)}')">Padam</button>`}</div></div>`}).join('')}</div>`;
+};
+
+v32ApCard=function(n,a){
+  a=a||{};const has=!!(a.PhotoURL||a.PhotoFileID),photo=has?`<a class="v32-ap-photo" href="${ea(v33PhotoOpen(a))}" target="_blank" rel="noopener">${v33PhotoImg(a,'Foto AP '+n)}</a>`:`<div class="v32-ap-photo"><div class="v32-ap-photo-empty">Tiada foto AP ${n}</div></div>`;
+  return `<div class="v32-ap-card"><div class="v32-ap-head"><b>Access Point ${n}</b>${badge(a.StatusAP||'Belum Ditentukan')}</div><div class="v32-ap-body"><div class="v32-readonly-grid">${v32Val('Kawasan / Lokasi Cadangan',a.KawasanCadangan,true)}${v32Val('Block / Level',a.BlokAras)}${v32Val('Indoor / Outdoor',a.JenisAP)}${v32Val('Coordinate',v32Coord(a.Latitude,a.Longitude),true)}${v32Val('Catatan Teknikal',a.CadanganTeknikal||'-',true)}</div>${photo}</div></div>`;
+};
+v32PhotoGallery=function(d){
+  const list=[],aps=d.aps||[];
+  [1,2].forEach(n=>{const a=aps.find(x=>String(x.APNo)===String(n))||{};if(a.PhotoURL||a.PhotoFileID)list.push({obj:a,label:'Foto AP '+n,date:a.UpdatedAt||''})});
+  (d.photos||[]).forEach(p=>{if(p.PhotoURL||p.PhotoFileID)list.push({obj:p,label:p.Kategori||'Foto Lokasi',date:p.CreatedAt||'',note:p.Catatan||''})});
+  if(!list.length)return '<div class="v32-photo-empty">Belum ada foto dalam rekod cadangan ini.</div>';
+  return `<div class="v32-photo-grid">${list.map(p=>`<a class="v32-photo-item" href="${ea(v33PhotoOpen(p.obj))}" target="_blank" rel="noopener">${v33PhotoImg(p.obj,p.label)}<div class="meta"><b>${esc(p.label)}</b><span>${esc(p.note||p.date||'Tekan untuk buka')}</span></div></a>`).join('')}</div>`;
+};
+
+decisionPanel=function(l,locked){
+  const alt=(APP.current?.photos||[]).filter(p=>String(p.Kategori||'').includes('Cadangan Alternatif'));
+  const galleryHtml=alt.length?`<div class="decision-alt-gallery">${alt.map(p=>`<a class="decision-alt-thumb" target="_blank" rel="noopener" href="${ea(v33PhotoOpen(p))}">${v33PhotoImg(p,'Cadangan Alternatif - Pengesahan')}<span>${esc(p.CreatedAt||'')}</span></a>`).join('')}</div>`:'<div class="decision-alt-empty">Belum ada foto cadangan alternatif.</div>';
+  const ref=`<div class="v32-ref-strip"><div class="v32-ref-strip-head"><div class="v32-ref-strip-ico">${svgIcon('record')}</div><div class="v32-ref-strip-copy"><b>Rujukan Cadangan Asal</b><span>Semak semula Maklumat, AP 1, AP 2 dan semua foto sebelum membuat keputusan.</span></div></div><div class="v32-ref-actions"><button type="button" class="btn v32-card-ref-btn" onclick="v32ShowProposalFromLoaded(false)">${svgIcon('record')}<span>Lihat Cadangan & Foto</span></button><button type="button" class="btn light" onclick="printCurrentLocation()">${svgIcon('print')}<span>Cetak / PDF</span></button></div></div>`;
+  const photoActions=locked?'':`<div class="v33-alt-actions"><label class="decision-alt-camera">${svgIcon('camera')}<span>Ambil Foto</span><input type="file" accept="image/*" capture="environment" onchange="quickDecisionPhoto('${ea(l.LocationID)}',this)"></label><label class="decision-alt-camera v33-alt-upload">${v33UploadIcon()}<span>Upload Gambar</span><input type="file" accept="image/*" onchange="quickDecisionPhoto('${ea(l.LocationID)}',this)"></label></div>`;
+  return `${ref}<section class="section">${v26SectionHead('Pengesahan / Keputusan Lokasi','Semua medan keputusan wajib diisi kecuali Catatan Keputusan. Foto cadangan alternatif adalah pilihan jika team mencadangkan titik lain.')}<fieldset ${locked?'disabled':''} style="border:0;padding:0;margin:0"><div class="fields"><div class="field"><label>Status Lokasi</label><select id="decisionStatus">${options(['','Diputuskan','Pemasangan','Siap'],['Diputuskan','Pemasangan','Siap'].includes(l.Status)?l.Status:'')}</select></div><div class="field"><label>Tarikh Keputusan</label><input id="decisionDate" type="date" value="${dateVal(l.TarikhKeputusan)}"></div><div class="field full"><label>Pasukan / Pegawai Penentu</label><input id="decisionTeam" value="${ea(l.PasukanPenentu)}"></div><div class="field"><label>Tarikh Pemasangan</label><input id="installDate" type="date" value="${dateVal(l.TarikhPemasangan)}"></div><div class="field full"><label>Catatan Keputusan <span class="v26-optional">Pilihan</span></label><textarea id="decisionNote">${esc(l.CatatanKeputusan)}</textarea></div></div><div class="decision-alt-photo">${v26SectionHead('Foto Cadangan Alternatif','Pilihan. Gunakan jika ada cadangan titik lain semasa pengesahan.')}<div class="decision-alt-head">${photoActions}</div>${galleryHtml}</div></fieldset><div class="v30-decision-actions">${locked?'':`<button type="button" class="btn primary" onclick="saveDecision()">${svgIcon('check')}<span>Simpan Keputusan</span></button>`}<button type="button" class="v30-delete-btn" onclick="deleteDecisionRecord()">${svgIcon('trash')}<span>Delete Rekod</span></button></div><div class="v30-danger-note"><span class="v30-danger-dot">!</span><span>Delete hanya digunakan jika rekod lokasi ini benar-benar perlu dibuang. Sistem akan meminta pengesahan sebelum memadam.</span></div></section>`;
+};
+
 </script>
 </body>
 </html>
-
