@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js" defer></script>
-<title>Sistem WiFi Premium Maju Johor V17</title>
+<title>Sistem WiFi Premium Maju Johor V34</title>
 <style>
 :root{--navy:#0B2C5F;--navy-2:#123E82;--blue:#1A73E8;--blue-2:#4EA1FF;--sky:#EAF4FF;--yellow:#F4C842;--yellow-2:#FFD965;--bg:#F4F8FF;--bg-2:#EDF4FF;--card:#FFFFFF;--line:#D8E4F1;--text:#163254;--muted:#5F6F86;--success:#16935A;--danger:#D93025;--warning:#E59A00;--shadow:0 18px 48px rgba(13,51,105,.10)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Roboto,Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#F6FAFF 0%,#EEF5FF 100%);color:var(--text)}button,input,select,textarea{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}
@@ -812,17 +812,17 @@ body{background:#EAF3FF}
 
     <div class="content">
       <section id="page-dashboard" class="page">
-        <div class="stats">
-          <div class="stat"><span>Jumlah Lokasi</span><b id="sTarget">0</b></div>
-          <div class="stat"><span>Cadangan Aktif</span><b id="sReg">0</b></div>
-          <div class="stat"><span>Telah Dilawati</span><b id="sVisit">0</b></div>
-          <div class="stat"><span>Diputuskan</span><b id="sDecide">0</b></div>
-          <div class="stat"><span>Pemasangan</span><b id="sInstall">0</b></div>
-          <div class="stat"><span>Siap</span><b id="sDone">0</b></div>
-          <div class="stat"><span>100% Lengkap</span><b id="sComplete">0</b></div>
-          <div class="stat"><span>Belum Lengkap</span><b id="sIncomplete">0</b></div>
+        <div class="v34-metric-strip" aria-label="Ringkasan dashboard">
+          <button type="button" class="v34-metric-btn m1" onclick="v34OpenStats('total')" title="Jumlah Lokasi" aria-label="Jumlah Lokasi"><svg viewBox="0 0 24 24"><path d="M3 21V8l9-6 9 6v13h-7v-7h-4v7H3z"/></svg></button>
+          <button type="button" class="v34-metric-btn m2" onclick="v34OpenStats('active')" title="Cadangan Aktif" aria-label="Cadangan Aktif"><svg viewBox="0 0 24 24"><path d="M4 12h4l2-6 4 12 2-6h4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button type="button" class="v34-metric-btn m3" onclick="v34OpenStats('visited')" title="Telah Dilawati" aria-label="Telah Dilawati"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 10a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg></button>
+          <button type="button" class="v34-metric-btn m4" onclick="v34OpenStats('decided')" title="Diputuskan" aria-label="Diputuskan"><svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.5-1.5 2.8 2.8 8.5-8.5 1.5 1.5-10 9.9z"/></svg></button>
+          <button type="button" class="v34-metric-btn m5" onclick="v34OpenStats('installing')" title="Pemasangan" aria-label="Pemasangan"><svg viewBox="0 0 24 24"><path d="m14.7 6.3 3-3 3 3-3 3-1.4-1.4-5.9 5.9a4 4 0 1 1-1.4-1.4l5.9-5.9-1.2-1.2z"/></svg></button>
+          <button type="button" class="v34-metric-btn m6" onclick="v34OpenStats('done')" title="Siap" aria-label="Siap"><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3zm-1 14-4-4 1.5-1.5L11 13l5-5 1.5 1.5L11 16z"/></svg></button>
+          <button type="button" class="v34-metric-btn m7" onclick="v34OpenStats('complete')" title="100% Lengkap" aria-label="100% Lengkap"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4V4zm3 8 3 3 7-7-1.4-1.4-5.6 5.6-1.6-1.6L7 12z"/></svg></button>
+          <button type="button" class="v34-metric-btn m8" onclick="v34OpenStats('incomplete')" title="Belum Lengkap" aria-label="Belum Lengkap"><svg viewBox="0 0 24 24"><path d="M12 2 1 21h22L12 2zm1 15h-2v-2h2v2zm0-4h-2V8h2v5z"/></svg></button>
         </div>
-        <div class="toolbar"><input id="search" class="search" placeholder="Cari lokasi, daerah, PIC..." oninput="renderDashboard()"><select id="filter" onchange="renderDashboard()"><option value="">Semua Status</option><option>Status Terkini</option><option>Selesai Cadangan</option><option>Diputuskan</option><option>Pemasangan</option><option>Siap</option></select><select id="completeFilter" onchange="renderDashboard()"><option value="">Semua Kelengkapan</option><option value="lt50">Bawah 50%</option><option value="50to79">50% - 79%</option><option value="80to99">80% - 99%</option><option value="100">100% Lengkap</option></select><button class="btn light icon-btn" onclick="refresh(true)"><svg class="ui-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.65 6.35A8 8 0 1 0 19.9 14h-2.05A6 6 0 1 1 16.24 7.76L13 11h9V2l-4.35 4.35z"/></svg><span>Segar Semula</span></button><button class="btn soft icon-btn" onclick="printReport()"><svg class="ui-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h12v5h2a2 2 0 0 1 2 2v7h-4v6H6v-6H2V9a2 2 0 0 1 2-2h2V2zm2 2v3h8V4H8zm0 11v5h8v-5H8zm10-5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg><span>Cetak Laporan</span></button></div>
+        <div class="toolbar"><input id="search" class="search" placeholder="Cari lokasi, daerah, PIC..." oninput="renderDashboard()"><select id="filter" onchange="renderDashboard()"><option value="">Semua Status</option><option>Status Terkini</option><option>Selesai Cadangan</option><option>Diputuskan</option><option>Pemasangan</option><option>Siap</option></select><select id="completeFilter" onchange="renderDashboard()"><option value="">Semua Kelengkapan</option><option value="lt50">Bawah 50%</option><option value="50to79">50% - 79%</option><option value="80to99">80% - 99%</option><option value="100">100% Lengkap</option></select><button class="btn light icon-btn v34-tool-icon" onclick="refresh(true)" title="Segar Semula" aria-label="Segar Semula"><svg class="ui-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.65 6.35A8 8 0 1 0 19.9 14h-2.05A6 6 0 1 1 16.24 7.76L13 11h9V2l-4.35 4.35z"/></svg><span>Segar Semula</span></button><button class="btn soft icon-btn v34-tool-icon" onclick="printReport()" title="Cetak Laporan" aria-label="Cetak Laporan"><svg class="ui-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h12v5h2a2 2 0 0 1 2 2v7h-4v6H6v-6H2V9a2 2 0 0 1 2-2h2V2zm2 2v3h8V4H8zm0 11v5h8v-5H8zm10-5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg><span>Cetak Laporan</span></button></div>
         <div class="card table-wrap"><table><thead><tr><th>Bil</th><th>Lokasi</th><th>Daerah</th><th>PIC</th><th>No. Telefon</th><th>Status</th><th>AP 1</th><th>AP 2</th><th>Foto</th><th>Kelengkapan</th><th>Tindakan</th></tr></thead><tbody id="tbody"></tbody></table><div id="empty" class="empty" style="display:none"></div></div><div id="mobileDashboardGrid" class="mobile-dashboard"></div>
       </section>
 
@@ -2088,6 +2088,172 @@ decisionPanel=function(l,locked){
   return `${ref}<section class="section">${v26SectionHead('Pengesahan / Keputusan Lokasi','Semua medan keputusan wajib diisi kecuali Catatan Keputusan. Foto cadangan alternatif adalah pilihan jika team mencadangkan titik lain.')}<fieldset ${locked?'disabled':''} style="border:0;padding:0;margin:0"><div class="fields"><div class="field"><label>Status Lokasi</label><select id="decisionStatus">${options(['','Diputuskan','Pemasangan','Siap'],['Diputuskan','Pemasangan','Siap'].includes(l.Status)?l.Status:'')}</select></div><div class="field"><label>Tarikh Keputusan</label><input id="decisionDate" type="date" value="${dateVal(l.TarikhKeputusan)}"></div><div class="field full"><label>Pasukan / Pegawai Penentu</label><input id="decisionTeam" value="${ea(l.PasukanPenentu)}"></div><div class="field"><label>Tarikh Pemasangan</label><input id="installDate" type="date" value="${dateVal(l.TarikhPemasangan)}"></div><div class="field full"><label>Catatan Keputusan <span class="v26-optional">Pilihan</span></label><textarea id="decisionNote">${esc(l.CatatanKeputusan)}</textarea></div></div><div class="decision-alt-photo">${v26SectionHead('Foto Cadangan Alternatif','Pilihan. Gunakan jika ada cadangan titik lain semasa pengesahan.')}<div class="decision-alt-head">${photoActions}</div>${galleryHtml}</div></fieldset><div class="v30-decision-actions">${locked?'':`<button type="button" class="btn primary" onclick="saveDecision()">${svgIcon('check')}<span>Simpan Keputusan</span></button>`}<button type="button" class="v30-delete-btn" onclick="deleteDecisionRecord()">${svgIcon('trash')}<span>Delete Rekod</span></button></div><div class="v30-danger-note"><span class="v30-danger-dot">!</span><span>Delete hanya digunakan jika rekod lokasi ini benar-benar perlu dibuang. Sistem akan meminta pengesahan sebelum memadam.</span></div></section>`;
 };
 
+</script>
+
+<div id="v34StatsBack" class="v34-stats-back" onclick="if(event.target===this)v34CloseStats()" aria-hidden="true">
+  <section class="v34-stats-pop" role="dialog" aria-modal="true" aria-labelledby="v34StatsTitle">
+    <div class="v34-stats-head"><div><b id="v34StatsTitle">Ringkasan Dashboard</b><span>Statistik semasa tanpa memuat semula data</span></div><button type="button" onclick="v34CloseStats()" aria-label="Tutup">×</button></div>
+    <div id="v34StatsHero" class="v34-stats-hero"></div>
+    <div id="v34StatsBars" class="v34-stats-bars"></div>
+  </section>
+</div>
+
+<style id="v34Styles">
+/* V34: light UI-only overrides; no animation loops or chart libraries */
+.v34-metric-strip{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:0 0 12px}
+.v34-metric-btn{width:44px;height:44px;border:1px solid #DCE7F4;border-radius:14px;background:#fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 7px 18px rgba(15,54,108,.07);transition:transform .12s ease,box-shadow .12s ease;color:#1268E8}
+.v34-metric-btn:hover{transform:translateY(-1px);box-shadow:0 9px 22px rgba(15,54,108,.11)}
+.v34-metric-btn svg{width:20px;height:20px;fill:currentColor}.v34-metric-btn.m2{color:#00A6C8}.v34-metric-btn.m3{color:#7C4DFF}.v34-metric-btn.m4{color:#15935A}.v34-metric-btn.m5{color:#F57C00}.v34-metric-btn.m6{color:#0FA968}.v34-metric-btn.m7{color:#1677E8}.v34-metric-btn.m8{color:#D9493F}
+.v34-tool-icon{width:40px!important;height:40px!important;padding:0!important;display:inline-grid!important;place-items:center!important;border-radius:12px!important;flex:0 0 40px}.v34-tool-icon span{display:none!important}.v34-tool-icon .ui-svg{width:18px!important;height:18px!important}
+.v34-stats-back{position:fixed;inset:0;z-index:14000;background:rgba(5,24,52,.48);display:none;align-items:center;justify-content:center;padding:18px}.v34-stats-back.open{display:flex}.v34-stats-pop{width:min(560px,96vw);max-height:min(720px,88dvh);overflow:auto;background:#fff;border-radius:24px;box-shadow:0 30px 80px rgba(0,27,72,.28);border:1px solid #DCE7F4;padding:16px}.v34-stats-head{display:flex;align-items:center;gap:12px}.v34-stats-head>div{flex:1}.v34-stats-head b{display:block;font-size:16px;color:#15385F}.v34-stats-head span{display:block;font-size:10px;color:#6A7A90;margin-top:3px}.v34-stats-head button{width:34px;height:34px;border:0;border-radius:11px;background:#EEF5FC;color:#234E7A;font-size:20px}.v34-stats-hero{margin:14px 0;padding:14px;border-radius:18px;background:linear-gradient(135deg,#0B4C96,#1F91EE);color:#fff}.v34-stats-hero b{font-size:30px;display:block}.v34-stats-hero span{font-size:11px;opacity:.86}.v34-stats-bars{display:grid;gap:9px}.v34-stat-row{display:grid;grid-template-columns:116px 1fr 34px;gap:8px;align-items:center;font-size:10px;color:#52677F}.v34-stat-track{height:10px;background:#E8EEF6;border-radius:999px;overflow:hidden}.v34-stat-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#1A73E8,#55B4F9)}.v34-stat-row.selected{font-weight:800;color:#173B63}.v34-stat-row.selected .v34-stat-fill{background:linear-gradient(90deg,#7C4DFF,#2B9DF4)}
+/* Full header title and correct logo proportions on phones */
+@media(max-width:920px){.top{height:72px!important;padding:0 9px!important;gap:7px!important}.menu{width:40px!important;height:44px!important;flex:0 0 40px!important}.top-brand{gap:7px!important;min-width:0!important;flex:1!important}.top-logo{width:40px!important;height:46px!important;flex:0 0 40px!important;border-radius:11px!important;padding:3px!important;box-sizing:border-box!important}.top-logo img{width:31px!important;height:38px!important;max-width:100%!important;object-fit:contain!important}.top-brand>div:last-child{min-width:0!important;flex:1!important}.top-title{font-size:13.5px!important;line-height:1.15!important;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;max-width:none!important;display:block!important}.top-sub{display:none!important}.v34-metric-strip{overflow-x:auto;flex-wrap:nowrap;padding:2px 1px 7px;scrollbar-width:none}.v34-metric-strip::-webkit-scrollbar{display:none}.v34-metric-btn{width:40px;height:40px;flex:0 0 40px;border-radius:13px}.v34-stats-pop{border-radius:22px}.v34-stat-row{grid-template-columns:104px 1fr 30px}}
+@media(min-width:921px){.content{max-width:1720px!important;padding:20px 24px!important}.drawer{width:min(980px,82vw)!important}.gallery,.v32-photo-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}.v33-photo-actions{grid-template-columns:1fr 1fr!important}.v34-ap-preview{min-height:210px!important}}
+/* Static map and cleaner stats */
+.johor-state-label{display:none!important}.map-reset-control{display:none!important}.map-chip{background:#0A0D12!important;border-color:rgba(255,255,255,.16)!important;color:#fff!important;box-shadow:0 8px 20px rgba(0,0,0,.22)!important}.map-chip,.map-chip-label,.map-chip b{color:#fff!important}.map-chip b{color:#fff!important}.map-chip-label{font-weight:800!important}
+/* AP multi-photo */
+.v34-ap-preview{display:block!important;padding:9px!important;min-height:150px!important}.v34-ap-photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;width:100%}.v34-ap-thumb{position:relative;aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:#E9F0F8;border:1px solid #D5E2F0}.v34-ap-thumb img{width:100%!important;height:100%!important;object-fit:cover!important;display:block}.v34-ap-thumb span{position:absolute;left:5px;right:5px;bottom:5px;background:rgba(5,32,65,.72);color:#fff;border-radius:7px;padding:3px 5px;font-size:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.v34-ap-empty{min-height:130px;display:grid;place-items:center;color:#71839A;font-size:11px}.v34-photo-count{font-size:10px;color:#4F6680;margin-top:7px}.v33-photo-actions .camera{margin-top:0!important}
+@media(max-width:560px){.v34-ap-photo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Decision = compact list only on phone/tablet */
+.v34-decision-list{display:flex;flex-direction:column;gap:8px}.v34-decision-row{display:grid;grid-template-columns:44px minmax(0,1fr) 38px;align-items:center;gap:10px;background:#fff;border:1px solid #DDE7F2;border-radius:16px;padding:10px;box-shadow:0 6px 16px rgba(17,42,75,.05)}.v34-decision-num{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#E8F7EF,#D5F3E3);color:#12815A;display:grid;place-items:center;font-weight:900;font-size:12px}.v34-decision-main{min-width:0}.v34-decision-main b{display:block;font-size:12px;color:#163254;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.v34-decision-main .meta{font-size:9.5px;color:#6B7D93;margin-top:3px}.v34-decision-main .aps{font-size:9px;color:#3F5877;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.v34-decision-open{width:36px;height:36px;border:0;border-radius:12px;background:#E7F7EF;color:#12815A;display:grid;place-items:center}.v34-decision-open svg{width:17px;height:17px;fill:currentColor}
+@media(max-width:920px){#page-decision .hero{display:none!important}#page-decision>div[style]{display:none!important}.decision-grid.v34-decision-list{display:flex!important}.decision-grid.v34-decision-list .card.loc{display:none!important}}
+</style>
+
+<script id="v34Script">
+// ===== V34 RESPONSIVE + STATIC MAP + LIGHT DASHBOARD + MULTI AP PHOTO =====
+(function(){
+  const oldHydrate=hydrate;
+  hydrate=function(){oldHydrate();APP.apMultiFiles=APP.apMultiFiles||{1:[],2:[]};APP.apMultiFiles[1]=[];APP.apMultiFiles[2]=[];APP.apPreviewUrls=APP.apPreviewUrls||{1:[],2:[]}};
+
+  const oldEnsure=ensureJohorMap;
+  ensureJohorMap=function(){
+    const m=oldEnsure();if(!m)return m;
+    if(JOHOR_MAP.label){try{m.removeLayer(JOHOR_MAP.label)}catch(e){}JOHOR_MAP.label=null}
+    if(!m._v34Static){
+      ['dragging','touchZoom','scrollWheelZoom','doubleClickZoom','boxZoom','keyboard'].forEach(k=>{try{if(m[k]&&m[k].disable)m[k].disable()}catch(e){}});
+      try{if(m.tap&&m.tap.disable)m.tap.disable()}catch(e){}
+      try{if(m.zoomControl)m.removeControl(m.zoomControl)}catch(e){}
+      m._v34Static=true;
+    }
+    return m;
+  };
+
+  function metricValues(){
+    const s=APP.stats||{}, ls=APP.locations||[], total=ls.length;
+    return [
+      ['total','Jumlah Lokasi',total],
+      ['active','Cadangan Aktif',ls.filter(x=>!proposalFinished(x)).length],
+      ['visited','Telah Dilawati',Number(s.visited||0)],
+      ['decided','Diputuskan',Number(s.decided||0)],
+      ['installing','Pemasangan',Number(s.installing||0)],
+      ['done','Siap',Number(s.completed||0)],
+      ['complete','100% Lengkap',Number(s.complete100||0)],
+      ['incomplete','Belum Lengkap',Number(s.incomplete||0)]
+    ];
+  }
+  window.v34OpenStats=function(selected){
+    const data=metricValues(), chosen=data.find(x=>x[0]===selected)||data[0], max=Math.max(1,...data.map(x=>Number(x[2]||0)));
+    const hero=q('v34StatsHero'),bars=q('v34StatsBars'),back=q('v34StatsBack');if(!hero||!bars||!back)return;
+    hero.innerHTML=`<b>${Number(chosen[2]||0)}</b><span>${esc(chosen[1])}</span>`;
+    bars.innerHTML=data.map(x=>`<div class="v34-stat-row ${x[0]===selected?'selected':''}"><span>${esc(x[1])}</span><div class="v34-stat-track"><div class="v34-stat-fill" style="width:${Math.max(2,Math.round(Number(x[2]||0)/max*100))}%"></div></div><b>${Number(x[2]||0)}</b></div>`).join('');
+    back.classList.add('open');back.setAttribute('aria-hidden','false');
+  };
+  window.v34CloseStats=function(){const b=q('v34StatsBack');if(b){b.classList.remove('open');b.setAttribute('aria-hidden','true')}};
+
+  renderStats=function(){
+    // Metrics are read directly from APP when an icon is tapped. No chart library or network call.
+    const total=(APP.locations||[]).length;if(q('progressText'))q('progressText').textContent=String(total);if(q('progressBar'))q('progressBar').style.width='100%';
+  };
+
+  const oldNewDraft=v26NewDraft;
+  v26NewDraft=function(detail){const d=oldNewDraft(detail);d.location.SediaAdaJenis='Indoor';d.ap1.JenisAP='Indoor';d.ap2.JenisAP='Indoor';d.ap1.photoDataUrls=[];d.ap2.photoDataUrls=[];return d};
+
+  v26PersistDraft=function(){
+    if(!APP.current||!APP.proposalDraft)return;
+    try{
+      const copy=JSON.parse(JSON.stringify(APP.proposalDraft));let raw=JSON.stringify(copy);
+      if(raw.length>3200000){[1,2].forEach(n=>{if(copy['ap'+n]){copy['ap'+n].photoDataUrl='';copy['ap'+n].photoDataUrls=[]}});raw=JSON.stringify(copy)}
+      try{sessionStorage.setItem(v26DraftKey(APP.current.location.LocationID),raw)}catch(err){[1,2].forEach(n=>{if(copy['ap'+n]){copy['ap'+n].photoDataUrl='';copy['ap'+n].photoDataUrls=[]}});sessionStorage.setItem(v26DraftKey(APP.current.location.LocationID),JSON.stringify(copy))}
+    }catch(e){}
+  };
+
+  const oldCollectInfo=v26CollectInfo;
+  v26CollectInfo=function(requireAll=true){if(q('existingType'))q('existingType').value='Indoor';const ok=oldCollectInfo(requireAll);if(ok&&APP.proposalDraft&&APP.proposalDraft.location)APP.proposalDraft.location.SediaAdaJenis='Indoor';return ok};
+
+  function existingApPhotos(n,a){
+    const out=[],seen=new Set();
+    const add=(o,label)=>{if(!o)return;const key=String(o.PhotoFileID||o.PhotoURL||'');if(!key||seen.has(key))return;seen.add(key);out.push({obj:o,label})};
+    add(a,'Foto AP '+n);
+    (APP.current?.photos||[]).filter(p=>String(p.APNo)===String(n)||String(p.Kategori||'')==='Foto AP '+n).forEach((p,i)=>add(p,'Foto AP '+n+' · '+(i+1)));
+    return out;
+  }
+  function draftDataPhotos(n){const d=APP.proposalDraft&&APP.proposalDraft['ap'+n];if(!d)return[];const a=Array.isArray(d.photoDataUrls)?d.photoDataUrls.filter(Boolean):[];if(!a.length&&d.photoDataUrl)a.push(d.photoDataUrl);return a}
+  window.v34ApPreviewHtml=function(n,a){
+    a=a||{};const saved=existingApPhotos(n,a),draft=draftDataPhotos(n);let html='';
+    saved.forEach((p,i)=>{html+=`<div class="v34-ap-thumb">${v33PhotoImg(p.obj,p.label)}<span>${esc(p.label)}</span></div>`});
+    draft.forEach((src,i)=>{html+=`<div class="v34-ap-thumb"><img src="${ea(src)}" alt="Foto AP ${n}"><span>Foto baru ${i+1}</span></div>`});
+    if(!html)return `<div class="v34-ap-empty">Belum ada foto AP ${n}</div>`;
+    return `<div class="v34-ap-photo-grid">${html}</div><div class="v34-photo-count">${saved.length+draft.length} foto tersedia</div>`;
+  };
+  function renderSelectedFiles(n,a){const box=q('preview'+n);if(!box)return;const current=APP.apMultiFiles?.[n]||[],saved=existingApPhotos(n,a),draft=draftDataPhotos(n);let html='';saved.forEach(p=>{html+=`<div class="v34-ap-thumb">${v33PhotoImg(p.obj,p.label)}<span>${esc(p.label)}</span></div>`});draft.forEach((src,i)=>{html+=`<div class="v34-ap-thumb"><img src="${ea(src)}"><span>Foto baru ${i+1}</span></div>`});if(APP.apPreviewUrls?.[n]){APP.apPreviewUrls[n].forEach(u=>{try{URL.revokeObjectURL(u)}catch(e){}})}APP.apPreviewUrls[n]=[];current.forEach((f,i)=>{const u=URL.createObjectURL(f);APP.apPreviewUrls[n].push(u);html+=`<div class="v34-ap-thumb"><img src="${ea(u)}"><span>Dipilih ${i+1}</span></div>`});box.innerHTML=html?`<div class="v34-ap-photo-grid">${html}</div><div class="v34-photo-count">${saved.length+draft.length+current.length} foto tersedia</div>`:`<div class="v34-ap-empty">Belum ada foto AP ${n}</div>`;}
+
+  previewAP=function(n,input){
+    const files=Array.from(input?.files||[]).filter(f=>String(f.type||'').startsWith('image/'));if(!files.length){toast('Sila pilih fail gambar.');return}
+    APP.apMultiFiles=APP.apMultiFiles||{1:[],2:[]};APP.apMultiFiles[n]=(APP.apMultiFiles[n]||[]).concat(files);APP.apFiles[n]=null;
+    const a=(APP.current?.aps||[]).find(x=>String(x.APNo)===String(n))||{};renderSelectedFiles(n,a);input.value='';
+  };
+
+  v26CollectAP=async function(n,requireAll=true,preparePhoto=true){
+    if(q('apType'+n))q('apType'+n).value='Indoor';
+    if(requireAll&&!validateRequired(apRequiredIds(n),'Lengkapkan semua medan wajib AP '+n+'.'))return false;
+    const status=q('apStatus'+n)?.value||'';if(requireAll&&(!status||status==='Belum Ditentukan')){toast('Pilih Status AP '+n+'.');return false}
+    if(!APP.proposalDraft)APP.proposalDraft=v26NewDraft(APP.current);
+    const old=(APP.current.aps||[]).find(a=>String(a.APNo)===String(n))||{}, previous=APP.proposalDraft['ap'+n]||{};
+    const savedCount=existingApPhotos(n,old).length, queued=(APP.apMultiFiles?.[n]||[]).length, previousUrls=Array.isArray(previous.photoDataUrls)?previous.photoDataUrls.filter(Boolean):[];
+    if(requireAll&&!savedCount&&!queued&&!previousUrls.length&&!previous.photoDataUrl){toast('Sekurang-kurangnya satu Foto AP '+n+' wajib dipilih.');return false}
+    let urls=previousUrls.slice();if(!urls.length&&previous.photoDataUrl)urls=[previous.photoDataUrl];
+    if(preparePhoto&&queued){
+      startProgress('Menyediakan Foto AP '+n+'...',12,'Memampatkan '+queued+' foto pada peranti. Belum dihantar ke backend.');
+      try{let i=0;for(const f of APP.apMultiFiles[n]){i++;updateProgress(12+Math.round(i/queued*40),'Memampatkan Foto AP '+n+'...','Foto '+i+' / '+queued);urls.push(await compress(f,720,.52))}APP.apMultiFiles[n]=[];stopProgress(true)}catch(e){stopProgress(true);toast('Foto AP '+n+' tidak dapat diproses.');return false}
+    }
+    APP.proposalDraft['ap'+n]={KawasanCadangan:q('apArea'+n)?.value.trim()||'',BlokAras:q('apBlock'+n)?.value.trim()||'',JenisAP:'Indoor',CadanganTeknikal:q('apTech'+n)?.value||'',Latitude:q('ap'+n+'Lat')?.value.trim()||'',Longitude:q('ap'+n+'Lng')?.value.trim()||'',StatusAP:status,photoDataUrl:urls[0]||'',photoDataUrls:urls};
+    v26SyncCurrentFromDraft();v26PersistDraft();refreshTabStates();return true;
+  };
+
+  refreshTabStates=function(){
+    if(!APP.current)return;v26SyncCurrentFromDraft();const l=APP.current.location||{},aps=APP.current.aps||[],a1=aps.find(x=>String(x.APNo)==='1')||{},a2=aps.find(x=>String(x.APNo)==='2')||{};
+    const infoDone=!!(l.NamaLokasi&&l.Daerah&&l.Alamat&&l.PICNama&&l.PICTelefon&&l.TarikhLawatan&&l.PasukanLawatan&&l.SediaAdaLatitude&&l.SediaAdaLongitude&&l.SediaAdaBlokAras);
+    const apDone=(n,a)=>!!(a.KawasanCadangan&&a.BlokAras&&a.Latitude&&a.Longitude&&a.StatusAP&&a.StatusAP!=='Belum Ditentukan'&&(existingApPhotos(n,a).length||draftDataPhotos(n).length||(APP.apMultiFiles?.[n]||[]).length));
+    setTabState('info',infoDone?'done':'need',infoDone?'Lengkap':'Wajib Isi');setTabState('ap1',apDone(1,a1)?'done':'need',apDone(1,a1)?'Lengkap':'Wajib Isi');setTabState('ap2',apDone(2,a2)?'done':'need',apDone(2,a2)?'Lengkap':'Wajib Isi');setTabState('history',(APP.current.history||[]).length?'done':'other',(APP.current.history||[]).length+' rekod');
+  };
+
+  infoPanel=function(l,locked){
+    const service=l.NamaLokasi||l.PerkhidmatanSediaAda||'Lokasi belum dinamakan';
+    return `<section class="section">${v26SectionHead('Maklumat Asas Lokasi','Semua medan wajib diisi kecuali Catatan Lokasi. Data hanya disimpan sementara sehingga Simpan Cadangan ditekan di AP 2.')}<fieldset ${locked?'disabled':''} style="border:0;padding:0;margin:0"><div class="fields"><div class="field full"><label>Nama Lokasi / PPR / RSK</label><input id="locName" value="${ea(l.NamaLokasi)}" oninput="syncAutoService(this.value)"></div><div class="field"><label>Daerah</label><input id="locDistrict" value="${ea(l.Daerah)}"></div><div class="field"><label>Status Terkini</label><div class="v26-readonly-status">${badge('Status Terkini')}</div></div><div class="field"><label>Nama PIC</label><input id="locPic" value="${ea(l.PICNama)}"></div><div class="field"><label>No. Telefon PIC</label><div class="v26-phone-row"><input id="locPhone" type="tel" inputmode="tel" autocomplete="tel" value="${ea(displayPhone(l.PICTelefon))}" onblur="this.value=displayPhone(this.value)"><button type="button" class="v26-mini-phone" onclick="callPicFromField()" aria-label="Telefon PIC">${svgIcon('phone')}</button></div></div><div class="field full"><label>Alamat</label><div class="address-box"><textarea id="locAddress">${esc(l.Alamat)}</textarea>${locked?'':`<div class="address-actions"><button type="button" class="btn address-update" onclick="updateAddressFromLocation()">${svgIcon('pin')}<span>Kemaskini Alamat dari Lokasi</span></button></div>`}</div></div><div class="field"><label>Tarikh Lawatan</label><input id="visitDate" type="date" value="${dateVal(l.TarikhLawatan)}"></div><div class="field"><label>Pasukan / Pegawai Lawatan</label><input id="visitTeam" value="${ea(l.PasukanLawatan)}"></div><div class="field full"><label>Catatan Lokasi <span class="v26-optional">Pilihan</span></label><textarea id="locNote">${esc(l.CatatanLokasi)}</textarea></div></div></fieldset></section>
+    <section class="section">${v26SectionHead('Maklumat Untuk Laporan TM One','Bilangan hotspot sedia ada ditetapkan 1. Indoor / Outdoor ditetapkan automatik sebagai Indoor.')}<div class="report-summary"><div class="report-icon">${svgIcon('refresh')}</div><div><b>Perkhidmatan Sedia Ada</b><span id="serviceAuto" class="auto-value">${esc(service)}</span></div></div><fieldset ${locked?'disabled':''} style="border:0;padding:0;margin:0"><div class="compact-report-fields"><div class="field"><label>Bilangan Hotspot Sedia Ada</label><input id="existingCount" value="1" readonly class="v26-fixed"></div><div class="field"><label>Bilangan Hotspot Yang Dimohon</label><input id="requestedCount" value="2 AP" readonly class="v26-fixed" data-value="2"></div><div class="field"><label>Block / Level Hotspot Sedia Ada</label><input id="existingBlock" value="${ea(l.SediaAdaBlokAras)}"></div><div class="field"><label>Indoor / Outdoor Hotspot Sedia Ada</label><select id="existingType"><option value="Indoor" selected>Indoor</option></select></div></div>${coordSection('Coordinate Location · Hotspot Sedia Ada','existing',l.SediaAdaLatitude,l.SediaAdaLongitude,'captureExistingGps()')}</fieldset><div class="actions v26-next-actions"><button class="btn light" onclick="printCurrentLocation()">${svgIcon('print')}<span>Cetak</span></button>${locked?'':`<button class="btn primary v26-next" onclick="nextFromInfo()"><span>Seterusnya</span><svg class="ui-svg" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>`}</div></section>`;
+  };
+
+  apSinglePanel=function(n,a,locked){
+    a=a||{};const isLast=n===2;
+    return `<section class="section ap-single">${v26SectionHead('AP '+n+' · Maklumat Laporan TM One','Semua medan AP '+n+' wajib diisi. Indoor ditetapkan automatik. Foto AP boleh ditambah lebih daripada satu.')}<fieldset ${locked?'disabled':''} style="border:0;padding:0;margin:0"><div class="ap-card"><div class="ap-head"><b>Access Point ${n}</b>${badge(a.StatusAP||'Belum Ditentukan')}</div><div class="fields"><div class="field full"><label>Kawasan / Lokasi Cadangan</label><input id="apArea${n}" value="${ea(a.KawasanCadangan)}"></div><div class="field"><label>Block / Level</label><input id="apBlock${n}" value="${ea(a.BlokAras)}"></div><div class="field"><label>Indoor / Outdoor</label><select id="apType${n}"><option value="Indoor" selected>Indoor</option></select></div><div class="field full"><label>Status AP</label><select id="apStatus${n}">${options(['','Cadangan','Dalam Semakan','Disahkan','Dipasang'],(a.StatusAP&&a.StatusAP!=='Belum Ditentukan')?a.StatusAP:'')}</select></div></div>${coordSection('Coordinate Location · AP '+n,'ap'+n,a.Latitude,a.Longitude,`captureAPGps(${n})`)}<div id="preview${n}" class="preview v34-ap-preview">${v34ApPreviewHtml(n,a)}</div><div class="v33-photo-actions"><label class="camera">${svgIcon('camera')}<span>Ambil Foto AP ${n}</span><input type="file" accept="image/*" capture="environment" onchange="previewAP(${n},this)"></label><label class="camera v33-upload">${v33UploadIcon()}<span>Upload Gambar</span><input type="file" accept="image/*" multiple onchange="previewAP(${n},this)"></label></div><div class="field" style="margin-top:10px"><label>Catatan Teknikal <span class="v26-optional">Pilihan</span></label><textarea id="apTech${n}">${esc(a.CadanganTeknikal||'')}</textarea></div><div class="actions v26-next-actions">${locked?'':isLast?`<button type="button" class="btn v28-step-back" onclick="v28WizardBack('ap1')"><svg class="ui-svg" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg><span>Kembali</span></button><button type="button" class="btn v26-save-final" onclick="saveProposalFinal()">${svgIcon('check')}<span>Simpan Cadangan</span></button>`:`<button type="button" class="btn v28-step-back" onclick="v28WizardBack('info')"><svg class="ui-svg" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg><span>Kembali</span></button><button type="button" class="btn primary v26-next" onclick="nextFromAP1()"><span>Seterusnya</span><svg class="ui-svg" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>`}</div></div></fieldset></section>`;
+  };
+
+  saveProposalFinal=async function(){
+    if(!v26CollectInfo(true))return;if(!(await v26CollectAP(1,true,true)))return;if(!(await v26CollectAP(2,true,true)))return;
+    const id=APP.current.location.LocationID;startProgress('Menyimpan Cadangan...',12,'Menghantar semua data dan foto dalam satu simpanan.');
+    try{updateProgress(34,'Menghantar cadangan lengkap...','Satu sambungan backend sahaja untuk kekalkan proses laju.');const r=await apiMutate('saveProposal',{LocationID:id,location:APP.proposalDraft.location,ap1:APP.proposalDraft.ap1,ap2:APP.proposalDraft.ap2});if(!r.ok)throw new Error(r.error||'Gagal menyimpan cadangan.');v26ClearDraft(id);APP.proposalDraft=null;applyMutationLocal(r.data,false);finishProgress('Cadangan berjaya disimpan.');closeDrawer();showPage('decision');renderDecision();toast('Selesai Cadangan. Rekod dipindahkan ke Pengesahan / Keputusan.')}catch(e){stopProgress(false);toast(e.message||String(e))}
+  };
+
+  renderDecision=function(){
+    const el=q('decisionGrid');if(!el)return;const rows=(APP.locations||[]).filter(x=>proposalFinished(x));
+    if(window.matchMedia('(max-width:920px)').matches){el.className='grid decision-grid v34-decision-list';el.innerHTML=rows.length?rows.map(x=>{const no=String(x.LocationID||'').replace(/\D/g,'').slice(-2)||'--';return `<article class="v34-decision-row"><div class="v34-decision-num">${esc(no)}</div><div class="v34-decision-main"><b>${esc(x.NamaLokasi||'Lokasi belum dinamakan')}</b><div class="meta">${esc(x.Daerah||'-')} · ${esc(displayStatus(x.Status))}</div><div class="aps">AP1: ${esc(x.AP1Status||'-')} · AP2: ${esc(x.AP2Status||'-')} · Foto: ${Number(x.PhotoCount||0)}</div></div><button class="v34-decision-open" onclick="openDecisionLocation('${ea(x.LocationID)}')" aria-label="Buka keputusan"><svg viewBox="0 0 24 24"><path d="M9.3 5.3a1 1 0 0 1 1.4 0l6 6a1 1 0 0 1 0 1.4l-6 6a1 1 0 1 1-1.4-1.4l5.3-5.3-5.3-5.3a1 1 0 0 1 0-1.4z"/></svg></button></article>`}).join(''):'<div class="card empty">Belum ada lokasi yang selesai cadangan.</div>';return}
+    el.className='grid decision-grid';el.innerHTML=rows.length?rows.map(x=>`<article class="card loc decision-ready"><div class="loc-head"><div class="loc-id">${esc(String(x.LocationID||'').replace('PPR-','')||'--')}</div><div style="flex:1;min-width:0"><div class="loc-name">${esc(x.NamaLokasi||'Lokasi belum dinamakan')}</div><div class="small">${esc(x.Daerah||'-')}</div><div style="margin-top:6px">${badge(x.Status)}</div></div></div><div class="loc-meta">PIC: ${esc(x.PICNama||'-')}<br>AP1: ${esc(x.AP1Status||'-')} · AP2: ${esc(x.AP2Status||'-')}<br>Foto: ${Number(x.PhotoCount||0)}</div><div class="actions decision-card-actions"><button class="btn v32-card-ref-btn" type="button" onclick="openProposalReference('${ea(x.LocationID)}',false)">${svgIcon('record')}<span>Lihat Cadangan & Foto</span></button><label class="btn decision-photo-btn">${svgIcon('camera')}<span>Foto Baru</span><input type="file" accept="image/*" capture="environment" onchange="quickDecisionPhoto('${ea(x.LocationID)}',this)"></label><button class="btn primary" type="button" onclick="openDecisionLocation('${ea(x.LocationID)}')">${svgIcon('check')}<span>Buka Keputusan</span></button></div></article>`).join(''):'<div class="card empty" style="grid-column:1/-1">Belum ada lokasi yang selesai cadangan AP 1 dan AP 2.</div>';
+  };
+
+  const oldCloseDrawer=closeDrawer;
+  closeDrawer=function(){try{if(APP.apPreviewUrls){[1,2].forEach(n=>(APP.apPreviewUrls[n]||[]).forEach(u=>URL.revokeObjectURL(u)))}}catch(e){}oldCloseDrawer()};
+  window.addEventListener('resize',()=>{if(q('page-decision')?.classList.contains('active'))renderDecision()},{passive:true});
+})();
 </script>
 </body>
 </html>
