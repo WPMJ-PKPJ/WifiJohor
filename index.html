@@ -812,17 +812,16 @@ body{background:#EAF3FF}
 
     <div class="content">
       <section id="page-dashboard" class="page">
-        <div class="v34-metric-strip" aria-label="Ringkasan dashboard">
-          <button type="button" class="v34-metric-btn m1" onclick="v34OpenStats('total')" title="Jumlah Lokasi" aria-label="Jumlah Lokasi"><svg viewBox="0 0 24 24"><path d="M3 21V8l9-6 9 6v13h-7v-7h-4v7H3z"/></svg></button>
-          <button type="button" class="v34-metric-btn m2" onclick="v34OpenStats('active')" title="Cadangan Aktif" aria-label="Cadangan Aktif"><svg viewBox="0 0 24 24"><path d="M4 12h4l2-6 4 12 2-6h4" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <button type="button" class="v34-metric-btn m3" onclick="v34OpenStats('visited')" title="Telah Dilawati" aria-label="Telah Dilawati"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 10a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/></svg></button>
-          <button type="button" class="v34-metric-btn m4" onclick="v34OpenStats('decided')" title="Diputuskan" aria-label="Diputuskan"><svg viewBox="0 0 24 24"><path d="M9.2 16.2 4.9 12l1.5-1.5 2.8 2.8 8.5-8.5 1.5 1.5-10 9.9z"/></svg></button>
-          <button type="button" class="v34-metric-btn m5" onclick="v34OpenStats('installing')" title="Pemasangan" aria-label="Pemasangan"><svg viewBox="0 0 24 24"><path d="m14.7 6.3 3-3 3 3-3 3-1.4-1.4-5.9 5.9a4 4 0 1 1-1.4-1.4l5.9-5.9-1.2-1.2z"/></svg></button>
-          <button type="button" class="v34-metric-btn m6" onclick="v34OpenStats('done')" title="Siap" aria-label="Siap"><svg viewBox="0 0 24 24"><path d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3zm-1 14-4-4 1.5-1.5L11 13l5-5 1.5 1.5L11 16z"/></svg></button>
-          <button type="button" class="v34-metric-btn m7" onclick="v34OpenStats('complete')" title="100% Lengkap" aria-label="100% Lengkap"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4V4zm3 8 3 3 7-7-1.4-1.4-5.6 5.6-1.6-1.6L7 12z"/></svg></button>
-          <button type="button" class="v34-metric-btn m8" onclick="v34OpenStats('incomplete')" title="Belum Lengkap" aria-label="Belum Lengkap"><svg viewBox="0 0 24 24"><path d="M12 2 1 21h22L12 2zm1 15h-2v-2h2v2zm0-4h-2V8h2v5z"/></svg></button>
+        <div class="v35-dashboard-actions" aria-label="Tindakan dashboard">
+          <button type="button" class="v35-stat-btn" onclick="v34OpenStats('total')" title="Statistik Dashboard" aria-label="Statistik Dashboard">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16v2H2V3h2v16zm3-2H5v-6h2v6zm4 0H9V7h2v10zm4 0h-2V9h2v8zm4 0h-2V5h2v12z"/></svg>
+            <span>Statistik</span>
+          </button>
+          <div class="v35-action-spacer"></div>
+          <button class="v35-top-tool refresh" onclick="refresh(true)" title="Segar Semula" aria-label="Segar Semula"><svg class="ui-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.65 6.35A8 8 0 1 0 19.9 14h-2.05A6 6 0 1 1 16.24 7.76L13 11h9V2l-4.35 4.35z"/></svg></button>
+          <button class="v35-top-tool print" onclick="printReport()" title="Cetak Laporan" aria-label="Cetak Laporan"><svg class="ui-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h12v5h2a2 2 0 0 1 2 2v7h-4v6H6v-6H2V9a2 2 0 0 1 2-2h2V2zm2 2v3h8V4H8zm0 11v5h8v-5H8zm10-5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg></button>
         </div>
-        <div class="toolbar"><input id="search" class="search" placeholder="Cari lokasi, daerah, PIC..." oninput="renderDashboard()"><select id="filter" onchange="renderDashboard()"><option value="">Semua Status</option><option>Status Terkini</option><option>Selesai Cadangan</option><option>Diputuskan</option><option>Pemasangan</option><option>Siap</option></select><select id="completeFilter" onchange="renderDashboard()"><option value="">Semua Kelengkapan</option><option value="lt50">Bawah 50%</option><option value="50to79">50% - 79%</option><option value="80to99">80% - 99%</option><option value="100">100% Lengkap</option></select><button class="btn light icon-btn v34-tool-icon" onclick="refresh(true)" title="Segar Semula" aria-label="Segar Semula"><svg class="ui-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.65 6.35A8 8 0 1 0 19.9 14h-2.05A6 6 0 1 1 16.24 7.76L13 11h9V2l-4.35 4.35z"/></svg><span>Segar Semula</span></button><button class="btn soft icon-btn v34-tool-icon" onclick="printReport()" title="Cetak Laporan" aria-label="Cetak Laporan"><svg class="ui-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h12v5h2a2 2 0 0 1 2 2v7h-4v6H6v-6H2V9a2 2 0 0 1 2-2h2V2zm2 2v3h8V4H8zm0 11v5h8v-5H8zm10-5a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg><span>Cetak Laporan</span></button></div>
+        <div class="toolbar v35-filter-toolbar"><input id="search" class="search" placeholder="Cari lokasi, daerah, PIC..." oninput="renderDashboard()"><select id="filter" onchange="renderDashboard()"><option value="">Semua Status</option><option>Status Terkini</option><option>Selesai Cadangan</option><option>Diputuskan</option><option>Pemasangan</option><option>Siap</option></select><select id="completeFilter" onchange="renderDashboard()"><option value="">Semua Kelengkapan</option><option value="lt50">Bawah 50%</option><option value="50to79">50% - 79%</option><option value="80to99">80% - 99%</option><option value="100">100% Lengkap</option></select></div>
         <div class="card table-wrap"><table><thead><tr><th>Bil</th><th>Lokasi</th><th>Daerah</th><th>PIC</th><th>No. Telefon</th><th>Status</th><th>AP 1</th><th>AP 2</th><th>Foto</th><th>Kelengkapan</th><th>Tindakan</th></tr></thead><tbody id="tbody"></tbody></table><div id="empty" class="empty" style="display:none"></div></div><div id="mobileDashboardGrid" class="mobile-dashboard"></div>
       </section>
 
@@ -2117,6 +2116,16 @@ decisionPanel=function(l,locked){
 /* Decision = compact list only on phone/tablet */
 .v34-decision-list{display:flex;flex-direction:column;gap:8px}.v34-decision-row{display:grid;grid-template-columns:44px minmax(0,1fr) 38px;align-items:center;gap:10px;background:#fff;border:1px solid #DDE7F2;border-radius:16px;padding:10px;box-shadow:0 6px 16px rgba(17,42,75,.05)}.v34-decision-num{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#E8F7EF,#D5F3E3);color:#12815A;display:grid;place-items:center;font-weight:900;font-size:12px}.v34-decision-main{min-width:0}.v34-decision-main b{display:block;font-size:12px;color:#163254;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.v34-decision-main .meta{font-size:9.5px;color:#6B7D93;margin-top:3px}.v34-decision-main .aps{font-size:9px;color:#3F5877;margin-top:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.v34-decision-open{width:36px;height:36px;border:0;border-radius:12px;background:#E7F7EF;color:#12815A;display:grid;place-items:center}.v34-decision-open svg{width:17px;height:17px;fill:currentColor}
 @media(max-width:920px){#page-decision .hero{display:none!important}#page-decision>div[style]{display:none!important}.decision-grid.v34-decision-list{display:flex!important}.decision-grid.v34-decision-list .card.loc{display:none!important}}
+
+/* V35: one statistics icon + print/refresh on one top row */
+.v35-dashboard-actions{display:flex;align-items:center;gap:8px;margin:0 0 10px}
+.v35-action-spacer{flex:1}
+.v35-stat-btn{height:42px;border:1px solid #D6E5F5;border-radius:13px;background:linear-gradient(135deg,#EEF6FF,#FFFFFF);color:#1268E8;display:inline-flex;align-items:center;gap:8px;padding:0 13px;font-size:11px;font-weight:900;cursor:pointer;box-shadow:0 6px 16px rgba(15,54,108,.07)}
+.v35-stat-btn svg{width:18px;height:18px;fill:currentColor}
+.v35-top-tool{width:40px;height:40px;border:1px solid #DCE7F4;border-radius:12px;background:#fff;display:grid;place-items:center;padding:0;cursor:pointer;box-shadow:0 6px 16px rgba(15,54,108,.06)}
+.v35-top-tool .ui-svg{width:18px;height:18px;fill:currentColor}.v35-top-tool.refresh{color:#1268E8}.v35-top-tool.print{color:#7C4DFF}
+.v35-filter-toolbar{margin-top:0!important}
+@media(max-width:920px){.v35-dashboard-actions{margin:0 0 8px}.v35-stat-btn{height:40px;padding:0 11px}.v35-stat-btn span{font-size:10px}.v35-top-tool{width:38px;height:38px;border-radius:11px}.v35-filter-toolbar{gap:7px}.v35-filter-toolbar .search{min-width:100%;flex-basis:100%}.v35-filter-toolbar select{flex:1;min-width:0;font-size:10px;padding:10px}}
 </style>
 
 <script id="v34Script">
