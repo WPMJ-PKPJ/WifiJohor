@@ -778,13 +778,6 @@ body{background:#EAF3FF}
 .v33-img-loading{opacity:.5}
 @media(max-width:560px){.v33-photo-actions{grid-template-columns:1fr 1fr}.v33-photo-actions .camera{font-size:11px;padding:11px 8px}.v33-preview-ready img{height:200px}.decision-alt-head{display:block}.decision-alt-head .v33-alt-actions{margin-top:9px;justify-content:stretch}.decision-alt-head .v33-alt-actions label{flex:1;justify-content:center}.v33-optional-photo-actions{gap:7px}}
 </style>
-
-<style id="v38-boss-view">
-#page-boss{padding-bottom:40px}.boss-view-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:14px}.boss-view-head h1{margin:0;font-size:22px;color:#12375D}.boss-view-head p{margin:4px 0 0;color:#71839A;font-size:12px}.boss-view-tools{display:flex;gap:8px;align-items:center}.boss-search{min-width:250px;border:1px solid #D9E4F0;background:#fff;border-radius:13px;padding:10px 12px;font:inherit;font-size:12px;outline:none}.boss-search:focus{border-color:#7AB6F5;box-shadow:0 0 0 3px rgba(26,115,232,.08)}.boss-icon-btn{width:38px;height:38px;border:1px solid #D9E4F0;background:#fff;border-radius:12px;color:#1769D2;font-size:20px;display:grid;place-items:center;cursor:pointer;box-shadow:0 5px 14px rgba(28,63,99,.06)}
-.boss-summary{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.boss-summary-chip{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;background:#0F172A;color:#fff;font-size:10px;font-weight:800}.boss-summary-chip b{font-size:12px}.boss-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.boss-card{background:#fff;border:1px solid #DFE7F0;border-radius:20px;box-shadow:0 12px 28px rgba(25,54,88,.07);overflow:hidden}.boss-card-head{padding:14px 15px 12px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;border-bottom:1px solid #EDF1F6;background:linear-gradient(180deg,#fff,#FAFCFF)}.boss-card-title{min-width:0}.boss-card-title b{display:block;font-size:15px;color:#163D65;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.boss-card-title span{display:block;margin-top:4px;font-size:10px;color:#7B8DA2}.boss-update-btn{border:1px solid #D7E7FA;background:#EFF6FF;color:#1769D2;border-radius:11px;padding:8px 10px;font-weight:800;font-size:10px;cursor:pointer;white-space:nowrap}.boss-ap-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:13px}.boss-ap{border:1px solid #E1E8F0;border-radius:16px;overflow:hidden;background:#FAFCFE}.boss-ap-top{padding:9px 10px;display:flex;align-items:center;justify-content:space-between;gap:8px}.boss-ap-top b{font-size:11px;color:#294F78}.boss-ap-top span{font-size:9px;color:#8393A7}.boss-photo-stage{position:relative;aspect-ratio:4/3;background:#EAF0F7;overflow:hidden}.boss-photo-stage img{width:100%;height:100%;display:block;object-fit:cover}.boss-photo-empty{width:100%;height:100%;display:grid;place-items:center;color:#8B9AAE;font-size:10px}.boss-photo-actions{position:absolute;right:8px;top:8px;display:flex;gap:6px}.boss-photo-action{width:30px;height:30px;border:0;border-radius:10px;background:rgba(15,23,42,.82);color:#fff;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(5px);font-size:14px}.boss-photo-action.delete{background:rgba(180,35,24,.88)}.boss-photo-action input{display:none}.boss-thumbs{position:absolute;left:8px;bottom:8px;display:flex;gap:5px;max-width:calc(100% - 16px);overflow:hidden}.boss-thumb{width:34px;height:34px;border:2px solid rgba(255,255,255,.9);border-radius:8px;overflow:hidden;background:#fff;cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,.15)}.boss-thumb img{width:100%;height:100%;object-fit:cover}.boss-ap-meta{padding:10px}.boss-meta-row{display:flex;gap:6px;margin-bottom:6px;font-size:10.5px;line-height:1.4}.boss-meta-row:last-child{margin-bottom:0}.boss-meta-label{flex:0 0 48px;color:#7B8DA2}.boss-meta-value{color:#233F5E;font-weight:700;word-break:break-word}.boss-note{margin:0 13px 13px;padding:10px 11px;border-radius:12px;background:#FFF9E8;border:1px solid #F4E0A8;font-size:10.5px;line-height:1.45;color:#72540A}.boss-note b{display:block;margin-bottom:3px;color:#8A6400}.boss-empty{grid-column:1/-1;padding:28px;text-align:center;border:1px dashed #CAD7E5;border-radius:18px;color:#7D8DA0;background:#FAFCFF}.boss-loading{grid-column:1/-1;padding:30px;text-align:center;color:#6F8195}
-@media(max-width:920px){.boss-grid{grid-template-columns:1fr}.boss-view-head{align-items:stretch;flex-direction:column}.boss-view-tools{width:100%}.boss-search{min-width:0;flex:1}.boss-ap-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.boss-ap-grid{grid-template-columns:1fr}.boss-card-head{padding:12px}.boss-view-head h1{font-size:18px}.boss-photo-stage{aspect-ratio:16/10}}
-</style>
 </head>
 <body>
 <div class="layout">
@@ -802,7 +795,6 @@ body{background:#EAF3FF}
       <button data-page="dashboard" onclick="showPage('dashboard')">Dashboard</button>
       <button data-page="locations" onclick="showPage('locations')">Senarai Lokasi Cadangan</button>
       <button data-page="decision" onclick="showPage('decision')">Pengesahan / Keputusan Lokasi</button>
-      <button data-page="boss" onclick="showPage('boss')">Paparan Pembentangan</button>
     </div>
     <div class="side-note">Jumlah lokasi: <b>tidak dihadkan</b><br>Setiap lokasi: <b>2 AP baharu</b><br><br>Lokasi boleh ditambah bila-bila masa.</div>
   </aside>
@@ -836,17 +828,6 @@ body{background:#EAF3FF}
       <section id="page-locations" class="page"><div class="hero compact-hero"><h1>Senarai Lokasi Cadangan</h1><p>Senarai PPR / RSK yang masih dalam proses cadangan Access Point.</p></div><div class="toolbar"><input id="searchCards" class="search" placeholder="Cari lokasi..." oninput="renderCards()"></div><div id="locationGrid" class="grid location-grid"></div></section>
       <section id="page-field" class="page"><div class="hero"><h1>Lawatan Tapak & Cadangan AP</h1><p>Lengkapkan Maklumat, AP 1 dan AP 2. Rekod lengkap akan bergerak ke Pengesahan / Keputusan Lokasi.</p></div><div style="height:14px"></div><div id="fieldGrid" class="grid"></div></section>
       <section id="page-decision" class="page"><div class="hero"><h1>Pengesahan / Keputusan Lokasi</h1><p>Lokasi yang telah selesai cadangan AP 1 dan AP 2 akan dipaparkan di sini untuk pengesahan dan keputusan.</p></div><div style="height:14px"></div><div id="decisionGrid" class="grid decision-grid"></div></section>
-      <section id="page-boss" class="page">
-        <div class="boss-view-head">
-          <div><h1>Paparan Pembentangan</h1><p>Ringkasan visual lokasi dan cadangan Access Point.</p></div>
-          <div class="boss-view-tools">
-            <input id="bossSearch" class="boss-search" placeholder="Cari lokasi..." oninput="renderBossView()">
-            <button type="button" class="boss-icon-btn" onclick="loadBossView(true)" title="Segar semula" aria-label="Segar semula">↻</button>
-          </div>
-        </div>
-        <div id="bossSummary" class="boss-summary"></div>
-        <div id="bossGrid" class="boss-grid"><div class="boss-empty">Buka paparan ini untuk memuatkan ringkasan.</div></div>
-      </section>
       <section id="page-map" class="page active">
         <div class="map-home">
           <div id="mapCapture" class="map-capture">
@@ -1515,98 +1496,7 @@ async function quickLocationPhoto(locationId,input){
 async function printReport(){
   const w=window.open('','_blank');
   if(!w){toast('Browser menyekat paparan laporan. Benarkan pop-up untuk laman ini.');return}
-  w.document.write('<!doctype html><html><body style="font-family:Arial;padding:30px">Menjana laporan...
-<script id="v38-boss-view-js">
-(function(){
-  APP.bossData=null;
-  let bossSelected={};
-  const oldShowPageV38=showPage;
-  showPage=function(n){oldShowPageV38(n);if(n==='boss')loadBossView(false)};
-
-  window.loadBossView=async function(force){
-    const grid=q('bossGrid');
-    if(!grid)return;
-    if(APP.bossData&&!force){renderBossView();return}
-    grid.innerHTML='<div class="boss-loading">Memuatkan paparan pembentangan...</div>';
-    try{
-      const r=await apiGet('bossData',{},2,12000);
-      if(!r.ok)throw new Error(r.error||'Gagal memuatkan paparan pembentangan.');
-      APP.bossData=r.data||{locations:[],aps:[],photos:[]};
-      renderBossView();
-    }catch(e){grid.innerHTML='<div class="boss-empty">'+esc(e.message||String(e))+'</div>'}
-  };
-
-  function bossPhotoSrc(p){
-    try{if(typeof v33PhotoSrc==='function')return v33PhotoSrc(p)}catch(e){}
-    return p&&p.PhotoURL?p.PhotoURL:'';
-  }
-  function bossLocationPhotos(id,apNo){
-    const d=APP.bossData||{};
-    return (d.photos||[]).filter(p=>String(p.LocationID)===String(id)&&String(p.APNo||'')===String(apNo||''));
-  }
-  function bossAP(id,n){return ((APP.bossData&&APP.bossData.aps)||[]).find(a=>String(a.LocationID)===String(id)&&String(a.APNo)===String(n))||{}}
-  function bossCurrentPhoto(id,n,photos){
-    const selected=bossSelected[id+'-'+n];
-    if(selected){const hit=photos.find(p=>String(p.PhotoID)===String(selected));if(hit)return hit}
-    return photos[0]||null;
-  }
-  window.bossSelectPhoto=function(id,n,photoId){bossSelected[id+'-'+n]=photoId;renderBossView()};
-
-  function bossAPCard(loc,n){
-    const a=bossAP(loc.LocationID,n);
-    let photos=bossLocationPhotos(loc.LocationID,n);
-    if(!photos.length&&(a.PhotoURL||a.PhotoFileID))photos=[{PhotoID:'',LocationID:loc.LocationID,APNo:String(n),Kategori:'Foto AP '+n,Catatan:a.KawasanCadangan||'',PhotoFileID:a.PhotoFileID||'',PhotoURL:a.PhotoURL||''}];
-    const p=bossCurrentPhoto(loc.LocationID,n,photos);
-    const src=p?bossPhotoSrc(p):'';
-    const note=(a.CadanganTeknikal||'').trim();
-    const img=src?'<img src="'+ea(src)+'" alt="Foto AP '+n+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'grid\'"><div class="boss-photo-empty" style="display:none">Foto tidak dapat dipaparkan</div>':'<div class="boss-photo-empty">Belum ada gambar</div>';
-    const actions=p&&p.PhotoID?'<div class="boss-photo-actions"><label class="boss-photo-action" title="Edit Gambar">✎<input type="file" accept="image/*" onchange="bossReplacePhoto(\''+ea(p.PhotoID)+'\',\''+ea(loc.LocationID)+'\',this)"></label><button class="boss-photo-action delete" onclick="bossDeletePhoto(\''+ea(p.PhotoID)+'\',\''+ea(loc.LocationID)+'\')" title="Delete Gambar">×</button></div>':'';
-    const thumbs=photos.length>1?'<div class="boss-thumbs">'+photos.slice(0,6).map(x=>'<button class="boss-thumb" onclick="bossSelectPhoto(\''+ea(loc.LocationID)+'\','+n+',\''+ea(x.PhotoID)+'\')"><img src="'+ea(bossPhotoSrc(x))+'" alt=""></button>').join('')+'</div>':'';
-    return '<div class="boss-ap"><div class="boss-ap-top"><b>AP '+n+'</b><span>'+esc(a.StatusAP||'Belum Ditentukan')+'</span></div><div class="boss-photo-stage">'+img+actions+thumbs+'</div><div class="boss-ap-meta"><div class="boss-meta-row"><span class="boss-meta-label">Lokasi</span><span class="boss-meta-value">'+esc(a.KawasanCadangan||'-')+'</span></div><div class="boss-meta-row"><span class="boss-meta-label">Blok</span><span class="boss-meta-value">'+esc(a.BlokAras||'-')+'</span></div></div>'+(note?'<div class="boss-note"><b>Catatan</b>'+esc(note)+'</div>':'')+'</div>';
-  }
-
-  window.renderBossView=function(){
-    const grid=q('bossGrid');if(!grid)return;
-    const d=APP.bossData||{locations:[],aps:[],photos:[]};
-    const term=(q('bossSearch')?.value||'').trim().toLowerCase();
-    const rows=(d.locations||[]).filter(l=>!term||[l.NamaLokasi,l.Daerah,l.LocationID,l.CatatanLokasi].join(' ').toLowerCase().includes(term));
-    if(q('bossSummary'))q('bossSummary').innerHTML='<span class="boss-summary-chip">Lokasi <b>'+rows.length+'</b></span><span class="boss-summary-chip">Foto <b>'+((d.photos||[]).length)+'</b></span>';
-    if(!rows.length){grid.innerHTML='<div class="boss-empty">Tiada lokasi untuk dipaparkan.</div>';return}
-    grid.innerHTML=rows.map(loc=>{
-      const note=(loc.CatatanLokasi||'').trim();
-      return '<article class="boss-card"><div class="boss-card-head"><div class="boss-card-title"><b>'+esc(loc.NamaLokasi||'Lokasi belum dinamakan')+'</b><span>'+esc(loc.Daerah||'-')+' · '+esc(displayStatus(loc.Status||''))+'</span></div><button type="button" class="boss-update-btn" onclick="bossEditLocation(\''+ea(loc.LocationID)+'\')">Kemaskini Maklumat</button></div><div class="boss-ap-grid">'+bossAPCard(loc,1)+bossAPCard(loc,2)+'</div>'+(note?'<div class="boss-note"><b>Catatan Lokasi</b>'+esc(note)+'</div>':'')+'</article>'
-    }).join('');
-  };
-
-  window.bossEditLocation=async function(id){
-    await openLocation(id);
-    setTimeout(()=>{try{showTab('info',q('tab-info'))}catch(e){}},60);
-  };
-
-  window.bossReplacePhoto=async function(photoId,locationId,input){
-    const f=input.files&&input.files[0];if(!f)return;
-    startProgress('Mengemas kini gambar...',12,'Memampatkan gambar.');
-    try{
-      const dataUrl=await compress(f,1000,.68);
-      updateProgress(45,'Menyimpan gambar baru...','Satu permintaan backend sahaja.');
-      const r=await apiMutate('replacePhoto',{photoId,locationId,photoDataUrl:dataUrl});
-      if(!r.ok)throw new Error(r.error||'Gambar gagal dikemas kini.');
-      APP.bossData=null;finishProgress('Gambar dikemas kini.');toast('Gambar berjaya dikemas kini.');await loadBossView(true)
-    }catch(e){stopProgress(false);toast(e.message||String(e))}finally{input.value=''}
-  };
-
-  window.bossDeletePhoto=async function(photoId,locationId){
-    if(!confirm('Delete gambar ini?'))return;
-    startProgress('Memadam gambar...',18,'Mengemas kini rekod foto.');
-    try{
-      const r=await apiMutate('deletePhoto',{photoId,locationId});
-      if(!r.ok)throw new Error(r.error||'Gambar gagal dipadam.');
-      APP.bossData=null;finishProgress('Gambar dipadam.');toast('Gambar dipadam.');await loadBossView(true)
-    }catch(e){stopProgress(false);toast(e.message||String(e))}
-  };
-})();
-</script>
-</body></html>');
+  w.document.write('<!doctype html><html><body style="font-family:Arial;padding:30px">Menjana laporan...</body></html>');
   try{
     const r=await apiGet('reportData',{});
     if(!r.ok)throw new Error(r.error||'Laporan gagal dijana.');
