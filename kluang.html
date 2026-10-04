@@ -2281,6 +2281,44 @@ decisionPanel=function(l,locked){
   closeDrawer=function(){try{if(APP.apPreviewUrls){[1,2].forEach(n=>(APP.apPreviewUrls[n]||[]).forEach(u=>URL.revokeObjectURL(u)))}}catch(e){}oldCloseDrawer()};
   window.addEventListener('resize',()=>{if(q('page-decision')?.classList.contains('active'))renderDecision()},{passive:true});
 })();
+
+
+// ===== V40 KLUANG CLIENT-SIDE FAIL-SAFE =====
+// Backend V40 is authoritative. This second filter prevents accidental display
+// of non-Kluang locations even if a future frontend/backend change regresses.
+const V40_KLUANG_TOKENS=['PPR KLUANG','HAJI MANAN','TAMAN BERSATU'];
+function v40KluangNormalize(v){
+  return String(v||'').toUpperCase().replace(/[^A-Z0-9]+/g,' ').replace(/\s+/g,' ').trim();
+}
+function v40KluangAllowed(x){
+  const name=v40KluangNormalize(x&&x.NamaLokasi);
+  return V40_KLUANG_TOKENS.some(t=>name.includes(v40KluangNormalize(t)));
+}
+const __v40KluangApplyDashboardData=applyDashboardData;
+applyDashboardData=function(data){
+  const d=Object.assign({},data||{});
+  d.locations=(d.locations||[]).filter(v40KluangAllowed);
+  __v40KluangApplyDashboardData(d);
+};
+const __v40KluangOpenLocation=openLocation;
+openLocation=async function(id){
+  const row=(APP.locations||[]).find(x=>String(x.LocationID)===String(id));
+  if(!row||!v40KluangAllowed(row)){
+    toast('Lokasi ini bukan dalam tugasan Staf Kluang.');
+    return;
+  }
+  await __v40KluangOpenLocation(id);
+  setTimeout(()=>{
+    const el=q('locName');
+    if(el){
+      el.readOnly=true;
+      el.setAttribute('aria-readonly','true');
+      el.title='Nama lokasi dikunci untuk akses Staf Kluang';
+      el.style.background='#F2F4F7';
+    }
+  },0);
+};
+
 </script>
 </body>
 </html>
