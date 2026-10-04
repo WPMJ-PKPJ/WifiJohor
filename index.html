@@ -782,6 +782,8 @@ body{background:#EAF3FF}
 <style id="v39-boss-view">
 #page-boss{padding-bottom:40px}.boss-view-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:14px}.boss-view-head h1{margin:0;font-size:22px;color:#12375D}.boss-view-head p{margin:4px 0 0;color:#71839A;font-size:12px}.boss-view-tools{display:flex;gap:8px;align-items:center}.boss-search{min-width:250px;border:1px solid #D9E4F0;background:#fff;border-radius:13px;padding:10px 12px;font:inherit;font-size:12px;outline:none}.boss-search:focus{border-color:#7AB6F5;box-shadow:0 0 0 3px rgba(26,115,232,.08)}.boss-icon-btn{width:38px;height:38px;border:1px solid #D9E4F0;background:#fff;border-radius:12px;color:#1769D2;font-size:20px;display:grid;place-items:center;cursor:pointer;box-shadow:0 5px 14px rgba(28,63,99,.06)}
 .boss-summary{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.boss-summary-chip{display:inline-flex;align-items:center;gap:7px;padding:7px 10px;border-radius:999px;background:#0F172A;color:#fff;font-size:10px;font-weight:800}.boss-summary-chip b{font-size:12px}.boss-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.boss-card{background:#fff;border:1px solid #DFE7F0;border-radius:20px;box-shadow:0 12px 28px rgba(25,54,88,.07);overflow:hidden}.boss-card-head{padding:14px 15px 12px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;border-bottom:1px solid #EDF1F6;background:linear-gradient(180deg,#fff,#FAFCFF)}.boss-card-title{min-width:0}.boss-card-title b{display:block;font-size:15px;color:#163D65;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.boss-card-title span{display:block;margin-top:4px;font-size:10px;color:#7B8DA2}.boss-update-btn{border:1px solid #D7E7FA;background:#EFF6FF;color:#1769D2;border-radius:11px;padding:8px 10px;font-weight:800;font-size:10px;cursor:pointer;white-space:nowrap}.boss-ap-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:13px}.boss-ap{border:1px solid #E1E8F0;border-radius:16px;overflow:hidden;background:#FAFCFE}.boss-ap-top{padding:9px 10px;display:flex;align-items:center;justify-content:space-between;gap:8px}.boss-ap-top b{font-size:11px;color:#294F78}.boss-ap-top span{font-size:9px;color:#8393A7}.boss-photo-stage{position:relative;aspect-ratio:4/3;background:#EAF0F7;overflow:hidden}.boss-photo-stage img{width:100%;height:100%;display:block;object-fit:cover}.boss-photo-empty{width:100%;height:100%;display:grid;place-items:center;color:#8B9AAE;font-size:10px}.boss-photo-actions{position:absolute;right:8px;top:8px;display:flex;gap:6px}.boss-photo-action{width:30px;height:30px;border:0;border-radius:10px;background:rgba(15,23,42,.82);color:#fff;display:grid;place-items:center;cursor:pointer;backdrop-filter:blur(5px);font-size:14px}.boss-photo-action.delete{background:rgba(180,35,24,.88)}.boss-photo-action input{display:none}.boss-thumbs{position:absolute;left:8px;bottom:8px;display:flex;gap:5px;max-width:calc(100% - 16px);overflow:hidden}.boss-thumb{width:34px;height:34px;border:2px solid rgba(255,255,255,.9);border-radius:8px;overflow:hidden;background:#fff;cursor:pointer;box-shadow:0 3px 8px rgba(0,0,0,.15)}.boss-thumb img{width:100%;height:100%;object-fit:cover}.boss-ap-meta{padding:10px}.boss-meta-row{display:flex;gap:6px;margin-bottom:6px;font-size:10.5px;line-height:1.4}.boss-meta-row:last-child{margin-bottom:0}.boss-meta-label{flex:0 0 48px;color:#7B8DA2}.boss-meta-value{color:#233F5E;font-weight:700;word-break:break-word}.boss-note{margin:0 13px 13px;padding:10px 11px;border-radius:12px;background:#FFF9E8;border:1px solid #F4E0A8;font-size:10.5px;line-height:1.45;color:#72540A}.boss-note b{display:block;margin-bottom:3px;color:#8A6400}.boss-empty{grid-column:1/-1;padding:28px;text-align:center;border:1px dashed #CAD7E5;border-radius:18px;color:#7D8DA0;background:#FAFCFF}.boss-loading{grid-column:1/-1;padding:30px;text-align:center;color:#6F8195}
+.boss-photo-expand{position:absolute;right:8px;bottom:8px;z-index:4;border:0;border-radius:10px;background:rgba(15,23,42,.86);color:#fff;padding:7px 9px;display:inline-flex;align-items:center;gap:5px;font:inherit;font-size:9px;font-weight:800;cursor:pointer;backdrop-filter:blur(5px);box-shadow:0 4px 12px rgba(0,0,0,.2)}.boss-photo-expand svg{width:14px;height:14px;fill:currentColor}.boss-photo-expand:hover{background:rgba(23,105,210,.92)}
+.boss-lightbox{position:fixed;inset:0;z-index:25000;background:rgba(4,13,26,.91);display:none;align-items:center;justify-content:center;padding:20px}.boss-lightbox.open{display:flex}.boss-lightbox-shell{position:relative;width:min(1100px,96vw);height:min(820px,90vh);display:flex;align-items:center;justify-content:center}.boss-lightbox-img{max-width:100%;max-height:100%;object-fit:contain;border-radius:14px;background:#0B1726;box-shadow:0 25px 80px rgba(0,0,0,.45)}.boss-lightbox-close{position:absolute;right:0;top:0;transform:translate(35%,-35%);width:42px;height:42px;border:2px solid rgba(255,255,255,.45);border-radius:50%;background:#fff;color:#12263D;font-size:25px;line-height:1;cursor:pointer;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.28)}.boss-lightbox-caption{position:absolute;left:50%;bottom:-2px;transform:translate(-50%,120%);max-width:90%;padding:7px 12px;border-radius:999px;background:rgba(15,23,42,.86);color:#fff;font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 @media(max-width:920px){.boss-grid{grid-template-columns:1fr}.boss-view-head{align-items:stretch;flex-direction:column}.boss-view-tools{width:100%}.boss-search{min-width:0;flex:1}.boss-ap-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.boss-ap-grid{grid-template-columns:1fr}.boss-card-head{padding:12px}.boss-view-head h1{font-size:18px}.boss-photo-stage{aspect-ratio:16/10}}
 </style>
@@ -802,7 +804,7 @@ body{background:#EAF3FF}
       <button data-page="dashboard" onclick="showPage('dashboard')">Dashboard</button>
       <button data-page="locations" onclick="showPage('locations')">Senarai Lokasi Cadangan</button>
       <button data-page="decision" onclick="showPage('decision')">Pengesahan / Keputusan Lokasi</button>
-      <button data-page="boss" onclick="showPage('boss')">Paparan Pembentangan</button>
+      <button data-page="boss" onclick="showPage('boss')">Paparan Info</button>
     </div>
     <div class="side-note">Jumlah lokasi: <b>tidak dihadkan</b><br>Setiap lokasi: <b>2 AP baharu</b><br><br>Lokasi boleh ditambah bila-bila masa.</div>
   </aside>
@@ -838,7 +840,7 @@ body{background:#EAF3FF}
       <section id="page-decision" class="page"><div class="hero"><h1>Pengesahan / Keputusan Lokasi</h1><p>Lokasi yang telah selesai cadangan AP 1 dan AP 2 akan dipaparkan di sini untuk pengesahan dan keputusan.</p></div><div style="height:14px"></div><div id="decisionGrid" class="grid decision-grid"></div></section>
 <section id="page-boss" class="page">
         <div class="boss-view-head">
-          <div><h1>Paparan Pembentangan</h1><p>Ringkasan visual lokasi dan cadangan Access Point.</p></div>
+          <div><h1>Paparan Info</h1><p>Ringkasan visual lokasi, gambar dan cadangan Access Point.</p></div>
           <div class="boss-view-tools">
             <input id="bossSearch" class="boss-search" placeholder="Cari lokasi..." oninput="renderBossView()">
             <button type="button" class="boss-icon-btn" onclick="loadBossView(true)" title="Segar semula" aria-label="Segar semula">↻</button>
@@ -2293,10 +2295,10 @@ decisionPanel=function(l,locked){
     const grid=q('bossGrid');
     if(!grid)return;
     if(APP.bossData&&!force){renderBossView();return}
-    grid.innerHTML='<div class="boss-loading">Memuatkan paparan pembentangan...</div>';
+    grid.innerHTML='<div class="boss-loading">Memuatkan Paparan Info...</div>';
     try{
       const r=await apiGet('bossData',{},2,12000);
-      if(!r.ok)throw new Error(r.error||'Gagal memuatkan paparan pembentangan.');
+      if(!r.ok)throw new Error(r.error||'Gagal memuatkan Paparan Info.');
       APP.bossData=r.data||{locations:[],aps:[],photos:[]};
       renderBossView();
     }catch(e){grid.innerHTML='<div class="boss-empty">'+esc(e.message||String(e))+'</div>'}
@@ -2327,8 +2329,9 @@ decisionPanel=function(l,locked){
     const note=(a.CadanganTeknikal||'').trim();
     const img=src?'<img src="'+ea(src)+'" alt="Foto AP '+n+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'grid\'"><div class="boss-photo-empty" style="display:none">Foto tidak dapat dipaparkan</div>':'<div class="boss-photo-empty">Belum ada gambar</div>';
     const actions=p&&p.PhotoID?'<div class="boss-photo-actions"><label class="boss-photo-action" title="Edit Gambar">✎<input type="file" accept="image/*" onchange="bossReplacePhoto(\''+ea(p.PhotoID)+'\',\''+ea(loc.LocationID)+'\',this)"></label><button class="boss-photo-action delete" onclick="bossDeletePhoto(\''+ea(p.PhotoID)+'\',\''+ea(loc.LocationID)+'\')" title="Delete Gambar">×</button></div>':'';
+    const expand=src?'<button type="button" class="boss-photo-expand" onclick="bossOpenPhoto(\''+ea(src)+'\',\''+ea((loc.NamaLokasi||'Lokasi')+' · AP '+n)+'\')" title="Besarkan gambar" aria-label="Besarkan gambar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3H3v4h2V5h2V3zm10 0v2h2v2h2V3h-4zM5 17H3v4h4v-2H5v-2zm14 2h-2v2h4v-4h-2v2zM8 8h8v8H8V8zm2 2v4h4v-4h-4z"/></svg><span>Besarkan</span></button>':'';
     const thumbs=photos.length>1?'<div class="boss-thumbs">'+photos.slice(0,6).map(x=>'<button class="boss-thumb" onclick="bossSelectPhoto(\''+ea(loc.LocationID)+'\','+n+',\''+ea(x.PhotoID)+'\')"><img src="'+ea(bossPhotoSrc(x))+'" alt=""></button>').join('')+'</div>':'';
-    return '<div class="boss-ap"><div class="boss-ap-top"><b>AP '+n+'</b><span>'+esc(a.StatusAP||'Belum Ditentukan')+'</span></div><div class="boss-photo-stage">'+img+actions+thumbs+'</div><div class="boss-ap-meta"><div class="boss-meta-row"><span class="boss-meta-label">Lokasi</span><span class="boss-meta-value">'+esc(a.KawasanCadangan||'-')+'</span></div><div class="boss-meta-row"><span class="boss-meta-label">Blok</span><span class="boss-meta-value">'+esc(a.BlokAras||'-')+'</span></div></div>'+(note?'<div class="boss-note"><b>Catatan</b>'+esc(note)+'</div>':'')+'</div>';
+    return '<div class="boss-ap"><div class="boss-ap-top"><b>AP '+n+'</b><span>'+esc(a.StatusAP||'Belum Ditentukan')+'</span></div><div class="boss-photo-stage">'+img+actions+thumbs+expand+'</div><div class="boss-ap-meta"><div class="boss-meta-row"><span class="boss-meta-label">Lokasi</span><span class="boss-meta-value">'+esc(a.KawasanCadangan||'-')+'</span></div><div class="boss-meta-row"><span class="boss-meta-label">Blok</span><span class="boss-meta-value">'+esc(a.BlokAras||'-')+'</span></div></div>'+(note?'<div class="boss-note"><b>Catatan</b>'+esc(note)+'</div>':'')+'</div>';
   }
 
   window.renderBossView=function(){
@@ -2343,6 +2346,22 @@ decisionPanel=function(l,locked){
       return '<article class="boss-card"><div class="boss-card-head"><div class="boss-card-title"><b>'+esc(loc.NamaLokasi||'Lokasi belum dinamakan')+'</b><span>'+esc(loc.Daerah||'-')+' · '+esc(displayStatus(loc.Status||''))+'</span></div><button type="button" class="boss-update-btn" onclick="bossEditLocation(\''+ea(loc.LocationID)+'\')">Kemaskini Maklumat</button></div><div class="boss-ap-grid">'+bossAPCard(loc,1)+bossAPCard(loc,2)+'</div>'+(note?'<div class="boss-note"><b>Catatan Lokasi</b>'+esc(note)+'</div>':'')+'</article>'
     }).join('');
   };
+
+  window.bossOpenPhoto=function(src,label){
+    if(!src)return;
+    let box=q('bossLightbox');
+    if(!box){
+      box=document.createElement('div');box.id='bossLightbox';box.className='boss-lightbox';
+      box.innerHTML='<div class="boss-lightbox-shell"><button type="button" class="boss-lightbox-close" aria-label="Tutup">×</button><img class="boss-lightbox-img" alt="Gambar besar"><div class="boss-lightbox-caption"></div></div>';
+      box.addEventListener('click',e=>{if(e.target===box)bossClosePhoto()});
+      box.querySelector('.boss-lightbox-close').addEventListener('click',bossClosePhoto);
+      document.body.appendChild(box);
+    }
+    const im=box.querySelector('.boss-lightbox-img'),cap=box.querySelector('.boss-lightbox-caption');
+    im.src=src;cap.textContent=label||'Gambar';box.classList.add('open');document.body.style.overflow='hidden';
+  };
+  window.bossClosePhoto=function(){const box=q('bossLightbox');if(box)box.classList.remove('open');if(!q('drawerBack')?.classList.contains('open'))document.body.style.overflow=''};
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&q('bossLightbox')?.classList.contains('open'))bossClosePhoto()});
 
   window.bossEditLocation=async function(id){
     APP.bossData=null;
