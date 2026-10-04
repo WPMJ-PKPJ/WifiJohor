@@ -2525,5 +2525,147 @@ decisionPanel=function(l,locked){
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
 </script>
+
+<style id="v45-safe-map-info-loading-css">
+/* V45 SAFE: map reset/refresh + AP info + Paparan Info loading percent */
+.v45-map-tools{display:flex!important;gap:6px!important;background:transparent!important;border:0!important;box-shadow:none!important}
+.v45-map-tool{width:38px;height:38px;border:1px solid rgba(255,255,255,.82);border-radius:12px;background:rgba(255,255,255,.97);color:#0B4D8B;display:grid;place-items:center;font-size:18px;font-weight:900;box-shadow:0 9px 24px rgba(0,31,73,.25);cursor:pointer;text-decoration:none}
+.v45-map-tool:hover{background:#F3F9FF}.v45-map-tool:active{transform:translateY(1px)}
+.v45-map-tool svg{width:18px;height:18px;fill:currentColor}
+.v45-ap-info-badge{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 7px;border-radius:999px;color:#fff;font-size:10px;font-weight:900;margin-right:5px;vertical-align:middle}
+.v45-ap-info-badge.ap1{background:#00A6FF}.v45-ap-info-badge.ap2{background:#E91E63}
+.v45-boss-loading{grid-column:1/-1;padding:34px 20px;text-align:center;background:#fff;border:1px solid #E1E9F2;border-radius:18px;box-shadow:0 10px 26px rgba(18,55,96,.06)}
+.v45-boss-loading-title{font-size:13px;font-weight:900;color:#173E67}.v45-boss-loading-sub{font-size:10px;color:#71839A;margin-top:5px}
+.v45-boss-loading-pct{font-size:28px;line-height:1;font-weight:900;color:#1769D2;margin:14px 0 10px;font-variant-numeric:tabular-nums}
+.v45-boss-loading-track{width:min(420px,90%);height:10px;margin:0 auto;border-radius:999px;background:#E8F0F8;overflow:hidden;box-shadow:inset 0 1px 2px rgba(12,50,90,.08)}
+.v45-boss-loading-bar{height:100%;width:0;border-radius:999px;background:linear-gradient(90deg,#1769D2,#4EA1FF);transition:width .22s ease}
+@media(max-width:560px){.v45-map-tool{width:34px;height:34px;border-radius:11px;font-size:16px}.v45-boss-loading{padding:28px 14px}.v45-boss-loading-pct{font-size:24px}}
+</style>
+<script id="v45-safe-map-info-loading-js">
+(function(){
+  'use strict';
+
+  function v45Map(){try{return ensureJohorMap()}catch(e){return null}}
+  function v45ResetMap(){
+    const map=v45Map();if(!map)return;
+    map._v44Zoomed=false;
+    try{closeMapSelected()}catch(e){}
+    try{map.stop()}catch(e){}
+    const b=JOHOR_MAP?.state?.getBounds?.();
+    if(b){map.fitBounds(b,{padding:window.matchMedia('(max-width:920px)').matches?[3,3]:[36,36],animate:true})}
+    setTimeout(()=>{try{map.invalidateSize();window.renderMap()}catch(e){}},260);
+  }
+  async function v45RefreshMap(){
+    const map=v45Map();if(!map)return;
+    const btn=document.querySelector('.v45-map-refresh');if(btn)btn.disabled=true;
+    try{
+      await refresh(true);
+      map._v44Zoomed=false;
+      try{closeMapSelected()}catch(e){}
+      const b=JOHOR_MAP?.state?.getBounds?.();if(b)map.fitBounds(b,{padding:window.matchMedia('(max-width:920px)').matches?[3,3]:[36,36],animate:false});
+      setTimeout(()=>{try{map.invalidateSize();window.renderMap()}catch(e){}},80);
+      try{toast('Peta dan data berjaya disegar semula.')}catch(e){}
+    }catch(e){try{toast(e.message||'Segar semula gagal.')}catch(_e){}}
+    finally{if(btn)btn.disabled=false}
+  }
+  window.v45ResetMap=v45ResetMap;
+  window.v45RefreshMap=v45RefreshMap;
+
+  function addMapTools(){
+    const map=v45Map();if(!map||JOHOR_MAP._v45Tools)return;
+    const C=L.Control.extend({options:{position:'bottomright'},onAdd:function(){
+      const wrap=L.DomUtil.create('div','v45-map-tools leaflet-bar');
+      wrap.innerHTML='<button type="button" class="v45-map-tool v45-map-back" title="Kembali ke peta Johor" aria-label="Kembali ke peta Johor">↩</button><button type="button" class="v45-map-tool v45-map-refresh" title="Segar semula peta dan data" aria-label="Segar semula peta dan data">↻</button>';
+      L.DomEvent.disableClickPropagation(wrap);L.DomEvent.disableScrollPropagation(wrap);
+      wrap.querySelector('.v45-map-back').addEventListener('click',v45ResetMap);
+      wrap.querySelector('.v45-map-refresh').addEventListener('click',v45RefreshMap);
+      return wrap;
+    }});
+    map.addControl(new C());JOHOR_MAP._v45Tools=true;
+  }
+
+  window.v45ShowAPInfo=function(x,n){
+    if(!x)return;const p='AP'+n;
+    const lat=x[p+'Latitude']||'',lng=x[p+'Longitude']||'',status=x[p+'Status']||'Belum Ditentukan',block=x[p+'BlokAras']||'-',type=x[p+'JenisAP']||'-';
+    const name=(x.NamaLokasi||x.LocationID||'Lokasi')+' · AP '+n;
+    setText('mapSelName',name);setText('mapSelStatus',status);
+    const title=document.getElementById('mapSelName');if(title)title.innerHTML='<span class="v45-ap-info-badge ap'+n+'">AP '+n+'</span>'+esc(x.NamaLokasi||x.LocationID||'Lokasi');
+    setText('mapSelDistrict','Blok / Aras: '+block);
+    setText('mapSelAP','Jenis: '+type+' · Status: '+status);
+    setText('mapSelPIC','Lokasi: '+(x.NamaLokasi||'-'));
+    setText('mapSelPhone','Daerah: '+(x.Daerah||'-'));
+    setText('mapSelGps','GPS AP '+n+': '+(lat||'-')+', '+(lng||'-'));
+    const open=document.getElementById('mapSelOpen');if(open){open.onclick=()=>openLocation(x.LocationID);const sp=open.querySelector('span');if(sp)sp.textContent='Buka Info'}
+    const call=document.getElementById('mapSelCall');if(call){if(x.PICTelefon){call.href='tel:'+telValue(x.PICTelefon);call.style.display='flex'}else call.style.display='none'}
+    const gm=document.getElementById('mapSelMaps');if(gm){gm.href=maps(lat,lng);gm.style.display=(lat&&lng)?'flex':'none'}
+    const card=document.getElementById('mapSelectedCard');if(card)card.classList.add('show');
+  };
+
+  function mapRows(){
+    const facility=document.getElementById('mapFacilityFilter')?.value||'';
+    const status=document.getElementById('mapStatusFilter')?.value||'';
+    const all=APP.locations||[];
+    const filtered=all.filter(x=>(!facility||facilityType(x.NamaLokasi)===facility)&&(!status||String(x.Status||'Belum Dilawati')===status));
+    return {all,visible:filtered.filter(x=>{const c=mapCoords(x);return withinJohor(c.lat,c.lng)})};
+  }
+  function groupRows(map,rows){
+    const zoom=map.getZoom(),radius=zoom<9?48:zoom<10?38:zoom<11?28:18,groups=[];
+    rows.forEach(x=>{const c=mapCoords(x),ll=L.latLng(Number(c.lat),Number(c.lng)),pt=map.latLngToContainerPoint(ll);let g=null;for(const cand of groups){if(Math.hypot(pt.x-cand.pt.x,pt.y-cand.pt.y)<=radius){g=cand;break}}if(!g){g={items:[],sx:0,sy:0,lat:0,lng:0,pt};groups.push(g)}g.items.push(x);g.sx+=pt.x;g.sy+=pt.y;g.lat+=ll.lat;g.lng+=ll.lng;g.pt=L.point(g.sx/g.items.length,g.sy/g.items.length)});return groups;
+  }
+  function apVisible(){return !!document.getElementById('v44ShowAP')?.checked}
+
+  // Override map renderer only to add reliable reset/refresh and AP-specific info.
+  window.renderMap=function(){
+    const map=v45Map();if(!map)return;addMapTools();
+    JOHOR_MAP.locations.clearLayers();JOHOR_MAP.aps.clearLayers();
+    const {all,visible}=mapRows();const gpsAll=all.filter(x=>{const c=mapCoords(x);return withinJohor(c.lat,c.lng)});
+    let apCount=0;visible.forEach(x=>{[[x.AP1Latitude,x.AP1Longitude],[x.AP2Latitude,x.AP2Longitude]].forEach(a=>{if(withinJohor(a[0],a[1]))apCount++})});
+    groupRows(map,visible).forEach(g=>{
+      const lat=g.lat/g.items.length,lng=g.lng/g.items.length;
+      if(g.items.length===1){
+        const x=g.items[0],color=statusMapColor(x.Status||'Belum Dilawati');
+        const icon=L.divIcon({className:'premium-pin-wrap',html:'<span class="premium-pin" style="--pin:'+color+'"><i></i></span>',iconSize:[36,44],iconAnchor:[18,39],tooltipAnchor:[0,-36]});
+        const mk=L.marker([lat,lng],{icon,riseOnHover:true}).addTo(JOHOR_MAP.locations);mk.bindTooltip(esc(x.NamaLokasi||x.LocationID),{direction:'top',offset:[0,-9],opacity:.96});mk.on('click',()=>selectMapLocation(x.LocationID));
+      }else{
+        const icon=L.divIcon({className:'v44-map-cluster-wrap',html:'<div class="v44-map-cluster"><span>'+g.items.length+'<small>LOKASI</small></span></div>',iconSize:[42,42],iconAnchor:[21,21]});
+        const mk=L.marker([lat,lng],{icon,riseOnHover:true}).addTo(JOHOR_MAP.locations);const names=g.items.slice(0,5).map(x=>esc(x.NamaLokasi||x.LocationID)).join('<br>')+(g.items.length>5?'<br>+ '+(g.items.length-5)+' lagi':'');mk.bindTooltip(names,{direction:'top',opacity:.97});
+        mk.on('click',()=>{map._v44Zoomed=true;map.setView([lat,lng],Math.min(map.getZoom()+2,12),{animate:true});setTimeout(()=>window.renderMap(),280)});
+      }
+    });
+    if(apVisible())visible.forEach(x=>{
+      [[1,x.AP1Latitude,x.AP1Longitude,'#00A6FF'],[2,x.AP2Latitude,x.AP2Longitude,'#E91E63']].forEach(a=>{
+        if(!withinJohor(a[1],a[2]))return;
+        const icon=L.divIcon({className:'premium-ap-wrap',html:'<span class="premium-ap" style="--pin:'+a[3]+'">'+a[0]+'</span>',iconSize:[26,26],iconAnchor:[13,13]});
+        const mk=L.marker([Number(a[1]),Number(a[2])],{icon,riseOnHover:true}).addTo(JOHOR_MAP.aps);mk.bindTooltip(esc(x.NamaLokasi||x.LocationID)+' · AP '+a[0],{direction:'top'});mk.on('click',()=>window.v45ShowAPInfo(x,a[0]));
+      });
+    });
+    setText('mapGpsCount',gpsAll.length);setText('mapNoGpsCount',Math.max(all.length-gpsAll.length,0));setText('mapVisibleCount',visible.length);setText('mapApCount',apCount);
+    const empty=document.getElementById('mapEmpty');if(empty)empty.style.display=visible.length?'none':'flex';if(!visible.length)closeMapSelected();requestAnimationFrame(()=>map.invalidateSize());
+    if(!map._v44Zoomed&&JOHOR_MAP.state?.getBounds){map.fitBounds(JOHOR_MAP.state.getBounds(),{padding:window.matchMedia('(max-width:920px)').matches?[3,3]:[36,36]})}
+  };
+
+  // Paparan Info: visual percentage while one bossData request is running.
+  let infoLoadToken=0;
+  function loadingHTML(p,msg){return '<div class="v45-boss-loading"><div class="v45-boss-loading-title">Memuatkan Paparan Info</div><div class="v45-boss-loading-sub">'+esc(msg||'Mengambil lokasi dan gambar...')+'</div><div class="v45-boss-loading-pct">'+Math.round(p)+'%</div><div class="v45-boss-loading-track"><div class="v45-boss-loading-bar" style="width:'+Math.round(p)+'%"></div></div></div>'}
+  function setInfoPct(grid,p,msg){if(grid)grid.innerHTML=loadingHTML(p,msg)}
+  window.loadBossView=async function(force){
+    const grid=q('bossGrid');if(!grid)return;
+    if(APP.bossData&&!force){renderBossView();return}
+    const token=++infoLoadToken;let p=6;setInfoPct(grid,p,'Menyediakan sambungan...');
+    const timer=setInterval(()=>{if(token!==infoLoadToken){clearInterval(timer);return}p=Math.min(82,p+(p<35?7:p<60?4:2));setInfoPct(grid,p,p<38?'Mengambil data lokasi...':p<66?'Mengambil maklumat AP dan gambar...':'Menyusun Paparan Info...')},260);
+    try{
+      const r=await apiGet('bossData',{},2,12000);if(token!==infoLoadToken)return;
+      clearInterval(timer);setInfoPct(grid,90,'Data diterima. Menyusun paparan...');
+      if(!r.ok)throw new Error(r.error||'Gagal memuatkan Paparan Info.');
+      APP.bossData=r.data||{locations:[],aps:[],photos:[]};
+      setInfoPct(grid,100,'Siap.');
+      await new Promise(resolve=>setTimeout(resolve,100));if(token===infoLoadToken)renderBossView();
+    }catch(e){clearInterval(timer);if(token===infoLoadToken)grid.innerHTML='<div class="boss-empty">'+esc(e.message||String(e))+'</div>'}
+  };
+
+  function initV45(){setTimeout(()=>{try{addMapTools();window.renderMap()}catch(e){}},160)}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initV45,{once:true});else initV45();
+})();
+</script>
 </body>
 </html>
