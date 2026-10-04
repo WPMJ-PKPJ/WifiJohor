@@ -787,6 +787,21 @@ body{background:#EAF3FF}
 @media(max-width:920px){.boss-grid{grid-template-columns:1fr}.boss-view-head{align-items:stretch;flex-direction:column}.boss-view-tools{width:100%}.boss-search{min-width:0;flex:1}.boss-ap-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.boss-ap-grid{grid-template-columns:1fr}.boss-card-head{padding:12px}.boss-view-head h1{font-size:18px}.boss-photo-stage{aspect-ratio:16/10}}
 </style>
+
+<style id="v46-cluster-select-css">
+.v46-cluster-popup .leaflet-popup-content-wrapper{border-radius:18px;box-shadow:0 18px 44px rgba(6,35,74,.24);border:1px solid #D8E7F6}
+.v46-cluster-popup .leaflet-popup-content{margin:0;min-width:250px;max-width:320px}
+.v46-cluster-box{padding:12px}
+.v46-cluster-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:2px 2px 9px;border-bottom:1px solid #E7EEF6}
+.v46-cluster-head b{font-size:12px;color:#123E6B}.v46-cluster-head span{font-size:9px;color:#71849A}
+.v46-cluster-list{display:grid;gap:7px;padding-top:9px}
+.v46-cluster-item{width:100%;border:1px solid #DCE8F4;border-radius:12px;background:#fff;padding:9px 10px;text-align:left;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;cursor:pointer;transition:.14s ease}
+.v46-cluster-item:hover{background:#F1F7FF;border-color:#A9CDF4;transform:translateY(-1px)}
+.v46-cluster-name{min-width:0}.v46-cluster-name b{display:block;font-size:10.5px;color:#163B62;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.v46-cluster-name small{display:block;margin-top:3px;font-size:8.5px;color:#71839A}
+.v46-cluster-arrow{width:28px;height:28px;border-radius:9px;background:#EAF4FF;color:#1769D2;display:grid;place-items:center;font-weight:900;font-size:14px}
+.v46-cluster-zoom{width:100%;margin-top:9px;border:0;border-radius:11px;background:#0B4D8B;color:#fff;padding:9px 10px;font-size:9.5px;font-weight:800;cursor:pointer}
+@media(max-width:560px){.v46-cluster-popup .leaflet-popup-content{min-width:230px;max-width:82vw}.v46-cluster-box{padding:10px}}
+</style>
 </head>
 <body>
 <div class="layout">
@@ -2614,6 +2629,29 @@ decisionPanel=function(l,locked){
   }
   function apVisible(){return !!document.getElementById('v44ShowAP')?.checked}
 
+  function v46OpenClusterList(marker,g,map){
+    const box=document.createElement('div');box.className='v46-cluster-box';
+    const head=document.createElement('div');head.className='v46-cluster-head';
+    const hb=document.createElement('b');hb.textContent=g.items.length+' lokasi di kawasan ini';
+    const hs=document.createElement('span');hs.textContent='Pilih lokasi';head.append(hb,hs);box.appendChild(head);
+    const list=document.createElement('div');list.className='v46-cluster-list';
+    g.items.forEach(x=>{
+      const btn=document.createElement('button');btn.type='button';btn.className='v46-cluster-item';
+      const copy=document.createElement('span');copy.className='v46-cluster-name';
+      const nm=document.createElement('b');nm.textContent=x.NamaLokasi||x.LocationID||'Lokasi';
+      const meta=document.createElement('small');meta.textContent=(x.Daerah||'-')+' · '+displayStatus(x.Status||'');
+      const arrow=document.createElement('span');arrow.className='v46-cluster-arrow';arrow.textContent='›';
+      copy.append(nm,meta);btn.append(copy,arrow);
+      btn.addEventListener('click',()=>{try{map.closePopup()}catch(e){};selectMapLocation(x.LocationID)});
+      list.appendChild(btn);
+    });
+    box.appendChild(list);
+    const zoom=document.createElement('button');zoom.type='button';zoom.className='v46-cluster-zoom';zoom.textContent='Zoom kawasan ini';
+    zoom.addEventListener('click',()=>{try{map.closePopup()}catch(e){};map._v44Zoomed=true;map.setView(marker.getLatLng(),Math.min(map.getZoom()+2,12),{animate:true});setTimeout(()=>window.renderMap(),280)});
+    box.appendChild(zoom);
+    marker.bindPopup(box,{className:'v46-cluster-popup',closeButton:true,autoPan:true,maxWidth:330,offset:[0,-4]});marker.openPopup();
+  }
+
   // Override map renderer only to add reliable reset/refresh and AP-specific info.
   window.renderMap=function(){
     const map=v45Map();if(!map)return;addMapTools();
@@ -2629,7 +2667,7 @@ decisionPanel=function(l,locked){
       }else{
         const icon=L.divIcon({className:'v44-map-cluster-wrap',html:'<div class="v44-map-cluster"><span>'+g.items.length+'<small>LOKASI</small></span></div>',iconSize:[42,42],iconAnchor:[21,21]});
         const mk=L.marker([lat,lng],{icon,riseOnHover:true}).addTo(JOHOR_MAP.locations);const names=g.items.slice(0,5).map(x=>esc(x.NamaLokasi||x.LocationID)).join('<br>')+(g.items.length>5?'<br>+ '+(g.items.length-5)+' lagi':'');mk.bindTooltip(names,{direction:'top',opacity:.97});
-        mk.on('click',()=>{map._v44Zoomed=true;map.setView([lat,lng],Math.min(map.getZoom()+2,12),{animate:true});setTimeout(()=>window.renderMap(),280)});
+        mk.on('click',()=>v46OpenClusterList(mk,g,map));
       }
     });
     if(apVisible())visible.forEach(x=>{
