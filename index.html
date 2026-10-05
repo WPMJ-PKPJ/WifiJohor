@@ -802,6 +802,57 @@ body{background:#EAF3FF}
 .v46-cluster-zoom{width:100%;margin-top:9px;border:0;border-radius:11px;background:#0B4D8B;color:#fff;padding:9px 10px;font-size:9.5px;font-weight:800;cursor:pointer}
 @media(max-width:560px){.v46-cluster-popup .leaflet-popup-content{min-width:230px;max-width:82vw}.v46-cluster-box{padding:10px}}
 </style>
+
+<style id="v48-mobile-map-info-css">
+/* V48 SAFE - mobile cluster bottom sheet + coordinate actions + mobile Paparan Info */
+.v48-map-sheet{display:none}
+@media(max-width:920px){
+  .mobile-bottom button[data-page="boss"]{color:#1769D2}
+  .mobile-bottom button[data-page="boss"].active{color:#1769D2!important}
+  .mobile-bottom{grid-template-columns:repeat(5,1fr)!important}
+  .mobile-bottom button{min-width:0!important;padding-left:2px!important;padding-right:2px!important}
+  .mobile-bottom button span{font-size:7.5px!important;white-space:nowrap}
+  #page-boss{padding-bottom:92px!important}
+  #page-boss .boss-view-head{margin-bottom:10px!important}
+  #page-boss .boss-view-tools{position:sticky;top:78px;z-index:12;background:rgba(244,248,253,.96);padding:7px 0;backdrop-filter:blur(10px)}
+  #page-boss .boss-card{border-radius:17px!important}
+  #page-boss .boss-card-head{align-items:center!important}
+  #page-boss .boss-update-btn{padding:8px 9px!important}
+
+  /* legend jadi ikon kecil apabila ditutup */
+  .map-legend.v44-compact.collapsed{width:44px!important;min-width:44px!important;max-width:44px!important;padding:0!important;border-radius:14px!important;overflow:visible!important}
+  .map-legend.v44-compact.collapsed .v44-legend-head{width:44px!important;height:44px!important;padding:0!important;display:grid!important;place-items:center!important}
+  .map-legend.v44-compact.collapsed .v44-legend-head>span{display:none!important}
+  .map-legend.v44-compact.collapsed .v44-legend-toggle{width:34px!important;height:34px!important;font-size:0!important;border-radius:11px!important}
+  .map-legend.v44-compact.collapsed .v44-legend-toggle:before{content:'i';font-size:18px;line-height:1;font-weight:900}
+
+  /* kad lama peta tidak digunakan pada HP supaya tidak bertindih */
+  #mapSelectedCard{display:none!important}
+  .v46-cluster-popup{display:none!important}
+
+  .v48-map-sheet{display:block;position:fixed;left:8px;right:8px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:12000;transform:translateY(calc(100% + 110px));opacity:0;pointer-events:none;transition:transform .22s ease,opacity .18s ease}
+  .v48-map-sheet.open{transform:translateY(0);opacity:1;pointer-events:auto}
+  .v48-sheet-card{background:rgba(255,255,255,.985);border:1px solid #D8E5F2;border-radius:24px;box-shadow:0 22px 60px rgba(3,35,76,.30);overflow:hidden;max-height:min(58vh,560px);display:flex;flex-direction:column;backdrop-filter:blur(16px)}
+  .v48-sheet-grab{width:42px;height:4px;border-radius:999px;background:#C6D1DE;margin:8px auto 3px;flex:0 0 auto}
+  .v48-sheet-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:7px 14px 10px;border-bottom:1px solid #E8EEF5;flex:0 0 auto}
+  .v48-sheet-head-copy{min-width:0}.v48-sheet-head-copy b{display:block;font-size:15px;color:#123E6B;line-height:1.25}.v48-sheet-head-copy span{display:block;margin-top:3px;font-size:9px;color:#73859B}
+  .v48-sheet-close{width:34px;height:34px;border:0;border-radius:11px;background:#EDF4FB;color:#173F6A;font-size:22px;line-height:1;display:grid;place-items:center;flex:0 0 auto}
+  .v48-sheet-body{padding:10px 12px 13px;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+  .v48-sheet-search{width:100%;border:1px solid #D8E5F1;border-radius:13px;background:#F6FAFE;padding:10px 12px;font:inherit;font-size:11px;outline:none;margin-bottom:9px}.v48-sheet-search:focus{border-color:#79B7F5;box-shadow:0 0 0 3px rgba(23,105,210,.08)}
+  .v48-location-list{display:grid;gap:8px}
+  .v48-loc-row{border:1px solid #DEE8F2;background:#fff;border-radius:15px;padding:10px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;align-items:center;box-shadow:0 5px 14px rgba(16,56,96,.04)}
+  .v48-loc-main{min-width:0;cursor:pointer}.v48-loc-main b{display:block;color:#183F68;font-size:11px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.v48-loc-coord{display:block;margin-top:4px;color:#3F678D;font-size:9.5px;font-weight:800;letter-spacing:.01em}.v48-loc-meta{display:flex;gap:5px;align-items:center;flex-wrap:wrap;margin-top:4px;color:#71849A;font-size:8.5px}.v48-dot{width:7px;height:7px;border-radius:50%;display:inline-block;background:#0FA968}
+  .v48-row-actions{display:flex;gap:5px}.v48-mini-btn{width:40px;height:40px;border:1px solid #D7E6F5;border-radius:12px;background:#F5FAFF;color:#1769D2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;font-size:7px;font-weight:900;padding:0}.v48-mini-btn svg{width:15px;height:15px;fill:currentColor}.v48-mini-btn:active{transform:scale(.97)}
+  .v48-detail-title{padding:3px 1px 9px}.v48-detail-title b{display:block;color:#163E68;font-size:15px;line-height:1.25}.v48-detail-title span{display:block;color:#71849A;font-size:9.5px;margin-top:3px}
+  .v48-status-pill{display:inline-flex!important;width:max-content;padding:5px 8px;border-radius:999px;background:#EAF8F1;color:#087A4E!important;font-weight:900!important}
+  .v48-info-box{border:1px solid #DFE8F1;border-radius:15px;background:#FAFCFF;padding:4px 10px;margin-bottom:9px}
+  .v48-info-row{display:grid;grid-template-columns:78px minmax(0,1fr) auto;gap:8px;align-items:center;min-height:38px;border-bottom:1px solid #E9EFF5;font-size:10px}.v48-info-row:last-child{border-bottom:0}.v48-info-label{color:#71849A}.v48-info-value{color:#1D4268;font-weight:800;word-break:break-word}.v48-inline-act{border:1px solid #CFE1F5;background:#fff;color:#1769D2;border-radius:9px;padding:6px 7px;font-size:8px;font-weight:900;white-space:nowrap}
+  .v48-main-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}.v48-action{border:0;border-radius:13px;padding:10px 8px;font-size:9px;font-weight:900;display:flex;align-items:center;justify-content:center;gap:6px}.v48-action.primary{background:#0B79ED;color:#fff}.v48-action.soft{background:#EAF4FF;color:#1769D2;border:1px solid #CEE4FA}.v48-action.dark{background:#123E6B;color:#fff}.v48-action.full{grid-column:1/-1}.v48-action svg{width:15px;height:15px;fill:currentColor}
+  .v48-ap-list{display:grid;gap:7px;margin-top:10px}.v48-ap-card{border:1px solid #DEE8F2;border-radius:14px;padding:9px;background:#fff}.v48-ap-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px}.v48-ap-head b{font-size:10.5px;color:#163E68}.v48-ap-head span{font-size:8.5px;color:#71849A}.v48-ap-coord{display:flex;align-items:center;justify-content:space-between;gap:8px;background:#F5F9FD;border-radius:10px;padding:7px 8px;color:#2C577F;font-size:9px;font-weight:800;cursor:pointer}.v48-ap-coord.invalid{opacity:.55;cursor:default}.v48-ap-sub{margin-top:5px;color:#72859A;font-size:8.5px}
+  .v48-empty{padding:18px;text-align:center;color:#7A8DA2;font-size:10px}
+}
+</style>
+
 </head>
 <body>
 <div class="layout">
@@ -1532,7 +1583,95 @@ async function quickLocationPhoto(locationId,input){
 async function printReport(){
   const w=window.open('','_blank');
   if(!w){toast('Browser menyekat paparan laporan. Benarkan pop-up untuk laman ini.');return}
-  w.document.write('<!doctype html><html><body style="font-family:Arial;padding:30px">Menjana laporan...</body></html>');
+  w.document.write('<!doctype html><html><body style="font-family:Arial;padding:30px">Menjana laporan...
+<script id="v48-mobile-map-info-js">
+(function(){
+  const IS_MOBILE=()=>window.matchMedia('(max-width:920px)').matches;
+  let clusterItems=[];
+
+  function v48Svg(name){
+    const p={pin:'<path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/>',copy:'<path d="M8 3h11a2 2 0 0 1 2 2v11h-2V5H8V3zM5 7h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2zm0 2v10h10V9H5z"/>',info:'<path d="M11 10h2v8h-2v-8zm0-4h2v2h-2V6z"/><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 2a8 8 0 1 1 0 16 8 8 0 0 1 0-16z"/>',map:'<path d="M15 5.1 9 3 3.4 4.9A2 2 0 0 0 2 6.8V21l7-2.4 6 2.1 7-2.4V4l-7 1.1zM10 5.4l4 1.4v11.5l-4-1.4V5.4zm-6 1 4-1.4v11.7l-4 1.4V6.4zm16 10.5-4 1.4V6.7l4-1.4v11.6z"/>'};
+    return '<svg viewBox="0 0 24 24" aria-hidden="true">'+(p[name]||p.info)+'</svg>';
+  }
+  function validCoord(lat,lng){const a=Number(lat),b=Number(lng);return Number.isFinite(a)&&Number.isFinite(b)&&Math.abs(a)<=90&&Math.abs(b)<=180&&String(lat).trim()!==''&&String(lng).trim()!==''}
+  function coordText(lat,lng){return validCoord(lat,lng)?Number(lat).toFixed(6)+', '+Number(lng).toFixed(6):'Koordinat belum lengkap'}
+  async function copyText(v){
+    try{await navigator.clipboard.writeText(v);toast('Koordinat disalin.');return}catch(e){}
+    const ta=document.createElement('textarea');ta.value=v;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');toast('Koordinat disalin.')}catch(e){toast('Tidak dapat menyalin koordinat.')}ta.remove();
+  }
+  window.v48CopyCoord=function(lat,lng){if(!validCoord(lat,lng)){toast('Koordinat belum lengkap.');return}copyText(coordText(lat,lng))};
+  window.v48OpenMaps=function(lat,lng){if(!validCoord(lat,lng)){toast('Koordinat belum lengkap.');return}window.open(maps(lat,lng),'_blank','noopener')};
+
+  function ensureSheet(){
+    let wrap=document.getElementById('v48MapSheet');if(wrap)return wrap;
+    wrap=document.createElement('div');wrap.id='v48MapSheet';wrap.className='v48-map-sheet';
+    wrap.innerHTML='<section class="v48-sheet-card" role="dialog" aria-modal="false"><div class="v48-sheet-grab"></div><div class="v48-sheet-head"><div class="v48-sheet-head-copy"><b id="v48SheetTitle">Lokasi</b><span id="v48SheetSub">Maklumat peta</span></div><button type="button" class="v48-sheet-close" aria-label="Tutup">×</button></div><div id="v48SheetBody" class="v48-sheet-body"></div></section>';
+    document.body.appendChild(wrap);wrap.querySelector('.v48-sheet-close').addEventListener('click',v48CloseSheet);return wrap;
+  }
+  window.v48CloseSheet=function(){const s=document.getElementById('v48MapSheet');if(s)s.classList.remove('open')};
+  function showSheet(title,sub,html){const s=ensureSheet();document.getElementById('v48SheetTitle').textContent=title||'Lokasi';document.getElementById('v48SheetSub').textContent=sub||'';document.getElementById('v48SheetBody').innerHTML=html;s.classList.add('open');try{closeMapSelected()}catch(e){};try{ensureJohorMap()?.closePopup()}catch(e){}}
+
+  function statusDot(status){const s=String(status||'');return '<span class="v48-dot" style="background:'+statusMapColor(s)+'"></span>'}
+  function apTotal(x){let n=0;if(validCoord(x.AP1Latitude,x.AP1Longitude))n++;if(validCoord(x.AP2Latitude,x.AP2Longitude))n++;return n}
+  function locationRow(x){const c=mapCoords(x),ct=coordText(c.lat,c.lng);return '<div class="v48-loc-row" data-search="'+ea([x.NamaLokasi,x.Daerah,x.LocationID].join(' ').toLowerCase())+'"><div class="v48-loc-main" onclick="v48OpenLocationById(\''+ea(x.LocationID)+'\')"><b>'+esc(x.NamaLokasi||x.LocationID||'Lokasi')+'</b><span class="v48-loc-coord">'+esc(ct)+'</span><span class="v48-loc-meta">'+statusDot(x.Status)+' '+esc(displayStatus(x.Status||''))+' · '+apTotal(x)+' AP GPS</span></div><div class="v48-row-actions"><button class="v48-mini-btn" type="button" onclick="v48FocusLocation(\''+ea(x.LocationID)+'\')">'+v48Svg('pin')+'<span>Fokus</span></button><button class="v48-mini-btn" type="button" onclick="v48CopyCoord(\''+ea(c.lat||'')+'\',\''+ea(c.lng||'')+'\')">'+v48Svg('copy')+'<span>Salin</span></button></div></div>'}
+
+  window.v48OpenCluster=function(items){
+    clusterItems=Array.isArray(items)?items.slice():[];
+    const list=clusterItems.map(locationRow).join('')||'<div class="v48-empty">Tiada lokasi dalam cluster.</div>';
+    showSheet(clusterItems.length+' Lokasi Berdekatan','Pilih lokasi atau salin koordinat','<input id="v48ClusterSearch" class="v48-sheet-search" placeholder="Cari lokasi dalam cluster..."><div id="v48ClusterList" class="v48-location-list">'+list+'</div>');
+    const inp=document.getElementById('v48ClusterSearch');if(inp)inp.addEventListener('input',()=>{const t=inp.value.trim().toLowerCase();document.querySelectorAll('#v48ClusterList .v48-loc-row').forEach(r=>r.style.display=!t||String(r.dataset.search||'').includes(t)?'grid':'none')});
+  };
+  window.v48OpenLocationById=function(id){const x=(APP.locations||[]).find(v=>String(v.LocationID)===String(id));if(x)v48OpenLocationSheet(x)};
+  window.v48FocusLocation=function(id){const x=(APP.locations||[]).find(v=>String(v.LocationID)===String(id));if(!x)return;const c=mapCoords(x);if(!validCoord(c.lat,c.lng)){toast('Koordinat lokasi belum lengkap.');return}const m=ensureJohorMap();if(m){m._v44Zoomed=true;m.setView([Number(c.lat),Number(c.lng)],Math.max(m.getZoom(),16),{animate:true})}v48OpenLocationSheet(x)};
+
+  function apQuick(x,n){const p='AP'+n,lat=x[p+'Latitude']||'',lng=x[p+'Longitude']||'',ok=validCoord(lat,lng),status=x[p+'Status']||'Belum Ditentukan',block=x[p+'BlokAras']||'-',type=x[p+'JenisAP']||'-';return '<div class="v48-ap-card"><div class="v48-ap-head"><b>AP '+n+'</b><span>'+esc(status)+'</span></div><div class="v48-ap-coord '+(ok?'':'invalid')+'" '+(ok?'onclick="v48OpenMaps(\''+ea(lat)+'\',\''+ea(lng)+'\')"':'')+'><span>'+esc(coordText(lat,lng))+'</span><span>'+v48Svg('map')+'</span></div><div class="v48-ap-sub">'+esc(block)+' · '+esc(type)+'</div>'+(ok?'<div class="v48-main-actions"><button type="button" class="v48-action soft" onclick="v48CopyCoord(\''+ea(lat)+'\',\''+ea(lng)+'\')">'+v48Svg('copy')+' Salin GPS</button><button type="button" class="v48-action primary" onclick="v48OpenMaps(\''+ea(lat)+'\',\''+ea(lng)+'\')">'+v48Svg('map')+' Maps</button></div>':'')+'</div>'}
+  window.v48OpenLocationSheet=function(x){
+    if(!x)return;const c=mapCoords(x),ok=validCoord(c.lat,c.lng),phone=displayPhone(x.PICTelefon)||'-';
+    const info='<div class="v48-detail-title"><b>'+esc(x.NamaLokasi||x.LocationID||'Lokasi')+'</b><span>'+esc(x.Daerah||'-')+'</span><span class="v48-status-pill">'+esc(displayStatus(x.Status||''))+'</span></div><div class="v48-info-box"><div class="v48-info-row"><span class="v48-info-label">Latitude</span><span class="v48-info-value">'+esc(ok?Number(c.lat).toFixed(6):'-')+'</span>'+(ok?'<button class="v48-inline-act" onclick="v48CopyCoord(\''+ea(c.lat)+'\',\''+ea(c.lng)+'\')">Salin</button>':'<span></span>')+'</div><div class="v48-info-row"><span class="v48-info-label">Longitude</span><span class="v48-info-value">'+esc(ok?Number(c.lng).toFixed(6):'-')+'</span>'+(ok?'<button class="v48-inline-act" onclick="v48OpenMaps(\''+ea(c.lat)+'\',\''+ea(c.lng)+'\')">Maps</button>':'<span></span>')+'</div><div class="v48-info-row"><span class="v48-info-label">Jumlah AP</span><span class="v48-info-value">'+apTotal(x)+' AP berkoordinat</span><span></span></div><div class="v48-info-row"><span class="v48-info-label">PIC</span><span class="v48-info-value">'+esc(x.PICNama||'-')+'</span><span></span></div><div class="v48-info-row"><span class="v48-info-label">Telefon</span><span class="v48-info-value">'+esc(phone)+'</span><span></span></div></div><div class="v48-main-actions">'+(ok?'<button type="button" class="v48-action primary" onclick="v48FocusOnly(\''+ea(x.LocationID)+'\')">'+v48Svg('pin')+' Fokus Peta</button><button type="button" class="v48-action soft" onclick="v48OpenMaps(\''+ea(c.lat)+'\',\''+ea(c.lng)+'\')">'+v48Svg('map')+' Google Maps</button>':'')+'<button type="button" class="v48-action dark full" onclick="v48OpenInfoFor(\''+ea(x.LocationID)+'\')">'+v48Svg('info')+' Paparan Info</button></div><div class="v48-ap-list">'+apQuick(x,1)+apQuick(x,2)+'</div>';
+    showSheet('Maklumat Lokasi','Koordinat dan AP',info);
+  };
+  window.v48FocusOnly=function(id){const x=(APP.locations||[]).find(v=>String(v.LocationID)===String(id));if(!x)return;const c=mapCoords(x);if(!validCoord(c.lat,c.lng)){toast('Koordinat lokasi belum lengkap.');return}const m=ensureJohorMap();if(m){m._v44Zoomed=true;m.setView([Number(c.lat),Number(c.lng)],17,{animate:true})}v48CloseSheet()};
+  window.v48OpenAPSheet=function(x,n){
+    if(!x)return;const p='AP'+n,lat=x[p+'Latitude']||'',lng=x[p+'Longitude']||'',ok=validCoord(lat,lng),status=x[p+'Status']||'Belum Ditentukan',block=x[p+'BlokAras']||'-',type=x[p+'JenisAP']||'-';
+    const body='<div class="v48-detail-title"><b>'+esc(x.NamaLokasi||x.LocationID||'Lokasi')+' · AP '+n+'</b><span>'+esc(x.Daerah||'-')+'</span><span class="v48-status-pill">'+esc(status)+'</span></div><div class="v48-info-box"><div class="v48-info-row"><span class="v48-info-label">Blok / Aras</span><span class="v48-info-value">'+esc(block)+'</span><span></span></div><div class="v48-info-row"><span class="v48-info-label">Jenis</span><span class="v48-info-value">'+esc(type)+'</span><span></span></div><div class="v48-info-row"><span class="v48-info-label">Latitude</span><span class="v48-info-value">'+esc(ok?Number(lat).toFixed(6):'-')+'</span>'+(ok?'<button class="v48-inline-act" onclick="v48CopyCoord(\''+ea(lat)+'\',\''+ea(lng)+'\')">Salin</button>':'<span></span>')+'</div><div class="v48-info-row"><span class="v48-info-label">Longitude</span><span class="v48-info-value">'+esc(ok?Number(lng).toFixed(6):'-')+'</span>'+(ok?'<button class="v48-inline-act" onclick="v48OpenMaps(\''+ea(lat)+'\',\''+ea(lng)+'\')">Maps</button>':'<span></span>')+'</div></div><div class="v48-main-actions">'+(ok?'<button type="button" class="v48-action soft" onclick="v48CopyCoord(\''+ea(lat)+'\',\''+ea(lng)+'\')">'+v48Svg('copy')+' Salin GPS</button><button type="button" class="v48-action primary" onclick="v48OpenMaps(\''+ea(lat)+'\',\''+ea(lng)+'\')">'+v48Svg('map')+' Buka Google Maps</button>':'')+'<button type="button" class="v48-action dark full" onclick="v48OpenInfoFor(\''+ea(x.LocationID)+'\')">'+v48Svg('info')+' Paparan Info</button></div>';
+    showSheet('Maklumat AP '+n,'Tekan koordinat untuk buka Maps',body);
+  };
+
+  window.v48OpenInfoFor=function(id){
+    const x=(APP.locations||[]).find(v=>String(v.LocationID)===String(id));v48CloseSheet();
+    const s=document.getElementById('bossSearch');if(s)s.value=x?(x.NamaLokasi||x.LocationID||''):String(id||'');
+    showPage('boss');
+    if(APP.bossData){try{renderBossView()}catch(e){}}
+    setTimeout(()=>{const p=document.getElementById('page-boss');if(p)window.scrollTo({top:p.offsetTop||0,behavior:'smooth'})},80);
+  };
+
+  function mapRows(){const facility=document.getElementById('mapFacilityFilter')?.value||'',status=document.getElementById('mapStatusFilter')?.value||'',all=APP.locations||[];const filtered=all.filter(x=>(!facility||facilityType(x.NamaLokasi)===facility)&&(!status||String(x.Status||'Belum Dilawati')===status));return {all,visible:filtered.filter(x=>{const c=mapCoords(x);return withinJohor(c.lat,c.lng)})}}
+  function groupRows(map,rows){const zoom=map.getZoom(),radius=zoom<9?48:zoom<10?38:zoom<11?28:18,groups=[];rows.forEach(x=>{const c=mapCoords(x),ll=L.latLng(Number(c.lat),Number(c.lng)),pt=map.latLngToContainerPoint(ll);let g=null;for(const cand of groups){if(Math.hypot(pt.x-cand.pt.x,pt.y-cand.pt.y)<=radius){g=cand;break}}if(!g){g={items:[],sx:0,sy:0,lat:0,lng:0,pt};groups.push(g)}g.items.push(x);g.sx+=pt.x;g.sy+=pt.y;g.lat+=ll.lat;g.lng+=ll.lng;g.pt=L.point(g.sx/g.items.length,g.sy/g.items.length)});return groups}
+  function apVisible(){return !!document.getElementById('v44ShowAP')?.checked}
+  function desktopCluster(marker,g,map){const box=document.createElement('div');box.className='v46-cluster-box';box.innerHTML='<div class="v46-cluster-head"><b>'+g.items.length+' lokasi di kawasan ini</b><span>Pilih lokasi</span></div><div class="v46-cluster-list">'+g.items.map(x=>'<button type="button" class="v46-cluster-item" data-id="'+ea(x.LocationID)+'"><span class="v46-cluster-name"><b>'+esc(x.NamaLokasi||x.LocationID||'Lokasi')+'</b><small>'+esc(x.Daerah||'-')+' · '+esc(displayStatus(x.Status||''))+'</small></span><span class="v46-cluster-arrow">›</span></button>').join('')+'</div><button type="button" class="v46-cluster-zoom">Zoom kawasan ini</button>';box.querySelectorAll('.v46-cluster-item').forEach(b=>b.addEventListener('click',()=>{map.closePopup();selectMapLocation(b.dataset.id)}));box.querySelector('.v46-cluster-zoom').addEventListener('click',()=>{map.closePopup();map._v44Zoomed=true;map.setView(marker.getLatLng(),Math.min(map.getZoom()+2,12),{animate:true});setTimeout(()=>window.renderMap(),280)});marker.bindPopup(box,{className:'v46-cluster-popup',closeButton:true,autoPan:true,maxWidth:330,offset:[0,-4]});marker.openPopup()}
+
+  /* Override renderer terakhir: desktop kekal seperti V46, HP guna bottom sheet. */
+  window.renderMap=function(){
+    const map=ensureJohorMap();if(!map)return;
+    JOHOR_MAP.locations.clearLayers();JOHOR_MAP.aps.clearLayers();
+    const {all,visible}=mapRows(),gpsAll=all.filter(x=>{const c=mapCoords(x);return withinJohor(c.lat,c.lng)});let apCount=0;visible.forEach(x=>[[x.AP1Latitude,x.AP1Longitude],[x.AP2Latitude,x.AP2Longitude]].forEach(a=>{if(withinJohor(a[0],a[1]))apCount++}));
+    groupRows(map,visible).forEach(g=>{const lat=g.lat/g.items.length,lng=g.lng/g.items.length;if(g.items.length===1){const x=g.items[0],color=statusMapColor(x.Status||'Belum Dilawati'),icon=L.divIcon({className:'premium-pin-wrap',html:'<span class="premium-pin" style="--pin:'+color+'"><i></i></span>',iconSize:[36,44],iconAnchor:[18,39],tooltipAnchor:[0,-36]});const mk=L.marker([lat,lng],{icon,riseOnHover:true,bubblingMouseEvents:false}).addTo(JOHOR_MAP.locations);if(!IS_MOBILE())mk.bindTooltip(esc(x.NamaLokasi||x.LocationID),{direction:'top',offset:[0,-9],opacity:.96});mk.on('click',()=>IS_MOBILE()?v48OpenLocationSheet(x):selectMapLocation(x.LocationID))}else{const icon=L.divIcon({className:'v44-map-cluster-wrap',html:'<div class="v44-map-cluster"><span>'+g.items.length+'<small>LOKASI</small></span></div>',iconSize:[42,42],iconAnchor:[21,21]});const mk=L.marker([lat,lng],{icon,riseOnHover:true,bubblingMouseEvents:false}).addTo(JOHOR_MAP.locations);if(!IS_MOBILE()){const names=g.items.slice(0,5).map(x=>esc(x.NamaLokasi||x.LocationID)).join('<br>')+(g.items.length>5?'<br>+ '+(g.items.length-5)+' lagi':'');mk.bindTooltip(names,{direction:'top',opacity:.97})}mk.on('click',()=>IS_MOBILE()?v48OpenCluster(g.items):desktopCluster(mk,g,map))}});
+    if(apVisible())visible.forEach(x=>[[1,x.AP1Latitude,x.AP1Longitude,'#00A6FF'],[2,x.AP2Latitude,x.AP2Longitude,'#E91E63']].forEach(a=>{if(!withinJohor(a[1],a[2]))return;const icon=L.divIcon({className:'premium-ap-wrap',html:'<span class="premium-ap" style="--pin:'+a[3]+'">'+a[0]+'</span>',iconSize:[26,26],iconAnchor:[13,13]});const mk=L.marker([Number(a[1]),Number(a[2])],{icon,riseOnHover:true,bubblingMouseEvents:false}).addTo(JOHOR_MAP.aps);if(!IS_MOBILE())mk.bindTooltip(esc(x.NamaLokasi||x.LocationID)+' · AP '+a[0],{direction:'top'});mk.on('click',()=>IS_MOBILE()?v48OpenAPSheet(x,a[0]):window.v45ShowAPInfo(x,a[0]))}));
+    setText('mapGpsCount',gpsAll.length);setText('mapNoGpsCount',Math.max(all.length-gpsAll.length,0));setText('mapVisibleCount',visible.length);setText('mapApCount',apCount);const empty=document.getElementById('mapEmpty');if(empty)empty.style.display=visible.length?'none':'flex';if(!visible.length){try{closeMapSelected()}catch(e){}v48CloseSheet()}requestAnimationFrame(()=>map.invalidateSize());if(!map._v44Zoomed&&JOHOR_MAP.state?.getBounds)map.fitBounds(JOHOR_MAP.state.getBounds(),{padding:IS_MOBILE()?[3,3]:[36,36]});
+    if(IS_MOBILE()&&!map._v48SheetClick){map.on('click',()=>v48CloseSheet());map._v48SheetClick=true}
+  };
+
+  function addMobileInfoNav(){if(!IS_MOBILE())return;const nav=document.querySelector('.mobile-bottom');if(!nav||nav.querySelector('[data-page="boss"]'))return;const b=document.createElement('button');b.type='button';b.dataset.page='boss';b.innerHTML='<svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 10h2v8h-2v-8zm0-4h2v2h-2V6z"></path><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 2a8 8 0 1 1 0 16 8 8 0 0 1 0-16z"></path></svg><span>Info</span>';b.addEventListener('click',()=>showPage('boss'));nav.appendChild(b)}
+  function compactLegend(){if(!IS_MOBILE())return;const legend=document.querySelector('.map-legend.v44-compact');if(legend){legend.classList.add('collapsed');const btn=legend.querySelector('.v44-legend-toggle');if(btn)btn.textContent='⌄'}}
+
+  const oldShowPage=window.showPage||showPage;window.showPage=function(n){v48CloseSheet();return oldShowPage(n)};
+  function init(){ensureSheet();addMobileInfoNav();setTimeout(()=>{compactLegend();try{window.renderMap()}catch(e){}},180)}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+  window.addEventListener('resize',()=>{addMobileInfoNav();compactLegend()},{passive:true});
+})();
+</script>
+
+</body></html>');
   try{
     const r=await apiGet('reportData',{});
     if(!r.ok)throw new Error(r.error||'Laporan gagal dijana.');
@@ -2707,3 +2846,4 @@ decisionPanel=function(l,locked){
 </script>
 </body>
 </html>
+
