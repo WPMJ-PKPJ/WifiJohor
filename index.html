@@ -3091,5 +3091,83 @@ decisionPanel=function(l,locked){
 
 </script>
 
+
+
+<style id="v54-desktop-ap-coords-css">
+/* V54 - PC map: paparkan koordinat AP1/AP2 sama seperti paparan HP, tanpa popup tambahan */
+@media(min-width:921px){
+  #mapSelectedCard{max-width:980px!important}
+  .v54-desktop-ap-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}
+  .v54-desktop-ap{border:1px solid #D7E4F1;border-radius:12px;background:#F8FBFF;padding:8px 9px;min-width:0}
+  .v54-desktop-ap.active{border-color:#72B7F7;box-shadow:0 0 0 2px rgba(23,105,210,.08)}
+  .v54-desktop-ap-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:5px}
+  .v54-desktop-ap-head b{font-size:10px;color:#123E6B}
+  .v54-desktop-ap-status{font-size:8px;font-weight:900;color:#55708A;background:#EEF4FA;border-radius:999px;padding:3px 6px;white-space:nowrap;max-width:130px;overflow:hidden;text-overflow:ellipsis}
+  .v54-desktop-ap-meta{font-size:8.5px;color:#627B94;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:5px}
+  .v54-desktop-ap-coord{display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px solid #E4ECF4;padding-top:6px}
+  .v54-desktop-ap-coord code{font-family:Arial,Helvetica,sans-serif;font-size:9px;font-weight:900;color:#174A7A;white-space:nowrap}
+  .v54-desktop-ap-coord.missing code{color:#8B98A8;font-weight:700}
+  .v54-desktop-ap-actions{display:flex;gap:5px;flex:0 0 auto}
+  .v54-desktop-ap-actions button,.v54-desktop-ap-actions a{min-height:27px!important;height:27px;padding:0 8px!important;border-radius:8px!important;font-size:8px!important;font-weight:900!important;text-decoration:none!important;display:inline-flex!important;align-items:center!important;justify-content:center!important}
+  .v54-desktop-ap-copy{border:1px solid #CDE0F3!important;background:#fff!important;color:#1769D2!important}
+  .v54-desktop-ap-map{border:0!important;background:#0B79ED!important;color:#fff!important}
+}
+@media(max-width:920px){.v54-desktop-ap-grid{display:none!important}}
+</style>
+
+<script id="v54-desktop-ap-coords-js">
+(function(){
+  function isDesktop(){return !window.matchMedia('(max-width:920px)').matches}
+  function coordOk(lat,lng){const a=Number(lat),b=Number(lng);return Number.isFinite(a)&&Number.isFinite(b)&&Math.abs(a)<=90&&Math.abs(b)<=180&&!(a===0&&b===0)}
+  function coordText(lat,lng){return coordOk(lat,lng)?Number(lat).toFixed(6)+', '+Number(lng).toFixed(6):'Koordinat belum lengkap'}
+  function ensureBox(){
+    const main=document.querySelector('#mapSelectedCard .map-selected-main');
+    if(!main)return null;
+    let box=document.getElementById('v54DesktopAPCoords');
+    if(!box){box=document.createElement('div');box.id='v54DesktopAPCoords';box.className='v54-desktop-ap-grid';main.appendChild(box)}
+    return box;
+  }
+  window.v54CopyAPCoord=async function(lat,lng){
+    if(!coordOk(lat,lng)){if(typeof toast==='function')toast('Koordinat AP belum lengkap.');return}
+    const t=Number(lat).toFixed(6)+', '+Number(lng).toFixed(6);
+    try{await navigator.clipboard.writeText(t);if(typeof toast==='function')toast('Koordinat AP disalin.')}catch(e){
+      const ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');if(typeof toast==='function')toast('Koordinat AP disalin.')}catch(_e){}ta.remove();
+    }
+  };
+  window.v54OpenAPMap=function(lat,lng){
+    if(!coordOk(lat,lng)){if(typeof toast==='function')toast('Koordinat AP belum lengkap.');return}
+    window.open('https://www.google.com/maps?q='+encodeURIComponent(Number(lat).toFixed(6)+','+Number(lng).toFixed(6)),'_blank','noopener');
+  };
+  function apCard(x,n,selected){
+    const p='AP'+n,lat=x[p+'Latitude']||'',lng=x[p+'Longitude']||'',ok=coordOk(lat,lng);
+    const status=x[p+'Status']||'Belum Ditentukan',block=x[p+'BlokAras']||'-',type=x[p+'JenisAP']||'-';
+    return '<div class="v54-desktop-ap '+(String(selected)===String(n)?'active':'')+'">'+
+      '<div class="v54-desktop-ap-head"><b>AP '+n+'</b><span class="v54-desktop-ap-status">'+esc(status)+'</span></div>'+
+      '<div class="v54-desktop-ap-meta">'+esc(block)+' · '+esc(type)+'</div>'+
+      '<div class="v54-desktop-ap-coord '+(ok?'':'missing')+'"><code>'+esc(coordText(lat,lng))+'</code>'+
+      (ok?'<span class="v54-desktop-ap-actions"><button type="button" class="v54-desktop-ap-copy" onclick="v54CopyAPCoord(\''+ea(lat)+'\',\''+ea(lng)+'\')">Salin</button><button type="button" class="v54-desktop-ap-map" onclick="v54OpenAPMap(\''+ea(lat)+'\',\''+ea(lng)+'\')">Maps</button></span>':'')+
+      '</div></div>';
+  }
+  function renderAPCoords(x,selected){
+    if(!isDesktop()||!x)return;
+    const box=ensureBox();if(!box)return;
+    box.innerHTML=apCard(x,1,selected)+apCard(x,2,selected);
+  }
+  const oldSelect=window.selectMapLocation;
+  if(typeof oldSelect==='function'){
+    window.selectMapLocation=function(id){
+      oldSelect(id);
+      const x=(APP.locations||[]).find(v=>String(v.LocationID)===String(id));
+      renderAPCoords(x,0);
+    };
+    try{selectMapLocation=window.selectMapLocation}catch(e){}
+  }
+  const oldAP=window.v45ShowAPInfo;
+  if(typeof oldAP==='function'){
+    window.v45ShowAPInfo=function(x,n){oldAP(x,n);renderAPCoords(x,n)};
+  }
+})();
+</script>
+
 </body>
 </html>
